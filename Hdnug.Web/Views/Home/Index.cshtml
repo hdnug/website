@@ -1,0 +1,104 @@
+﻿@using Hdnug.Web.Code
+@model Hdnug.Web.Models.ViewModels.HomeViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div id="slider" class="orbit-container">
+    <ul data-orbit>
+        @foreach (var image in Model.SliderImages)
+        {
+            <li>
+                <img src="@image.ImageUrl" alt="@image.AltText" height="@image.Height" width="@image.Width" />
+                <div class="orbit-caption">@image.Caption</div>
+            </li>
+        }
+    </ul>
+</div>
+<hr />
+<div class="row">
+
+    <!-- Main Blog Content -->
+    <div class="large-8 columns" role="content">
+
+        <!-- Two-up Content Blocks -->
+
+        <div class="row">
+            <div class="large-12 columns">
+                <h3>Welcome to HDNUG!</h3>
+                <p>
+                    Whether you are a regular or someone just coming for the first time, whether you are a long-time .NET developer or new to .NET development, everyone who wants to learn about .NET and network with other developers is always welcome to HDNUG.
+                    Our monthly meetings (and we've now had over 100!) are always free and feature great technical content, pizza drinks ... and a fun time.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-12 columns">
+                @if (Model.Meetings != null)
+                {
+                    var counter = 0;
+                    foreach (var meeting in Model.Meetings)
+                    {
+                        counter++;
+                        <article>
+
+                            <h4><a href="#">@meeting.Title</a></h4>
+                            <h5>@meeting.MeetingStartDateTime.ToShortDateString()  @meeting.MeetingStartDateTime.ToShortTimeString() - @meeting.MeetingEndDateTime.ToShortTimeString()</h5>
+
+                            <div class="row">
+                                <div class="large-12 columns">
+                                    <p>@meeting.Description.TrimEndIfLongerThan(175)</p>
+                                </div>
+                            </div>
+
+                        </article>
+
+                        if (counter < Model.Meetings.Count())
+                        {
+                            <hr />
+                        }
+                    }
+                }
+                else
+                {
+                    <article>
+                        <p>No Meetings :(</p>
+                    </article>
+                }
+            </div>
+
+            <!-- End Main Content -->
+
+        </div>
+    </div>
+    <!-- Sidebar -->
+
+    <aside class="large-4 columns">
+
+        <div class="panel">
+            <h5>Meeting Sponsors</h5>
+            <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow.</p>
+            <a href="#">Read More →</a>
+        </div>
+
+        @*<h5>Categories</h5>
+            <ul class="side-nav">
+                <li><a href="#">News</a></li>
+                <li><a href="#">Code</a></li>
+                <li><a href="#">Design</a></li>
+                <li><a href="#">Fun</a></li>
+                <li><a href="#">Weasels</a></li>
+            </ul>*@
+
+        <h5>Sign-up</h5>
+        <ul class="side-nav">
+            @Html.Partial("_LoginPartial")
+        </ul>
+    </aside>
+
+    <!-- End Sidebar -->
+
+</div>

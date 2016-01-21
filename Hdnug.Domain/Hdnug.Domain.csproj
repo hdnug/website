@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8E5FCDDC-2689-43F0-86AE-F16714EE7BC7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Hdnug.Domain</RootNamespace>
+    <AssemblyName>Hdnug.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Common.Logging">
+      <HintPath>..\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0-beta1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0-beta1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Highway.Data, Version=5.0.5.0, Culture=neutral, PublicKeyToken=fe803c9600455796, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Highway.Data.5.0.5.0\lib\net451\Highway.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Highway.Data.EntityFramework, Version=5.0.5.0, Culture=neutral, PublicKeyToken=fe803c9600455796, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Highway.Data.EntityFramework.5.0.5.0\lib\net451\Highway.Data.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Highway.Pavement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=fe803c9600455796, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Highway.Pavement.0.3.0.0\lib\net40\Highway.Pavement.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.1.0.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.1.0.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\HdnugContext.cs" />
+    <Compile Include="Data\Models\Image.cs" />
+    <Compile Include="Data\Models\ImageType.cs" />
+    <Compile Include="Data\Models\Mapping\ImageMap.cs" />
+    <Compile Include="Data\Models\Mapping\PresentationMap.cs" />
+    <Compile Include="Data\Models\Mapping\PrizeSponsorshipMap.cs" />
+    <Compile Include="Data\Models\Meeting.cs" />
+    <Compile Include="Data\Models\Mapping\ClaimMap.cs" />
+    <Compile Include="Data\Models\Mapping\MeetingMap.cs" />
+    <Compile Include="Data\Models\Mapping\LoginMap.cs" />
+    <Compile Include="Data\Models\Mapping\MappingConfiguration.cs" />
+    <Compile Include="Data\Models\Mapping\MemberMap.cs" />
+    <Compile Include="Data\Models\Mapping\RoleMap.cs" />
+    <Compile Include="Data\Models\Mapping\SpeakerMap.cs" />
+    <Compile Include="Data\Models\Mapping\SponsorMap.cs" />
+    <Compile Include="Data\Models\Mapping\UserMap.cs" />
+    <Compile Include="Data\Models\Member.cs" />
+    <Compile Include="Data\Models\PrizeSponsorship.cs" />
+    <Compile Include="Data\Models\Queries\AllSliderImages.cs" />
+    <Compile Include="Data\Models\Queries\AllPrizeSponsorships.cs" />
+    <Compile Include="Data\Models\Queries\AllSponsors.cs" />
+    <Compile Include="Data\Models\Queries\GetPrizeSponsorhipById.cs" />
+    <Compile Include="Data\Models\Queries\RemovePrizeSponsorshipById.cs" />
+    <Compile Include="Data\Models\Queries\RemoveSponsorById.cs" />
+    <Compile Include="Data\Models\Queries\GetSponsorById.cs" />
+    <Compile Include="Data\Models\Queries\GetNextMeeting.cs" />
+    <Compile Include="Data\Models\Speaker.cs" />
+    <Compile Include="Data\Models\Sponsor.cs" />
+    <Compile Include="Data\Models\Presentation.cs" />
+    <Compile Include="Migrations\201410161127449_Initial.cs" />
+    <Compile Include="Migrations\201410161127449_Initial.Designer.cs">
+      <DependentUpon>201410161127449_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504200314084_DropSlider.cs" />
+    <Compile Include="Migrations\201504200314084_DropSlider.Designer.cs">
+      <DependentUpon>201504200314084_DropSlider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505090224214_RemoveMeetingDate.cs" />
+    <Compile Include="Migrations\201505090224214_RemoveMeetingDate.Designer.cs">
+      <DependentUpon>201505090224214_RemoveMeetingDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512231551433_SponsorImageCascadeDelete.cs" />
+    <Compile Include="Migrations\201512231551433_SponsorImageCascadeDelete.Designer.cs">
+      <DependentUpon>201512231551433_SponsorImageCascadeDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601021504076_PrizeSponsorshipOptional.cs" />
+    <Compile Include="Migrations\201601021504076_PrizeSponsorshipOptional.Designer.cs">
+      <DependentUpon>201601021504076_PrizeSponsorshipOptional.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201410161127449_Initial.resx">
+      <DependentUpon>201410161127449_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504200314084_DropSlider.resx">
+      <DependentUpon>201504200314084_DropSlider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505090224214_RemoveMeetingDate.resx">
+      <DependentUpon>201505090224214_RemoveMeetingDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512231551433_SponsorImageCascadeDelete.resx">
+      <DependentUpon>201512231551433_SponsorImageCascadeDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601021504076_PrizeSponsorshipOptional.resx">
+      <DependentUpon>201601021504076_PrizeSponsorshipOptional.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

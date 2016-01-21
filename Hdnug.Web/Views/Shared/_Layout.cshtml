@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - HDNUG</title>
+    @Styles.Render("~/Content/foundation/css")
+    @Styles.Render("~/Content/kendo/css")
+    @Styles.Render("~/Content/site/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        #right-side-header {
+            display: table-cell;
+            vertical-align: bottom;
+        }
+
+        .social-media-inline {
+            margin: 0;
+        }
+
+        .horizontal li {
+            display: inline;
+            list-style-type: none;
+        }
+    </style>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/kendo")
+</head>
+<body>
+    <div class="row">
+        <div class="large-3 columns">
+            <h1><img src="@Url.Content("~/Content/Images/Site/11 - hdnugLogo_blueopacity.png")" width="195" height="190" /></h1>
+        </div>
+        <div class="large-5 columns"></div>
+        <div class="large-4 columns header-info">
+            <div id="right-side-header">
+                @*<div>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="HSV3AD34LLFA8">
+                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                    </div>*@
+                @{ Html.RenderAction("NextMeeting", "NextMeeting");}
+                <div>
+                    <ul class="social-media-inline horizontal">     
+                        <li>
+                            <a href="#">
+                                <img src="@Url.Content("~/Content/Images/Site/twitter_circle_color.png")" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="@Url.Content("~/Content/Images/Site/facebook_circle_color.png")" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="@Url.Content("~/Content/Images/Site/instagram_circle_color.png")" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="@Url.Content("~/Content/Images/Site/linkedin_circle_color.png")" />
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Header and Nav -->
+    <!-- First Band (Slider) -->
+
+    <div class="row">
+        <div class="large-12 columns">
+            <nav class="top-bar" data-topbar>
+                <ul class="title-area">
+                    <li class="name"><!-- Leave this empty --></li>
+                </ul>
+                <section class="top-bar-section">
+                    <ul class="left">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </section>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Page Content and Sidebar -->
+
+    <div class="row">
+        <div class="large-12 columns">
+            @RenderBody()
+        </div>
+    </div>
+
+    <!-- End Main Content and Sidebar -->
+    <!-- Footer -->
+
+    <footer class="row">
+        <div class="large-12 columns">
+            <hr />
+            <div class="row">
+                <div class="large-6 columns">
+                    <p>&copy; @DateTime.Now.Year - HDNUG.ORG</p>
+                </div>
+                <div class="large-6 columns">
+                    <ul class="inline-list right">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/foundation")
+    @RenderSection("scripts", required: false)
+    <script>
+        $(document).foundation();
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿@model Hdnug.Web.Models.ViewModels.MeetingViewModel
+<style type="text/css">.float-left {
+     float: left;
+     display: inline
+ }</style>
+
+@*TODO: 
+    1. Wrap controls in Zurb grid
+    2. Add remaining controls*@
+<section>
+    @Html.HiddenFor(x => x.Id)
+
+    @Html.LabelFor(x => x.Title)
+    @Html.TextBoxFor(x => x.Title, new { required = "required" })
+    
+    <div>
+        <div class="float-left">
+            @Html.LabelFor(x => x.MeetingStartDateTime)
+            @(Html.Kendo().DateTimePickerFor(x => x.MeetingStartDateTime)
+        .Name("meetingStartDateTime")
+            )
+        </div>
+        <div>
+            @Html.LabelFor(x => x.MeetingEndDateTime)
+            @(Html.Kendo().DateTimePickerFor(x => x.MeetingEndDateTime)
+        .Name("meetingEndDateTime")
+            )
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div>
+        <div class="float-left">
+            @Html.Label("sponsors", "Sponsors")
+            @Html.Kendo().ComboBoxFor(x => x.Sponsors).Placeholder("Select sponsor...").DataTextField("Name").DataValueField("Id").BindTo(Model.Sponsors)
+        </div>
+        <div>
+            @Html.Label("presentations", "Presentations")
+            @Html.Kendo().ComboBoxFor(x => x.Presentations).Placeholder("Select presentation...").DataTextField("Title").DataValueField("Id").BindTo(Model.Presentations)
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    
+    @Html.LabelFor(x => x.Location)
+
+    
+
+    @Html.LabelFor(x => x.Description)
+    @Html.TextAreaFor(x => x.Description)
+
+</section>

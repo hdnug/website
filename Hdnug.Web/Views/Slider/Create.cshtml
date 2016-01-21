@@ -1,0 +1,16 @@
+﻿@using Kendo.Mvc.UI
+@model Hdnug.Web.Models.ViewModels.ImageViewModel
+
+@{
+    ViewBag.Title = "Add Slider Image";
+}
+
+<h2>Add Slider Image</h2>
+
+@using (@Html.BeginForm("Create", "Slider", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @Html.Partial("_Upload", Model)
+    <button type="submit">Create</button>
+}

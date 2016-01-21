@@ -1,0 +1,37 @@
+﻿@using Kendo.Mvc.UI
+@model Hdnug.Web.Models.ViewModels.ImageViewModel
+
+<div class="row">
+    <div class="large-12 columns">
+        @Html.LabelFor(m => m.Image.Title)
+        @Html.EditorFor(m => m.Image.Title)
+    </div>
+    <div class="large-12 columns">
+        @Html.LabelFor(m => m.Image.AltText)
+        @Html.EditorFor(m => m.Image.AltText)
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        @Html.LabelFor(m => m.Image.Caption)
+        @Html.EditorFor(m => m.Image.Caption)
+    </div>
+</div>
+<div class="row">
+    <div class="large-6 columns">
+        @Html.LabelFor(m => m.Image.Height)
+        @Html.EditorFor(m => m.Image.Height)
+    </div>
+    <div class="large-6 columns">
+        @Html.LabelFor(m => m.Image.Width)
+        @Html.EditorFor(m => m.Image.Width)
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        @Html.LabelFor(m => m.ImageUpload)
+        <div class="panel">
+            @(Html.Kendo().Upload().Name("ImageUpload").Multiple(false))
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+using System;
+
+namespace Hdnug.Domain.Data.Models
+{
+    public class Image
+    {
+        public Image()
+        {
+        }
+
+        public Image(Image image)
+        {
+            ImageId = image.ImageId;
+            Title = image.Title;
+            AltText = image.AltText;
+            Caption = image.Caption;
+            ImageUrl = image.ImageUrl;
+            Height = image.Height;
+            Width = image.Width;
+            ImageType = image.ImageType;
+            CreatedDate = image.CreatedDate;
+        }
+
+        public int ImageId { get; set; }
+
+        public string Title { get; set; }
+
+        public string AltText { get; set; }
+
+        public string Caption { get; set; }
+
+        public string ImageUrl { get; set; }
+
+        public int Height { get; set; }
+
+        public int Width { get; set; }
+
+        public ImageType ImageType { get; set; }
+
+        private DateTime? _createdDate;
+
+        public DateTime CreatedDate
+        {
+            get { return _createdDate ?? DateTime.UtcNow; }
+            set { _createdDate = value; }
+        }
+    }
+}

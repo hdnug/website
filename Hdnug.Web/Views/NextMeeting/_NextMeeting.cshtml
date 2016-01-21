@@ -1,0 +1,14 @@
+﻿@model Hdnug.Web.Models.ViewModels.NextMeetingViewModel
+
+<h5>Next meeting</h5>
+<div>
+    @if (Model.Meeting != null)
+    {
+        <h6>@Model.Meeting.Title </h6>
+        <p class="meeting-info"><span>@Model.Meeting.MeetingStartDateTime.ToShortDateString()  @Model.Meeting.MeetingStartDateTime.ToShortTimeString() - @Model.Meeting.MeetingEndDateTime.ToShortTimeString()</span></p>
+    }
+    else
+    {
+        <p class="meeting-info">@Html.Raw("No Meetings Scheduled")</p>
+    }
+</div>

@@ -1,0 +1,33 @@
+﻿@using Kendo.Mvc.UI
+@model Hdnug.Web.Models.ViewModels.ImageViewModel
+
+@{
+    ViewBag.Title = "Slider Images";
+}
+
+<h2>Slider Images</h2>
+
+@(Html.Kendo().Grid(Model.Images)
+      .Name("grid")
+      .DataSource(dataSource => dataSource
+        .Server()
+        .Model(model => model.Id(slider => slider.ImageId))
+        .Create(create => create.Action("Create", "Slider"))
+        .Update(update => update.Action("Edit", "Slider"))
+        .Destroy(destroy => destroy.Action("Delete", "Slider")))
+      .Columns(columns =>
+      {
+          columns.Bound(slider => slider.ImageId);
+          columns.Bound(slider => slider.Title);
+          columns.Bound(slider => slider.AltText);
+          columns.Bound(slider => slider.Caption);
+          columns.Bound(slider => slider.Height);
+          columns.Bound(slider => slider.Width);
+          columns.Bound(slider => slider.ImageUrl);
+          columns.Bound(slider => slider.CreatedDate).Format("{0:dd/MM/yyyy}");
+      })
+        .Pageable(pageable => pageable.ButtonCount(5))
+        .Selectable(selectable => selectable
+            .Mode(GridSelectionMode.Single))
+        .Navigatable()
+)
