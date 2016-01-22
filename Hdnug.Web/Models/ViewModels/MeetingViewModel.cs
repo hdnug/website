@@ -7,6 +7,11 @@ namespace Hdnug.Web.Models.ViewModels
     // TODO: Run migrations!
     public class MeetingViewModel
     {
+        public MeetingViewModel()
+        {
+            Sponsors = new List<Sponsor>();
+            Presentations = new List<Presentation>();
+        }
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

@@ -135,7 +135,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Hdnug\Hdnug.Web\Hdnug.Web.csproj">
+    <ProjectReference Include="..\Hdnug.Web\Hdnug.Web.csproj">
       <Project>{ED76609F-A3A0-4A9B-AC3A-F5ACF637A6EA}</Project>
       <Name>Hdnug.Web</Name>
     </ProjectReference>

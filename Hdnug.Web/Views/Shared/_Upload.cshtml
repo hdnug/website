@@ -1,5 +1,4 @@
-﻿@using Kendo.Mvc.UI
-@model Hdnug.Web.Models.ViewModels.ImageViewModel
+﻿@model Hdnug.Web.Models.ViewModels.ImageViewModel
 
 <div class="row">
     <div class="large-12 columns">
@@ -31,7 +30,7 @@
     <div class="large-12 columns">
         @Html.LabelFor(m => m.ImageUpload)
         <div class="panel">
-            @(Html.Kendo().Upload().Name("ImageUpload").Multiple(false))
+            <input type="file"/>
         </div>
     </div>
 </div>

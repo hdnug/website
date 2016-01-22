@@ -2,6 +2,7 @@
 using System.Net;
 using System.Web.Mvc;
 using Hdnug.Domain.Data.Models;
+using Hdnug.Web.Models.ViewModels;
 using Highway.Data;
 
 namespace Hdnug.Web.Controllers
@@ -39,7 +40,11 @@ namespace Hdnug.Web.Controllers
         // GET: Meetings/Create
         public ActionResult Create()
         {
-            return View();
+            // TODO: This needs some work here
+            var sponsors = _repo.Find(new FindAll<Sponsor>()).ToList();
+            var presentations = _repo.Find(new FindAll<Presentation>()).ToList();
+            var viewModel = new MeetingViewModel { Sponsors = sponsors, Presentations = presentations };
+            return View(viewModel);
         }
 
         // POST: Meetings/Create

@@ -68,9 +68,6 @@
     <Reference Include="Highway.Pavement">
       <HintPath>..\packages\Highway.Pavement.0.3.0.0\lib\net40\Highway.Pavement.dll</HintPath>
     </Reference>
-    <Reference Include="Kendo.Mvc">
-      <HintPath>..\assets\Kendo.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
