@@ -1,6 +1,7 @@
 using System.Data.Entity.ModelConfiguration;
 using Microsoft.AspNet.Identity.EntityFramework;
 
+
 namespace Hdnug.Domain.Data.Models.Mapping
 {
     public class ClaimMap : EntityTypeConfiguration<IdentityUserClaim>
@@ -16,10 +17,10 @@ namespace Hdnug.Domain.Data.Models.Mapping
             this.Property(t => t.ClaimType).HasColumnName("ClaimType");
             this.Property(t => t.ClaimValue).HasColumnName("ClaimValue");
 
-            // Relationships
-            this.HasRequired(t => t.User)
-                .WithMany(t => t.Claims)
-                .Map(d => d.MapKey("User_Id"));
+            // Relationships -CST
+            //this.HasRequired(t => t.User)
+            //    .WithMany(t => t.Claims)
+            //    .Map(d => d.MapKey("User_Id"));
 
         }
     }
