@@ -32,8 +32,9 @@ namespace Hdnug.Domain.Data.Models.Mapping
         {
             this.ToTable("UserRoles");
             this.HasKey(x => new {x.UserId, x.RoleId});
-            this.HasRequired(x => x.User).WithMany(x => x.Roles);
-            this.HasRequired(x => x.Role).WithMany();
+            //cst
+            //this.HasRequired(x => x.User).WithMany(x => x.Roles);
+            //this.HasRequired(x => x.Role).WithMany();
         }
     }
 }

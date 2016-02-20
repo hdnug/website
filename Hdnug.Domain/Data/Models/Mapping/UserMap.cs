@@ -1,5 +1,6 @@
 using System.Data.Entity.ModelConfiguration;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Security.Claims;
 
 namespace Hdnug.Domain.Data.Models.Mapping
 {
@@ -22,7 +23,8 @@ namespace Hdnug.Domain.Data.Models.Mapping
             this.Property(t => t.PasswordHash).HasColumnName("PasswordHash");
             this.Property(t => t.SecurityStamp).HasColumnName("SecurityStamp");
 
-            this.HasMany(x => x.Roles).WithRequired(x => x.User);
+            //cst
+            //this.HasMany(x => x.Roles).WithRequired(x => x.User);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Data.Entity.ModelConfiguration;
 using Microsoft.AspNet.Identity.EntityFramework;
 
+
 namespace Hdnug.Domain.Data.Models.Mapping
 {
     public class LoginMap : EntityTypeConfiguration<IdentityUserLogin>
@@ -29,10 +30,10 @@ namespace Hdnug.Domain.Data.Models.Mapping
             this.Property(t => t.LoginProvider).HasColumnName("LoginProvider");
             this.Property(t => t.ProviderKey).HasColumnName("ProviderKey");
 
-            // Relationships
-            this.HasRequired(t => t.User)
-                .WithMany(t => t.Logins)
-                .HasForeignKey(d => d.UserId);
+            // Relationships - CST
+            //this.HasRequired(t => t.User)
+            //    .WithMany(t => t.Logins)
+            //    .HasForeignKey(d => d.UserId);
 
         }
     }
