@@ -56,7 +56,7 @@
     </div>
 </div>
 
-@if (Model.LogoUrl != null || Model.LogoUrl != string.Empty)
+@if (!string.IsNullOrEmpty(Model.LogoUrl))
 {
     <div class="form-group">
         <img src="@Url.Content(Model.LogoUrl)" />
