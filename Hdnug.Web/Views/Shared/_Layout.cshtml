@@ -76,20 +76,17 @@
 
     <div class="row">
         <div class="large-12 columns">
-            <nav class="top-bar" data-topbar>
-                <ul class="title-area">
-                    <li class="name"><!-- Leave this empty --></li>
-                </ul>
-                <section class="top-bar-section">
-                    <ul class="left">
+            <div class="top-bar">
+                <div class="top-bar-left">
+                    <ul class="dropdown menu" data-dropdown-menu>
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li class="divider"></li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li class="divider"></li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     </ul>
-                </section>
-            </nav>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -112,7 +109,7 @@
                     <p>&copy; @DateTime.Now.Year - HDNUG.ORG</p>
                 </div>
                 <div class="large-6 columns">
-                    <ul class="inline-list right">
+                    <ul class="menu">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>

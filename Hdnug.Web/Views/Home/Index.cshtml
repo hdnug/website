@@ -5,17 +5,16 @@
     ViewBag.Title = "Home Page";
 }
 
-
-<div id="slider" class="orbit-container">
-    <ul data-orbit>
-        @foreach (var image in Model.SliderImages)
-        {
-            <li>
-                <img src="@image.ImageUrl" alt="@image.AltText" height="@image.Height" width="@image.Width" />
-                <div class="orbit-caption">@image.Caption</div>
-            </li>
-        }
-    </ul>
+<div class="orbit" data-orbit>
+        <ul class="orbit-container">
+            @foreach (var image in Model.SliderImages)
+            {
+                <li class="orbit-slide is-active">
+                    <img class="orbit-image" src="@image.ImageUrl" alt="@image.AltText" height="@image.Height" width="@image.Width" />
+                    <figcaption class="orbit-caption">@image.Caption</figcaption>
+                </li>
+            }
+        </ul>
 </div>
 <hr />
 <div class="row">

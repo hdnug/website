@@ -9,8 +9,9 @@ namespace Hdnug.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/Content/foundation/css").Include(
-                "~/Content/normalize.css",
-                "~/Content/foundation.css"));
+                "~/Content/app/normalize.css",
+                "~/Content/foundation/foundation.css",
+                "~/Content/foundation/app.css"));
 
             bundles.Add(new StyleBundle("~/Content/kendo/css").Include(
             "~/Content/kendo/kendo.common.min.css",
@@ -39,7 +40,7 @@ namespace Hdnug.Web
 
             bundles.Add(new ScriptBundle("~/bundles/foundation").Include(
                       "~/Scripts/foundation/foundation.js",
-                      "~/Scripts/foundation/foundation.orbit.js"));
+                      "~/Scripts/foundation/app.js"));
 
             bundles.IgnoreList.Clear();
         }
