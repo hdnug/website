@@ -23,11 +23,11 @@
     <div>
         <div>
             @Html.Label("sponsors", "Sponsors")
-            @Html.ListBoxFor(x => x.Sponsors, new MultiSelectList(Model.Sponsors))
+            @Html.ListBoxFor(x => x.Sponsors, new MultiSelectList(Model.Sponsors, "Id", "Name", Model.SelectedSponsors))
         </div>
         <div>
             @Html.Label("presentations", "Presentations")
-            @Html.ListBoxFor(x => x.Presentations, new MultiSelectList(Model.Presentations))
+            @Html.ListBoxFor(x => x.Presentations, new MultiSelectList(Model.Presentations, "Id", "Title", Model.SelectedPresentations))
         </div>
     </div>
     <div class="clearfix"></div>

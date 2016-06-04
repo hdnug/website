@@ -6,15 +6,15 @@
 }
 
 <div class="orbit" data-orbit>
-        <ul class="orbit-container">
-            @foreach (var image in Model.SliderImages)
+    <ul class="orbit-container">
+        @foreach (var image in Model.SliderImages)
             {
-                <li class="orbit-slide is-active">
-                    <img class="orbit-image" src="@image.ImageUrl" alt="@image.AltText" height="@image.Height" width="@image.Width" />
-                    <figcaption class="orbit-caption">@image.Caption</figcaption>
-                </li>
-            }
-        </ul>
+            <li class="orbit-slide is-active">
+                <img class="orbit-image" src="@image.ImageUrl" alt="@image.AltText" height="@image.Height" width="@image.Width" />
+                <figcaption class="orbit-caption">@image.Caption</figcaption>
+            </li>
+        }
+    </ul>
 </div>
 <hr />
 <div class="row">

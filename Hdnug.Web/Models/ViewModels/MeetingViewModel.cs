@@ -18,8 +18,10 @@ namespace Hdnug.Web.Models.ViewModels
         public DateTime MeetingStartDateTime { get; set; }
         public DateTime MeetingEndDateTime { get; set; }
         public string Location { get; set; }
+        public int[] SelectedSponsors { get; set; }
+        public int[] SelectedPresentations { get; set; }
 
-        public virtual ICollection<Sponsor> Sponsors { get; set; }
-        public virtual ICollection<Presentation> Presentations { get; set; }  
+        public ICollection<Sponsor> Sponsors { get; set; }
+        public ICollection<Presentation> Presentations { get; set; }  
     }
 }
