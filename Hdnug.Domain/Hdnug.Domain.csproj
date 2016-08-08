@@ -125,6 +125,8 @@
     <Compile Include="Data\Models\Speaker.cs" />
     <Compile Include="Data\Models\Sponsor.cs" />
     <Compile Include="Data\Models\Presentation.cs" />
+    <Compile Include="Enums\Role.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Migrations\201410161127449_Initial.cs" />
     <Compile Include="Migrations\201410161127449_Initial.Designer.cs">
       <DependentUpon>201410161127449_Initial.cs</DependentUpon>

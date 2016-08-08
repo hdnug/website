@@ -5,6 +5,9 @@ using Hdnug.Domain.Data.Models;
 
 namespace Hdnug.Domain.Migrations
 {
+    using Extensions;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System.Data.Entity.Migrations;
 
     internal sealed class Configuration : DbMigrationsConfiguration<Data.HdnugContext>
@@ -29,6 +32,31 @@ namespace Hdnug.Domain.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            #region Roles and Users
+
+            var adminRole = "ApplicationAdministrator";
+
+            if (!context.Roles.Any(r => r.Name == adminRole))
+            {
+                var store = new RoleStore<IdentityRole>(context);
+                var manager = new RoleManager<IdentityRole>(store);
+                var role = new IdentityRole { Name = Role.ApplicationAdministrator.ToString() };
+
+                manager.Create(role);
+            }
+
+            if (!context.Users.Any(u => u.UserName == "AppAdmin"))
+            {
+                var store = new UserStore<IdentityUser>(context);
+                var manager = new UserManager<IdentityUser>(store);
+                var user = new IdentityUser { UserName = "AppAdmin" };
+
+                manager.Create(user, "ChangeMe1234!");
+                manager.AddToRole(user.Id, Role.ApplicationAdministrator.ToString());
+            }
+
+            #endregion
 
             #region Images
 
