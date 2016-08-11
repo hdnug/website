@@ -19,6 +19,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
         // GET: Meetings
         public ActionResult Index()
         {
+            // TODO: Don't use Meeting; transform to MeetingViewModel instead.
             return View(_repo.Find(new FindAll<Meeting>()).ToList());
         }
 
@@ -71,6 +72,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            // TODO: Don't use Meeting; transform to MeetingViewModel instead
             Meeting meeting = _repo.Find(new GetById<int, Meeting>((int)id));
             if (meeting == null)
             {
