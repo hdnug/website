@@ -1,0 +1,25 @@
+﻿@model Hdnug.Web.Areas.Admin.Models.ViewModels.PrizeSponsorshipViewModel
+
+<div class="form-group">
+    @Html.LabelFor(model => model.SponsorId, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.SponsorId)
+        @Html.ValidationMessageFor(model => model.SponsorId)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.StartDate)
+        @Html.ValidationMessageFor(model => model.StartDate)
+    </div>
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.EndDate)
+        @Html.ValidationMessageFor(model => model.EndDate)
+    </div>
+</div>

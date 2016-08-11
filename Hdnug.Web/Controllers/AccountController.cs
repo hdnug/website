@@ -29,8 +29,9 @@ namespace Hdnug.Web.Controllers
         //
         // GET: /Account/Login
         [AllowAnonymous]
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -47,7 +48,7 @@ namespace Hdnug.Web.Controllers
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
-                    return RedirectToAction("Index", "Meetings");
+                    return RedirectToLocal(returnUrl);
                 }
                 else
                 {
