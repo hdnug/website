@@ -1,79 +1,66 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Admin";
 }
 
-<div class="row admin-callout primary text-center-container">
-    <div class="small-4 columns">
-        <div class="callout primary text-center">
-            <h5>Meetings</h5>
+@section styles{
+    <style>
+        a.fill-div {
+            display: block;
+            height: 100%;
+            width: 100%;
+            text-decoration: none;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-between;
+        }
+
+        .flex-item {
+            margin-right: .875rem;
+            flex: 1 1 30%
+        }
+    </style>
+}
+
+<div class="small-10 columns" style="padding-right: 0px">
+    <div class="flex-container">
+        <div class="callout primary text-center flex-item">
+            <a href=@Url.Action("Index", "Meetings") class="fill-div">
+                <h5>Meetings</h5>
+            </a>
         </div>
-    </div>
-    <div class="small-4 columns">
-        <div class="callout primary text-center">
-            <h5>Speakers</h5>
+        <div class="callout primary text-center flex-item">
+            <a href=@Url.Action("Index", "Speakers") class="fill-div">
+                <h5>Speakers</h5>
+            </a>
         </div>
-    </div>
-    <div class="small-4 columns">
-        <div class="callout primary text-center">
-            <h5>Sponsors</h5>
+        <div class="callout primary text-center flex-item">
+            <a href=@Url.Action("Index", "Sponsors") class="fill-div">
+                <h5>Sponsors</h5>
+            </a>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="small-4 columns">
-        <div class="callout primary text-center">
-            <h5>Prize Sponsorships</h5>
+        <div class="callout primary text-center flex-item">
+            <a href=@Url.Action("Index", "PrizeSponorships") class="fill-div">
+                <h5>Prize Sponsorships</h5>
+            </a>
         </div>
-    </div>
-    <div class="small-4 columns">
-        <div class="callout primary text-center">
-            <h5>Slider</h5>
+        <div class="callout primary text-center flex-item">
+            <a href=@Url.Action("Index", "Slider") class="fill-div">
+                <h5>Slider</h5>
+            </a>
         </div>
-    </div>
-    <div class="small-4 columns">
+        <div class="flex-item"></div>
     </div>
 </div>
 
-@*<div class="row">
-        <div class="small-4 columns">
-            <a href=@Url.Action("Index", "Meetings")>
-                <div class="callout primary text-center">
-                    <h3>Meetings</h3>
-                </div>
-            </a>
-        </div>
-        <div class="small-4 columns">
-            <a href=@Url.Action("Index", "Speakers")>
-                <div class="callout primary text-center">
-                    <h3>Speakers</h3>
-                </div>
-            </a>
-        </div>
-        <div class="small-4 columns">
-            <a href=@Url.Action("Index", "Sponsors")>
-                <div class="callout primary text-center">
-                    <h3>Sponsors</h3>
-                </div>
-            </a>
-        </div>
+<aside class="large-2 columns">
+    <div class="callout secondary">
+        <h5>Actions</h5>
+        <p>
+            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        </p>
     </div>
-    <div class="row">
-        <div class="small-4 columns">
-            <a href=@Url.Action("Index", "PrizeSponsorships")>
-                <div class="callout primary text-center">
-                    <h3>Prize Sponsorships</h3>
-                </div>
-            </a>
-        </div>
-        <div class="small-4 columns">
-            <a href=@Url.Action("Index", "Slider")>
-                <div class="callout primary text-center">
-                    <h3>Slider</h3>
-                </div>
-            </a>
-        </div>
-        <div class="small-4 columns">
-        </div>
-    </div>*@
-
+</aside>

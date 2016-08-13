@@ -1,15 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Hdnug.Domain.Constants;
 using Hdnug.Domain.Data.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity.Migrations;
 
 namespace Hdnug.Domain.Migrations
 {
-    using Extensions;
-    using Microsoft.AspNet.Identity;
-    using Microsoft.AspNet.Identity.EntityFramework;
-    using System.Data.Entity.Migrations;
-
     internal sealed class Configuration : DbMigrationsConfiguration<Data.HdnugContext>
     {
         public Configuration()
@@ -35,13 +34,11 @@ namespace Hdnug.Domain.Migrations
 
             #region Roles and Users
 
-            var adminRole = "ApplicationAdministrator";
-
-            if (!context.Roles.Any(r => r.Name == adminRole))
+            if (!context.Roles.Any(r => r.Name == Roles.ApplicationAdministrator))
             {
                 var store = new RoleStore<IdentityRole>(context);
                 var manager = new RoleManager<IdentityRole>(store);
-                var role = new IdentityRole { Name = Role.ApplicationAdministrator.ToString() };
+                var role = new IdentityRole { Name = Roles.ApplicationAdministrator };
 
                 manager.Create(role);
             }
@@ -53,7 +50,7 @@ namespace Hdnug.Domain.Migrations
                 var user = new IdentityUser { UserName = "AppAdmin" };
 
                 manager.Create(user, "ChangeMe1234!");
-                manager.AddToRole(user.Id, Role.ApplicationAdministrator.ToString());
+                manager.AddToRole(user.Id, Roles.ApplicationAdministrator);
             }
 
             #endregion

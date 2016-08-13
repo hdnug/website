@@ -7,7 +7,7 @@ using Highway.Data;
 
 namespace Hdnug.Web.Areas.Admin.Controllers
 {
-    public class MeetingsController : Controller
+    public class MeetingsController : AdminAreaBaseController
     {
         private readonly IRepository _repo;
 

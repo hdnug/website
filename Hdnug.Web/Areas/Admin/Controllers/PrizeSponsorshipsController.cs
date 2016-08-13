@@ -9,7 +9,7 @@ using WebGrease.Css.Extensions;
 
 namespace Hdnug.Web.Areas.Admin.Controllers
 {
-    public class PrizeSponsorshipsController : Controller
+    public class PrizeSponsorshipsController : AdminAreaBaseController
     {
         private readonly IRepository _repository;
         public PrizeSponsorshipsController(IRepository repository)

@@ -13,7 +13,7 @@ using WebGrease.Css.Extensions;
 
 namespace Hdnug.Web.Areas.Admin.Controllers
 {
-    public class SponsorsController : Controller
+    public class SponsorsController : AdminAreaBaseController
     {
         private readonly IRepository _repository;
         private readonly IProvideServerMapPath _serverMapPathProvider;

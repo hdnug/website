@@ -232,6 +232,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\WindsorControllerFactory.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminAreaBaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Code\Extensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -768,6 +769,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\AdminAreaBase\" />
     <Folder Include="Content\Images\Speakers\" />
     <Folder Include="Content\Images\Sponsors\" />
   </ItemGroup>

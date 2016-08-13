@@ -93,6 +93,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\Roles.cs" />
     <Compile Include="Data\HdnugContext.cs" />
     <Compile Include="Data\Models\Image.cs" />
     <Compile Include="Data\Models\ImageType.cs" />
@@ -125,7 +126,6 @@
     <Compile Include="Data\Models\Speaker.cs" />
     <Compile Include="Data\Models\Sponsor.cs" />
     <Compile Include="Data\Models\Presentation.cs" />
-    <Compile Include="Enums\Role.cs" />
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Migrations\201410161127449_Initial.cs" />
     <Compile Include="Migrations\201410161127449_Initial.Designer.cs">
@@ -177,6 +177,9 @@
     <EmbeddedResource Include="Migrations\201605252154203_NotSureWhat.resx">
       <DependentUpon>201605252154203_NotSureWhat.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enums\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

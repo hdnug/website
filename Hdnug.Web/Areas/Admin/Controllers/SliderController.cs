@@ -8,7 +8,7 @@ using Highway.Data;
 
 namespace Hdnug.Web.Areas.Admin.Controllers
 {
-    public class SliderController : Controller
+    public class SliderController : AdminAreaBaseController
     {
         private readonly IRepository _repo;
         private readonly IProvideServerMapPath _serverMapPathProvider;
