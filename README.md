@@ -9,14 +9,12 @@ To this end, HDNUG created a website some time ago. The primary purpose of the w
 upcoming meetings and events. Although the website continues to meet this purpose, it is rather dated and lacks social media presence. 
 That said, HDNUG has embarked on a new project to create a new website for the usergroup's members.
 
-The new website is an Asp.NET MVC web application.
-
-The goals of the new website:
-* Modernize UI
-* Link to HDNUG social media accounts
-* Provide advertisment/slide rotation to homepage
-* Improve mailing list signup and management
-* Provide comments feed to meeting posts
+The new website is an Asp.NET MVC web application. The primary goal of the project is to improve communicaiton and increase value for the usergroup's members by: 
+* Modernizing the UI
+* Linking to HDNUG social media accounts (Facebook, Twitter, LinkedIn, Slack) 
+* Providing advertisment/slide rotation to homepage
+* Improving mailing list signup and management
+* Providing comments feed to meeting posts
 
 ## Directory Structure
 The repository consists of the following directories:
