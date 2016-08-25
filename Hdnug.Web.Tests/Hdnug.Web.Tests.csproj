@@ -132,7 +132,6 @@
     <Reference Include="System.Net.Http.WebRequest" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AdminControllerTests.cs" />
     <Compile Include="Controllers\NextMeetingControllerTests.cs" />
     <Compile Include="Controllers\SliderControllerTests.cs" />
     <Compile Include="Installers\HighwayDataInstallerTests.cs" />
