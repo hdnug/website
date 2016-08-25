@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hdnug.Web", "Hdnug.Web\Hdnug.Web.csproj", "{ED76609F-A3A0-4A9B-AC3A-F5ACF637A6EA}"
 EndProject
@@ -10,21 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hdnug.Domain", "Hdnug.Domain\Hdnug.Domain.csproj", "{8E5FCDDC-2689-43F0-86AE-F16714EE7BC7}"
 EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://devbiker.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Hdnug.Web\\Hdnug.Web.csproj
-		SccProjectName1 = Hdnug.Web
-		SccLocalPath1 = Hdnug.Web
-		SccProjectUniqueName2 = Hdnug.Web.Tests\\Hdnug.Web.Tests.csproj
-		SccProjectName2 = Hdnug.Web.Tests
-		SccLocalPath2 = Hdnug.Web.Tests
-		SccProjectUniqueName3 = Hdnug.Domain\\Hdnug.Domain.csproj
-		SccProjectName3 = Hdnug.Domain
-		SccLocalPath3 = Hdnug.Domain
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
