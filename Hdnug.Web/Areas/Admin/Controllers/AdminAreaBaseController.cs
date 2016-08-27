@@ -6,8 +6,5 @@ namespace Hdnug.Web.Areas.Admin.Controllers
     [Authorize(Roles = Roles.ApplicationAdministrator)]
     public class AdminAreaBaseController : Controller
     {
-        public AdminAreaBaseController()
-        {
-        }
     }
 }

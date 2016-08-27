@@ -13,6 +13,9 @@ using NUnit.Framework;
 
 namespace Hdnug.Web.Tests.Controllers
 {
+    using Hdnug.Web.Areas.Admin.Controllers;
+    using Hdnug.Web.Areas.Admin.Models.ViewModels;
+
     [TestFixture]
     public class SliderControllerTests
     {
