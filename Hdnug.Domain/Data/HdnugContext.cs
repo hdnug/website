@@ -9,7 +9,8 @@ namespace Hdnug.Domain.Data
     public class HdnugContext : DataContext
     {
         public HdnugContext()
-            : base("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Hdnug;Integrated Security=True", new MappingConfiguration())
+            //: base("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Hdnug;Integrated Security=True", new MappingConfiguration())
+            : base("Name=HdnugContext", new MappingConfiguration())
         {
         }
 

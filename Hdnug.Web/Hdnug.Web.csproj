@@ -398,19 +398,7 @@
     <Content Include="Content\kendo\kendo.common-office365.min.css" />
     <Content Include="Content\kendo\kendo.common.core.min.css" />
     <Content Include="Content\kendo\kendo.common.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.black.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.blueopal.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.bootstrap.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.default.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.flat.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.highcontrast.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.metro.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.metroblack.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.min.css" />
     <Content Include="Content\kendo\kendo.dataviz.mobile.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.moonlight.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.silver.min.css" />
-    <Content Include="Content\kendo\kendo.dataviz.uniform.min.css" />
     <Content Include="Content\kendo\kendo.default.min.css" />
     <Content Include="Content\kendo\kendo.default.mobile.min.css" />
     <Content Include="Content\kendo\kendo.fiori.min.css" />
@@ -688,6 +676,7 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\Hdnug - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\fastclick.js" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
