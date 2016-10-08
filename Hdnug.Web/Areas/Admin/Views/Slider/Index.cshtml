@@ -60,7 +60,6 @@
                 @item.CreatedDate.ToShortDateString()
             </td>
             <td>
-                @Html.ActionLink("Edit", "Update", new { id = item.ImageId }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ImageId }, new
                 {
                     onClick ="return confirm('Are you sure you want to delete this SliderImage?');" 
