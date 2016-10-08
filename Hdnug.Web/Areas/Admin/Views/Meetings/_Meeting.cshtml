@@ -12,11 +12,11 @@
     
     <div>
         <div>
-            @Html.LabelFor(x => x.MeetingStartDateTime)
+            @Html.LabelFor(x => x.MeetingStartDateTime, "Meeting Start Date and Time")
             @Html.TextBoxFor(x => x.MeetingStartDateTime)
         </div>
         <div>
-            @Html.LabelFor(x => x.MeetingEndDateTime)
+            @Html.LabelFor(x => x.MeetingEndDateTime, "Meeting End Date and Time")
             @Html.TextBoxFor(x => x.MeetingEndDateTime)
         </div>
     </div>
@@ -35,7 +35,6 @@
     @Html.LabelFor(x => x.Location)
     @Html.TextBoxFor(x => x.Location)
     
-
     @Html.LabelFor(x => x.Description)
     @Html.TextAreaFor(x => x.Description)
 

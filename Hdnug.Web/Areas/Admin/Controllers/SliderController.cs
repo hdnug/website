@@ -71,9 +71,10 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             return View();
         }
 
-        public ViewResult Delete()
+        public ActionResult Delete(ImageViewModel imageViewModel)
         {
-            return View();
+            _repo.Execute(new RemoveSliderById(imageViewModel.Id));
+            return RedirectToAction("Index");
         }
     }
 }
