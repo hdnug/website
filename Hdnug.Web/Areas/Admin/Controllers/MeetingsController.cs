@@ -74,6 +74,17 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             }
             // TODO: Don't use Meeting; transform to MeetingViewModel instead
             Meeting meeting = _repo.Find(new GetById<int, Meeting>((int)id));
+            var meetingViewModel = new MeetingViewModel
+            {
+                Id = meeting.Id,
+                Description = meeting.Description,
+                Location = meeting.Location,
+                MeetingEndDateTime = meeting.MeetingEndDateTime,
+                MeetingStartDateTime = meeting.MeetingStartDateTime,
+                Presentations = meeting.Presentations,
+                Sponsors = meeting.Sponsors,
+                Title = meeting.Title,
+            };
             if (meeting == null)
             {
                 return HttpNotFound();

@@ -40,3 +40,28 @@
     @Html.TextAreaFor(x => x.Description)
 
 </section>
+<script>
+        $(document).ready(function () {
+            //$("#Title").kendoEditable({
+            //});
+            $("#MeetingStartDateTime").kendoDateTimePicker({
+                value: new Date()
+            });
+            $("#MeetingEndDateTime").kendoDateTimePicker({
+                value: new Date()
+            });
+
+            $("#Sponsors").kendoMultiSelect({
+                autoClose: false
+            }).data("kendoMultiSelect");
+
+            $("#Presentations").kendoMultiSelect({
+                autoClose: false
+            }).data("kendoMultiSelect");
+
+            $("#get").click(function () {
+                alert("Attendees:\n\nRequired: " + required.value() + "\nOptional: " + optional.value());
+            });
+            $("#CreateButton").kendoButton();
+        });
+</script>
