@@ -1,8 +1,46 @@
-﻿@model dynamic
+﻿@model Hdnug.Domain.Data.Models.Meeting
 
 @{
-    ViewBag.Title = "title";
-    Layout = "_Layout";
+    ViewBag.Title = @Model.Title;
 }
 
-<h2>title</h2>
+<h2>@Model.Title</h2>
+
+<p>@Model.MeetingStartDateTime - @Model.MeetingEndDateTime</p>
+<p>@Model.Location</p>
+
+<p>
+    @Model.Description
+</p>
+
+<h3>Presentations:</h3>
+
+@foreach (var presentation in @Model.Presentations)
+{
+
+    <p>@presentation.Location</p>
+    <p>@presentation.Title</p>
+    <p>@presentation.Description</p>
+    <h4>Presented by:</h4> 
+    foreach (var speaker in @presentation.Speakers )
+     {
+         @speaker.Photo
+         @speaker.Name<br/>
+         @speaker.WebSiteUrl<br/>
+         @speaker.Bio<br/>
+         @speaker.Email<br/>
+    }
+}
+
+<h3>Sponsor By:</h3>
+@foreach (var sponsor in @Model.Sponsors)
+{
+    @sponsor.Logo
+    @sponsor.Name<br/>
+    @sponsor.SponsorMessage<br/>
+    @sponsor.TagLine<br/>
+    @sponsor.WebSiteUrl<br/>
+    @sponsor.Contact<br/>
+    @sponsor.Email<br/>
+    @sponsor.Phone<br/>
+}
