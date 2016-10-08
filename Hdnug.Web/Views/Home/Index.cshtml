@@ -43,8 +43,9 @@
                     {
                         counter++;
                         <article>
-
-                            <h4><a href="#">@meeting.Title</a></h4>
+                            <h4>
+                                @(Html.ActionLink(meeting.Title,"Index", "Meeting", new {id=meeting.Id}, null))
+                            </h4>
                             <h5>@meeting.MeetingStartDateTime.ToShortDateString()  @meeting.MeetingStartDateTime.ToShortTimeString() - @meeting.MeetingEndDateTime.ToShortTimeString()</h5>
 
                             <div class="row">
