@@ -119,6 +119,7 @@
     <Compile Include="Data\Models\Queries\GetPrizeSponsorhipById.cs" />
     <Compile Include="Data\Models\Queries\GetSpeakerById.cs" />
     <Compile Include="Data\Models\Queries\RemovePrizeSponsorshipById.cs" />
+    <Compile Include="Data\Models\Queries\RemoveSliderById.cs" />
     <Compile Include="Data\Models\Queries\RemoveSponsorById - Copy.cs" />
     <Compile Include="Data\Models\Queries\RemoveSponsorById.cs" />
     <Compile Include="Data\Models\Queries\GetSponsorById.cs" />
