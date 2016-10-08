@@ -1,19 +1,27 @@
 ﻿@model Hdnug.Domain.Data.Models.Meeting
 
 @{
-    ViewBag.Title = @Model.Title;
+    ViewBag.Title = "HDNUG Meeting - " + @Model.Title;
 }
 
-<h2>@Model.Title</h2>
+<div class="row">
+    <div class="large-4 columns">
+        <h2>@Model.Title</h2>
+    </div>
 
-<p>@Model.MeetingStartDateTime - @Model.MeetingEndDateTime</p>
-<p>@Model.Location</p>
+    <div class="large-6 columns">
+        <p>@Model.MeetingStartDateTime - @Model.MeetingEndDateTime</p>
+        <p>@Model.Location</p>
+    </div>
+</div>
 
-<p>
-    @Model.Description
-</p>
+<div class="row">
+        @Model.Description
+</div>
+<div class="row">
+        <h3>Presentations:</h3>
+</div>
 
-<h3>Presentations:</h3>
 
 @foreach (var presentation in @Model.Presentations)
 {
@@ -32,7 +40,7 @@
     }
 }
 
-<h3>Sponsor By:</h3>
+<h3>Sponsored By:</h3>
 @foreach (var sponsor in @Model.Sponsors)
 {
     @sponsor.Logo

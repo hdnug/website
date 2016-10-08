@@ -18,7 +18,7 @@ namespace Hdnug.Web.Controllers
         [Route("{id}")]
         public ActionResult Index(int id)
         {
-            var meeting = _repository.Find(new GetMeetingDetailsById(id));
+            var meeting = _repository.Find(new GetMeetingById(id));
             return View(meeting);
         }
     }

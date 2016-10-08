@@ -4,9 +4,9 @@ using Highway.Data;
 
 namespace Hdnug.Domain.Data.Models.Queries
 {
-    public class GetMeetingDetailsById : Scalar<Meeting>
+    public class GetMeetingById : Scalar<Meeting>
     {
-        public GetMeetingDetailsById(int id)
+        public GetMeetingById(int id)
         {
             ContextQuery = context => context.AsQueryable<Meeting>()
                 .Include(m=>m.Sponsors)
