@@ -1,0 +1,5 @@
+﻿@model Hdnug.Domain.Data.Models.Image
+
+@if(@Model!=null){
+    <img src="@Model.ImageUrl" height="@Model.Height" width="@Model.Width" title="@Model.AltText"/>
+}
