@@ -30,4 +30,12 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script>
+    $(document).ready(function () {
+        $("#MeetingStartDateTime").kendoDateTimePicker({
+            value: new Date()
+        });
+    });
+    </script>
 }
+
