@@ -2,6 +2,7 @@
 using System.Net;
 using System.Web.Mvc;
 using Hdnug.Domain.Data.Models;
+using Hdnug.Domain.Data.Models.Queries;
 using Hdnug.Web.Areas.Admin.Models.ViewModels;
 using Highway.Data;
 
@@ -72,13 +73,27 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            // TODO: Don't use Meeting; transform to MeetingViewModel instead
-            Meeting meeting = _repo.Find(new GetById<int, Meeting>((int)id));
+
+            var meeting = _repo.Find(new GetMeetingById((int)id));
+
             if (meeting == null)
             {
                 return HttpNotFound();
             }
-            return View(meeting);
+
+            var meetingViewModel = new MeetingViewModel
+            {
+                Id = meeting.Id,
+                Title = meeting.Title,
+                Description = meeting.Description,
+                Location = meeting.Location,
+                MeetingStartDateTime = meeting.MeetingStartDateTime,
+                MeetingEndDateTime = meeting.MeetingEndDateTime,
+                Presentations = meeting.Presentations,
+                Sponsors = meeting.Sponsors
+            };
+            
+            return View(meetingViewModel);
         }
 
         // POST: Meetings/Edit/5
