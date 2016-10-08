@@ -112,6 +112,7 @@
     <Compile Include="Data\Models\Mapping\UserMap.cs" />
     <Compile Include="Data\Models\Member.cs" />
     <Compile Include="Data\Models\PrizeSponsorship.cs" />
+    <Compile Include="Data\Models\Queries\AddMember.cs" />
     <Compile Include="Data\Models\Queries\AllSliderImages.cs" />
     <Compile Include="Data\Models\Queries\AllPrizeSponsorships.cs" />
     <Compile Include="Data\Models\Queries\AllSpeakers.cs" />

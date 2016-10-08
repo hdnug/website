@@ -36,6 +36,7 @@ namespace Hdnug.Web.Controllers
         [HttpPost]
         public ActionResult Mailinglist(string firstname, string lastname, string company, string email)
         {
+            _repo.Execute(new AddMember(firstname, lastname, company, email));
             _mailingListService.AddMember("LIST", firstname, lastname, company, email);
 
             return View();
