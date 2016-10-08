@@ -23,5 +23,6 @@ namespace Hdnug.Domain.Data
         public DbSet<Speaker> Speakers { get; set; }
         public DbSet<Presentation> Presentations { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<Member> Members { get; set; }
     }
 }

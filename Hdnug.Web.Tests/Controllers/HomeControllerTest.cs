@@ -23,7 +23,7 @@ namespace Hdnug.Web.Tests.Controllers
         public void Index()
         {
             // Arrange
-            var controller = new HomeController(_repo);
+            var controller = new HomeController(_repo, null);
 
             // Act
             var result = controller.Index() as ViewResult;
@@ -36,7 +36,7 @@ namespace Hdnug.Web.Tests.Controllers
         public void IndexViewResultShouldReturnAViewModel()
         {
             // Arrange 
-            var controller = new HomeController(_repo);
+            var controller = new HomeController(_repo, null);
 
             // Act
             var result = controller.Index() as ViewResult;
@@ -49,7 +49,7 @@ namespace Hdnug.Web.Tests.Controllers
         public void About()
         {
             // Arrange
-            var controller = new HomeController(_repo);
+            var controller = new HomeController(_repo, null);
 
             // Act
             var result = controller.About() as ViewResult;
@@ -62,7 +62,7 @@ namespace Hdnug.Web.Tests.Controllers
         public void Contact()
         {
             // Arrange
-            var controller = new HomeController(_repo);
+            var controller = new HomeController(_repo, null);
 
             // Act
             var result = controller.Contact() as ViewResult;
