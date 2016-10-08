@@ -1,4 +1,4 @@
-﻿@model Hdnug.Domain.Data.Models.Meeting
+﻿@model Hdnug.Web.Areas.Admin.Models.ViewModels.MeetingViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -17,7 +17,6 @@
         @Html.ValidationSummary(true)
 
         @Html.Partial("_Meeting", Model)
-
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

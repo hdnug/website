@@ -5,50 +5,88 @@
 }
 
 <div class="row">
-    <div class="large-4 columns">
+    <div class="small-4 columns">
         <h2>@Model.Title</h2>
     </div>
-
-    <div class="large-6 columns">
-        <p>@Model.MeetingStartDateTime - @Model.MeetingEndDateTime</p>
-        <p>@Model.Location</p>
+    <div class="small-6 columns">
+        <address>@Model.Location</address>
+        <p>@Model.MeetingStartDateTime.Date.ToShortDateString() from @Model.MeetingStartDateTime.ToString("HH:mm") to @Model.MeetingEndDateTime.ToString("HH:mm")</p>
     </div>
 </div>
 
 <div class="row">
+    <div class="large-8 columns">
         @Model.Description
+    </div>
 </div>
+
 <div class="row">
-        <h3>Presentations:</h3>
+    <div class="large-12 columns">
+        <h3>Presenting:</h3>
+    </div>
 </div>
-
-
 @foreach (var presentation in @Model.Presentations)
 {
-
-    <p>@presentation.Location</p>
-    <p>@presentation.Title</p>
-    <p>@presentation.Description</p>
-    <h4>Presented by:</h4> 
-    foreach (var speaker in @presentation.Speakers )
-     {
-         @speaker.Photo
-         @speaker.Name<br/>
-         @speaker.WebSiteUrl<br/>
-         @speaker.Bio<br/>
-         @speaker.Email<br/>
-    }
+    <div class="row">
+        <div class="small-6 columns">
+            <p>@presentation.Title</p>
+            <p>@presentation.Description</p>
+        </div>
+        <div class="small-6 columns">
+            @foreach (var speaker in @presentation.Speakers )
+            {
+            @speaker.Photo
+            @speaker.Name<br/>
+            @speaker.WebSiteUrl<br/>
+            @speaker.Bio<br/>
+            @speaker.Email<br/>
+            }
+        </div>
+    </div>
 }
 
-<h3>Sponsored By:</h3>
+
+<div class="row">
+    <div class="large-12 columns">
+        <h3>Sponsored By:</h3>
+    </div>
+</div>
 @foreach (var sponsor in @Model.Sponsors)
 {
-    @sponsor.Logo
-    @sponsor.Name<br/>
-    @sponsor.SponsorMessage<br/>
-    @sponsor.TagLine<br/>
-    @sponsor.WebSiteUrl<br/>
-    @sponsor.Contact<br/>
-    @sponsor.Email<br/>
-    @sponsor.Phone<br/>
+    <div class="row">
+        <div class="small-6 columns">
+            @Html.DisplayFor(p=>sponsor.Logo)
+            @sponsor.Name<br/>
+            @sponsor.SponsorMessage<br/>
+            @sponsor.TagLine<br/>
+            @sponsor.WebSiteUrl<br/>
+            @sponsor.Contact<br/>
+            @sponsor.Email<br/>
+            @sponsor.Phone<br/>
+        </div>
+    </div>
 }
+<div class="row">
+    <div class="large-12 columns">
+        <div id="disqus_thread"></div>
+        <script>
+
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+        /*
+        */
+        var disqus_config = function () {
+            this.page.url = "@Request.Url.AbsoluteUri" ;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = "MEETING/@Model.Id"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = '//hdnug.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+</div>
