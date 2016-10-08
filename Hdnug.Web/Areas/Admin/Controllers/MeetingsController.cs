@@ -45,7 +45,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             // TODO: This needs some work here
             var sponsors = _repo.Find(new FindAll<Sponsor>()).ToList();
             var presentations = _repo.Find(new FindAll<Presentation>()).ToList();
-            var viewModel = new MeetingViewModel { Sponsors = sponsors, Presentations = presentations };
+            var viewModel = new MeetingViewModel { Sponsors = sponsors, Presentations = presentations};
             return View(viewModel);
         }
 
@@ -80,7 +80,8 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-
+            var sponsors = _repo.Find(new FindAll<Sponsor>()).ToList();
+            var presentations = _repo.Find(new FindAll<Presentation>()).ToList();
             var meetingViewModel = new MeetingViewModel
             {
                 Id = meeting.Id,
@@ -89,10 +90,12 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 Location = meeting.Location,
                 MeetingStartDateTime = meeting.MeetingStartDateTime,
                 MeetingEndDateTime = meeting.MeetingEndDateTime,
-                Presentations = meeting.Presentations,
-                Sponsors = meeting.Sponsors
+                SelectedPresentations = meeting.Presentations.Select(x => x.Id).ToArray(),
+                SelectedSponsors = meeting.Sponsors.Select(x => x.Id).ToArray(),
+                Presentations = presentations,
+                Sponsors = sponsors
             };
-            
+
             return View(meetingViewModel);
         }
 
