@@ -94,7 +94,20 @@
             </ul>*@
 
         <h5>Sign-up</h5>
-        <p>Mailinator signup here</p>
+        @using (Html.BeginForm("Mailinglist", "Home", FormMethod.Post))
+        {
+            <fieldset>
+                @Html.Label("First Name")
+                @Html.TextBox("firstname")
+                @Html.Label("Last Name")
+                @Html.TextBox("lastname")
+                @Html.Label("Company")
+                @Html.TextBox("company")
+                @Html.Label("Email Address")
+                @Html.TextBox("email")
+                <button type="submit">Add</button>
+            </fieldset>
+        }
     </aside>
 
     <!-- End Sidebar -->
