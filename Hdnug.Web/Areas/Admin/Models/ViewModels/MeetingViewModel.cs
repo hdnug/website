@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Hdnug.Domain.Data.Models;
+using System.ComponentModel;
 
 namespace Hdnug.Web.Areas.Admin.Models.ViewModels
 {
