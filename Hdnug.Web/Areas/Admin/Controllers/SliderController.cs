@@ -60,17 +60,6 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             return View(imageViewModel);   
         }
 
-        public ViewResult Update()
-        {
-            return View();
-        }
-
-        [HttpPut]
-        public ViewResult Update(ImageViewModel imageViewModel)
-        {
-            return View();
-        }
-
         public ActionResult Delete(ImageViewModel imageViewModel)
         {
             _repo.Execute(new RemoveSliderById(imageViewModel.Id));
