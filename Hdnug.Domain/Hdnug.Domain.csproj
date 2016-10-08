@@ -112,6 +112,7 @@
     <Compile Include="Data\Models\Mapping\UserMap.cs" />
     <Compile Include="Data\Models\Member.cs" />
     <Compile Include="Data\Models\PrizeSponsorship.cs" />
+    <Compile Include="Data\Models\Queries\AddMember.cs" />
     <Compile Include="Data\Models\Queries\AllSliderImages.cs" />
     <Compile Include="Data\Models\Queries\AllPrizeSponsorships.cs" />
     <Compile Include="Data\Models\Queries\AllSpeakers.cs" />
@@ -153,6 +154,10 @@
     <Compile Include="Migrations\201605252154203_NotSureWhat.Designer.cs">
       <DependentUpon>201605252154203_NotSureWhat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610082015272_AddingMemberColumns.cs" />
+    <Compile Include="Migrations\201610082015272_AddingMemberColumns.Designer.cs">
+      <DependentUpon>201610082015272_AddingMemberColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -178,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605252154203_NotSureWhat.resx">
       <DependentUpon>201605252154203_NotSureWhat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610082015272_AddingMemberColumns.resx">
+      <DependentUpon>201610082015272_AddingMemberColumns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
