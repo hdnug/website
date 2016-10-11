@@ -8,21 +8,16 @@ namespace Hdnug.Web.Areas.Admin.Models.ViewModels
     // TODO: Run migrations!
     public class MeetingViewModel
     {
-        public MeetingViewModel()
-        {
-            Sponsors = new List<Sponsor>();
-            Presentations = new List<Presentation>();
-        }
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public DateTime MeetingStartDateTime { get; set; }
-        public DateTime MeetingEndDateTime { get; set; }
+        public DateTime MeetingStartDateTime { get; set; } = DateTime.Today;
+        public DateTime MeetingEndDateTime { get; set; } = DateTime.Today;
         public string Location { get; set; }
         public int[] SelectedSponsors { get; set; }
         public int[] SelectedPresentations { get; set; }
 
-        public ICollection<Sponsor> Sponsors { get; set; }
-        public ICollection<Presentation> Presentations { get; set; }  
+        public ICollection<Sponsor> Sponsors { get; set; } = new List<Sponsor>();
+        public ICollection<Presentation> Presentations { get; set; } = new List<Presentation>(); 
     }
 }

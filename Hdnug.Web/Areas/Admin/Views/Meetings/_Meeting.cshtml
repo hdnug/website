@@ -23,11 +23,11 @@
     <div>
         <div>
             @Html.Label("sponsors", "Sponsors")
-            @Html.DropDownListFor(x => x.Sponsors, new MultiSelectList(Model.Sponsors, "Id", "Name", Model.SelectedSponsors))
+            @Html.ListBoxFor(x => x.Sponsors, new MultiSelectList(Model.Sponsors, "Id", "Name", Model.SelectedSponsors))
         </div>
         <div>
             @Html.Label("presentations", "Presentations")
-            @Html.DropDownListFor(x=>x.Presentations, new MultiSelectList(Model.Presentations, "Id", "Title", Model.SelectedPresentations))
+            @Html.ListBoxFor(x=>x.Presentations, new MultiSelectList(Model.Presentations, "Id", "Title", Model.SelectedPresentations))
         </div>
     </div>
     <div class="clearfix"></div>
@@ -41,27 +41,15 @@
 </section>
 <script>
         $(document).ready(function () {
-            $("#MeetingStartDateTime").kendoDateTimePicker({
-                value: new Date()
-            });
-            $("#MeetingEndDateTime").kendoDateTimePicker({
-                value: new Date()
-            });
+            $("#MeetingStartDateTime").kendoDateTimePicker();
+            $("#MeetingEndDateTime").kendoDateTimePicker();
 
             $("#Sponsors").kendoMultiSelect({
-                autoClose: false,
-                
                 placeholder: "Select a sponsor"
             });
 
             $("#Presentations").kendoMultiSelect({
-                autoClose: false
-            }).data("kendoMultiSelect");
-
-            $("#get").click(function () {
-                alert("Attendees:\n\nRequired: " + required.value() + "\nOptional: " + optional.value());
+                placeholder: "Select a presentation"
             });
-            $("#CreateButton").kendoButton();
-            $("#SaveButton").kendoButton();
         });
 </script>
