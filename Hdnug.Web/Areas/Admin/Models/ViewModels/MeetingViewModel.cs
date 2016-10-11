@@ -5,7 +5,6 @@ using System.ComponentModel;
 
 namespace Hdnug.Web.Areas.Admin.Models.ViewModels
 {
-    // TODO: Run migrations!
     public class MeetingViewModel
     {
         public int Id { get; set; }
