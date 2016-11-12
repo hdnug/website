@@ -25,23 +25,23 @@
             /*font-weight: bold;*/
             display: inline-block;
             position: relative;
-            padding-bottom: 3px
+            padding-bottom: 3px;
         }
 
-        a.menu-link:after {
-            content: '';
-            display: block;
-            margin: auto;
-            height: 3px;
-            width: 0px;
-            background: transparent;
-            transition: width .2s ease, background-color .2s ease;
-        }
+            a.menu-link:after {
+                content: '';
+                display: block;
+                margin: auto;
+                height: 3px;
+                width: 0px;
+                background: transparent;
+                transition: width .2s ease, background-color .2s ease;
+            }
 
-        a.menu-link:hover:after {
-            width: 100%;
-            background: #ffffff;
-        }
+            a.menu-link:hover:after {
+                width: 100%;
+                background: #ffffff;
+            }
     </style>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/kendo")
@@ -51,13 +51,13 @@
     <div style="border-bottom: 1px solid #c0c0c0; margin-bottom: .875em; background-color: #193366">
         <div class="row" style="padding: 20px">
             <div class="large-1 columns">
-                <img src="@Url.Content("~/Content/Images/Site/30 - hdnugLogo.png")" height="95" width="95" />
+                <a href="@Url.Action("Index", "Home", null)"><img src="@Url.Content("~/Content/Images/Site/30 - hdnugLogo.png")" height="95" width="95" /></a>
             </div>
-            <div class="large-6 columns">
-                <h3 style="color: #ffffff; padding-top: 6px">Houston Dot Net User Group</h3>
+            <div class="large-4 columns">
+                <h4 style="color: #ffffff; padding-top: 6px">Houston Dot Net User Group</h4>
             </div>
             <div class="large-5 columns">
-                <div style="padding: 12px 6px 6px 6px">
+                <div style="padding-top: 12px">
                     <ul class="menu align-right">
                         <li>@Html.ActionLink("About", "About", "Home", new { @class = "menu-link" })</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home", new { @class = "menu-link" })</li>
@@ -66,6 +66,14 @@
                         <li>@Html.ActionLink("Home", "Index", "Home", new { @class = "menu-link" })</li>
                     </ul>
                 </div>
+            </div>
+            <div class="large-2 columns">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="VFQTJ4GTAUDEA">
+                    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                </form>
             </div>
         </div>
     </div>
