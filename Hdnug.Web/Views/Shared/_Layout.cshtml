@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - HDNUG</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     @Styles.Render("~/Content/foundation/css")
     @Styles.Render("~/Content/kendo/css")
     @Styles.Render("~/Content/site/css")
@@ -21,7 +22,7 @@
 
         a.menu-link {
             color: #ffffff;
-            font-weight: bold;
+            /*font-weight: bold;*/
             display: inline-block;
             position: relative;
             padding-bottom: 3px
@@ -34,7 +35,7 @@
             height: 3px;
             width: 0px;
             background: transparent;
-            transition: width .5s ease, background-color .5s ease;
+            transition: width .2s ease, background-color .2s ease;
         }
 
         a.menu-link:hover:after {
@@ -48,12 +49,12 @@
 </head>
 <body>
     <div style="border-bottom: 1px solid #c0c0c0; margin-bottom: .875em; background-color: #193366">
-        <div class="row" style="padding: 4px">
+        <div class="row" style="padding: 20px">
             <div class="large-1 columns">
                 <img src="@Url.Content("~/Content/Images/Site/30 - hdnugLogo.png")" height="95" width="95" />
             </div>
             <div class="large-6 columns">
-                <h2 style="color: #ffffff">Houston Dot Net User Group</h2>
+                <h3 style="color: #ffffff; padding-top: 6px">Houston Dot Net User Group</h3>
             </div>
             <div class="large-5 columns">
                 <div style="padding: 12px 6px 6px 6px">
