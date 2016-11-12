@@ -5,7 +5,14 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="orbit" data-orbit>
+@section Styles{
+    <style>
+        .social-media-inline {
+            margin: 0;
+        }
+    </style>
+    }
+<div class="orbit" data-orbit style="margin-bottom: 10px">
     <ul class="orbit-container">
         @foreach (var image in Model.SliderImages)
             {
@@ -16,9 +23,8 @@
         }
     </ul>
 </div>
-<hr />
-<div class="row">
 
+<div class="row">
     <!-- Main Blog Content -->
     <div class="large-8 columns" role="content">
 
@@ -77,7 +83,39 @@
     <!-- Sidebar -->
 
     <aside class="large-4 columns">
-
+        <div style="padding: 4px">
+            <ul class="menu expanded">
+                <li>
+                    <a href="#">
+                        <img src="@Url.Content("~/Content/Images/Site/iconmonstr-twitter-4-64-opacity.png")" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="@Url.Content("~/Content/Images/Site/iconmonstr-facebook-4-64-opacity.png")" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="@Url.Content("~/Content/Images/Site/iconmonstr-instagram-14-64-opacity.png")" />
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="@Url.Content("~/Content/Images/Site/iconmonstr-linkedin-4-64-opacity.png")" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <h5>Subscribe for Meeting Announcements</h5>
+        @using (Html.BeginForm("Mailinglist", "Home", FormMethod.Post))
+        {
+            <fieldset>
+                @Html.Label("Email Address")
+                @Html.TextBox("email")
+                <button type="submit" class="large expanded button">Subscribe!</button>
+            </fieldset>
+        }
         <div class="callout secondary">
             <h5>Meeting Sponsors</h5>
             <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow.</p>
@@ -93,21 +131,7 @@
                 <li><a href="#">Weasels</a></li>
             </ul>*@
 
-        <h5>Sign-up</h5>
-        @using (Html.BeginForm("Mailinglist", "Home", FormMethod.Post))
-        {
-            <fieldset>
-                @Html.Label("First Name")
-                @Html.TextBox("firstname")
-                @Html.Label("Last Name")
-                @Html.TextBox("lastname")
-                @Html.Label("Company")
-                @Html.TextBox("company")
-                @Html.Label("Email Address")
-                @Html.TextBox("email")
-                <button type="submit">Add</button>
-            </fieldset>
-        }
+        
     </aside>
 
     <!-- End Sidebar -->

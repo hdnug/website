@@ -14,13 +14,32 @@
             vertical-align: bottom;
         }
 
-        .social-media-inline {
-            margin: 0;
-        }
-
         .horizontal li {
             display: inline;
             list-style-type: none;
+        }
+
+        a.menu-link {
+            color: #ffffff;
+            font-weight: bold;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 3px
+        }
+
+        a.menu-link:after {
+            content: '';
+            display: block;
+            margin: auto;
+            height: 3px;
+            width: 0px;
+            background: transparent;
+            transition: width .5s ease, background-color .5s ease;
+        }
+
+        a.menu-link:hover:after {
+            width: 100%;
+            background: #ffffff;
         }
     </style>
     @Scripts.Render("~/bundles/jquery")
@@ -28,69 +47,28 @@
     @RenderSection("styles", required: false)
 </head>
 <body>
-    <div class="row">
-        <div class="large-3 columns">
-            <h1><img src="@Url.Content("~/Content/Images/Site/11 - hdnugLogo_blueopacity.png")" width="195" height="190" /></h1>
-        </div>
-        <div class="large-5 columns"></div>
-        <div class="large-4 columns header-info">
-            <div id="right-side-header">
-                @*<div>
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                            <input type="hidden" name="cmd" value="_s-xclick">
-                            <input type="hidden" name="hosted_button_id" value="HSV3AD34LLFA8">
-                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                        </form>
-                    </div>*@
-                @{ Html.RenderAction("NextMeeting", "NextMeeting");}
-                <div>
-                    <ul class="social-media-inline horizontal">     
-                        <li>
-                            <a href="#">
-                                <img src="@Url.Content("~/Content/Images/Site/twitter_circle_color.png")" />
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="@Url.Content("~/Content/Images/Site/facebook_circle_color.png")" />
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="@Url.Content("~/Content/Images/Site/instagram_circle_color.png")" />
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="@Url.Content("~/Content/Images/Site/linkedin_circle_color.png")" />
-                            </a>
-                        </li>
+    <div style="border-bottom: 1px solid #c0c0c0; margin-bottom: .875em; background-color: #193366">
+        <div class="row" style="padding: 4px">
+            <div class="large-1 columns">
+                <img src="@Url.Content("~/Content/Images/Site/30 - hdnugLogo.png")" height="95" width="95" />
+            </div>
+            <div class="large-6 columns">
+                <h2 style="color: #ffffff">Houston Dot Net User Group</h2>
+            </div>
+            <div class="large-5 columns">
+                <div style="padding: 12px 6px 6px 6px">
+                    <ul class="menu align-right">
+                        <li>@Html.ActionLink("About", "About", "Home", new { @class = "menu-link" })</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home", new { @class = "menu-link" })</li>
+                        <li>@Html.ActionLink("Past", "Index", "Home", new { @class = "menu-link" })</li>
+                        <li>@Html.ActionLink("Upcoming", "Index", "Home", new { @class = "menu-link" })</li>
+                        <li>@Html.ActionLink("Home", "Index", "Home", new { @class = "menu-link" })</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
-
     <!-- End Header and Nav -->
-    <!-- First Band (Slider) -->
-
-    <div class="row">
-        <div class="large-12 columns">
-            <div class="top-bar">
-                <div class="top-bar-left">
-                    <ul class="dropdown menu" data-dropdown-menu>
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li class="divider"></li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li class="divider"></li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Main Page Content and Sidebar -->
 
     <div class="row">
@@ -102,19 +80,20 @@
     <!-- End Main Content and Sidebar -->
     <!-- Footer -->
 
-    <footer class="row">
-        <div class="large-12 columns">
-            <hr />
-            <div class="row">
-                <div class="large-6 columns">
-                    <p>&copy; @DateTime.Now.Year - HDNUG.ORG</p>
-                </div>
-                <div class="large-6 columns">
-                    <ul class="menu">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
+    <footer style="background-color: #f2f2f2">
+        <div class="row">
+            <div class="large-12 columns">
+                <div class="row">
+                    <div class="large-6 columns">
+                        <p>&copy; @DateTime.Now.Year - HDNUG.ORG</p>
+                    </div>
+                    <div class="large-6 columns">
+                        <ul class="menu">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
