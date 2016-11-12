@@ -3,43 +3,44 @@
 @{
     ViewBag.Title = "HDNUG Meeting - " + @Model.Title;
 }
-
 <div class="row">
-    <div class="small-4 columns">
+    <div class="large-8 columns">
         <h2>@Model.Title</h2>
     </div>
-    <div class="small-6 columns">
-        <address>@Model.Location</address>
+</div>
+<div class="row">
+    <div class="large-8 columns">
+        @if (!string.IsNullOrEmpty(@Model.Description))
+        {
+            <p>@Model.Description</p>
+        }
+    </div>
+    <div class="small-4 columns">
+        <address><a href="https://www.bing.com/mapspreview?q=@Model.Location" target="_blank">@Model.Location</a></address>
         <p>@Model.MeetingStartDateTime.Date.ToShortDateString() from @Model.MeetingStartDateTime.ToString("HH:mm") to @Model.MeetingEndDateTime.ToString("HH:mm")</p>
     </div>
 </div>
 
-<div class="row">
-    <div class="large-8 columns">
-        @Model.Description
-    </div>
-</div>
-
-<div class="row">
-    <div class="large-12 columns">
-        <h3>Presenting:</h3>
-    </div>
-</div>
 @foreach (var presentation in @Model.Presentations)
 {
     <div class="row">
-        <div class="small-6 columns">
-            <p>@presentation.Title</p>
+        <div class="small-8 columns">
+            <h3>@presentation.Title</h3>
+            <h5>Featured Speakers: @string.Join(", ", presentation.Speakers.Select(x => x.Name))</h5>
             <p>@presentation.Description</p>
         </div>
-        <div class="small-6 columns">
-            @foreach (var speaker in @presentation.Speakers )
+        <div class="small-4 columns">
+            @foreach (var speaker in @presentation.Speakers)
             {
-            @speaker.Photo
-            @speaker.Name<br/>
-            @speaker.WebSiteUrl<br/>
-            @speaker.Bio<br/>
-            @speaker.Email<br/>
+                <div class="row">
+                    <div class="small-12 columns">
+                        <div>@Html.DisplayFor(p => speaker.Photo)</div>
+                        <h3>@speaker.Name</h3>
+                        <a href="@speaker.WebSiteUrl">@speaker.WebSiteUrl</a><br />
+                        @speaker.Bio<br />
+                        <a href="mailto:@speaker.Email">@speaker.Email</a>
+                    </div>
+                </div>
             }
         </div>
     </div>
@@ -47,45 +48,44 @@
 
 
 <div class="row">
-    <div class="large-12 columns">
+    <div class="large-8 columns">
         <h3>Sponsored By:</h3>
     </div>
 </div>
 @foreach (var sponsor in @Model.Sponsors)
 {
     <div class="row">
-        <div class="small-6 columns">
-            @Html.DisplayFor(p=>sponsor.Logo)
-            @sponsor.Name<br/>
-            @sponsor.SponsorMessage<br/>
-            @sponsor.TagLine<br/>
-            @sponsor.WebSiteUrl<br/>
-            @sponsor.Contact<br/>
-            @sponsor.Email<br/>
-            @sponsor.Phone<br/>
+        <div class="small-8 columns">
+            <a href="@sponsor.WebSiteUrl">
+                @Html.DisplayFor(p => sponsor.Logo)
+            </a>
+            @sponsor.Name<br />
+            @sponsor.SponsorMessage<br />
+            @sponsor.TagLine<br />
+            <a href="@sponsor.WebSiteUrl">@sponsor.WebSiteUrl</a>
         </div>
     </div>
 }
-<div class="row">
-    <div class="large-12 columns">
+<div class="row" style="margin-top: 1em;">
+    <div class="large-8 columns">
         <div id="disqus_thread"></div>
         <script>
 
-        /**
-         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
-        /*
-        */
-        var disqus_config = function () {
-            this.page.url = "@Request.Url.AbsoluteUri" ;  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = "MEETING/@Model.Id"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-        (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-            s.src = '//hdnug.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
+            /**
+             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+            /*
+            */
+            var disqus_config = function () {
+                this.page.url = "@Request.Url.AbsoluteUri";  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = "MEETING/@Model.Id"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            (function () { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = '//hdnug.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
