@@ -64,8 +64,8 @@
 }
 
 <div class="form-group">
-    @Html.LabelFor(m => m.Logo)
     <div class="panel">
-        <input type="file"/>
+        <label for="Logo" class="button">Upload Image</label>
+        <input id="Logo" name="Logo" class="show-for-sr" type="file" />
     </div>
 </div>

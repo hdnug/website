@@ -22,26 +22,25 @@
 
         a.menu-link {
             color: #ffffff;
-            /*font-weight: bold;*/
             display: inline-block;
             position: relative;
             padding-bottom: 3px;
         }
 
-            a.menu-link:after {
-                content: '';
-                display: block;
-                margin: auto;
-                height: 3px;
-                width: 0px;
-                background: transparent;
-                transition: width .2s ease, background-color .2s ease;
-            }
+        a.menu-link:after {
+            content: '';
+            display: block;
+            margin: auto;
+            height: 3px;
+            width: 0px;
+            background: transparent;
+            transition: width .2s ease, background-color .2s ease;
+        }
 
-            a.menu-link:hover:after {
-                width: 100%;
-                background: #ffffff;
-            }
+        a.menu-link:hover:after {
+            width: 100%;
+            background: #ffffff;
+        }
     </style>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/kendo")
@@ -54,11 +53,11 @@
                 <a href="@Url.Action("Index", "Home", null)"><img src="@Url.Content("~/Content/Images/Site/30 - hdnugLogo.png")" height="95" width="95" /></a>
             </div>
             <div class="large-4 columns">
-                <h4 style="color: #ffffff; padding-top: 6px">Houston Dot Net User Group</h4>
+                <h4 style="color: #ffffff; padding-top: 12px">Houston Dot Net User Group</h4>
             </div>
             <div class="large-5 columns">
                 <div style="padding-top: 12px">
-                    <ul class="menu align-right">
+                    <ul class="menu">
                         <li>@Html.ActionLink("About", "About", "Home", new { @class = "menu-link" })</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home", new { @class = "menu-link" })</li>
                         <li>@Html.ActionLink("Past", "Index", "Home", new { @class = "menu-link" })</li>

@@ -10,8 +10,62 @@
         .social-media-inline {
             margin: 0;
         }
+
+        .event {
+            padding: 1rem 1rem 0 0;
+            display: table;
+        }
+
+        .event-date {
+            width: 6rem;
+            margin: 0 auto 1rem;
+            display: table-cell;
+            width: auto;
+        }
+
+        .event-date .event-month {
+            margin: 0;
+            background: #eee;
+            padding: 0.5rem 2rem;
+            text-align: center;
+        }
+
+        .event-date .event-day {
+            margin: 0;
+            border: 1px solid #eee;
+            padding: 0 2rem;
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .event-desc {
+            padding: 0 0 0 1rem;
+            text-align: left;
+            display: table-cell;
+            vertical-align: top;
+        }
+
+        .event-desc .event-desc-header {
+            margin: 0 0 0.5rem 0;
+            padding: 0;
+        }
+
+        .event-desc .event-desc-detail {
+            margin: 0 0 0.25rem;
+            padding: 0;
+        }
+
+        .event-desc .event-desc-time {
+            font-weight: bold;
+        }
+
+        .event-desc .rsvp.button {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            margin: 0;
+        }
     </style>
-    }
+}
 <div class="orbit" data-orbit style="margin-bottom: 10px">
     <ul class="orbit-container">
         @foreach (var image in Model.SliderImages)
@@ -48,18 +102,19 @@
                     foreach (var meeting in Model.Meetings)
                     {
                         counter++;
-                        <article>
-                            <h4>
-                                @(Html.ActionLink(meeting.Title,"Index", "Meeting", new {id=meeting.Id}, null))
-                            </h4>
-                            <h5>@meeting.MeetingStartDateTime.ToShortDateString()  @meeting.MeetingStartDateTime.ToShortTimeString() - @meeting.MeetingEndDateTime.ToShortTimeString()</h5>
-
-                            <div class="row">
-                                <div class="large-12 columns">
-                                    <p>@meeting.Description.TrimEndIfLongerThan(175)</p>
+                        <article class="event">
+                            <div>
+                                <div class="event-date">
+                                    <p class="event-month">@meeting.MeetingStartDateTime.ToString("MMM")</p>
+                                    <p class="event-day">@meeting.MeetingStartDateTime.ToString("dd")</p>
                                 </div>
                             </div>
-
+                            <div class="event-desc">
+                                <h4>
+                                    @(Html.ActionLink(meeting.Title, "Index", "Meeting", new { id = meeting.Id }, null))
+                                </h4>
+                                <p>@meeting.Description.TrimEndIfLongerThan(175)</p>
+                            </div>
                         </article>
 
                         if (counter < Model.Meetings.Count())
@@ -123,20 +178,40 @@
         }
         <div class="callout secondary">
             <h5>Meeting Sponsors</h5>
-            <p>Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow.</p>
-            <a href="#">Read More →</a>
+            @if (Model.Sponsors.Any())
+            {
+                foreach(var sponsor in Model.Sponsors)
+                {
+                    <h6>@sponsor.Name</h6>
+                    if (sponsor.Logo != null)
+                    {
+                        <img src="@sponsor.Logo.ImageUrl" style="min-width: 150px; max-width: 200px " />
+                    }
+                    <p>@sponsor.TagLine</p>
+                }
+            }
+            else
+            {
+                <p class="subheader">No meeting sponsors yet for this month. Interested in sponsoring? <a href="mailto:sponsors@hdnug.org">Let us know!</a></p>
+            }
+            <h5>Door Prize Sponsors</h5>
+            @if (Model.PrizeSponsors.Any())
+            {
+                foreach(var prizeSponsor in Model.PrizeSponsors)
+                {
+                    <h6>@prizeSponsor.Sponsor.Name</h6>
+                    if (prizeSponsor.Sponsor.Logo != null)
+                    {
+                        <img src="@prizeSponsor.Sponsor.Logo.ImageUrl" style="min-width: 150px; max-width: 200px " />
+                    }
+                    <p>@prizeSponsor.Sponsor.TagLine</p>
+                }
+            }
+            else
+            {
+                <p class="subheader">No door prize sponsors yet. Want to donate some swag? <a href="mailto:sponsors@hdnug.org">Let us know!</a></p>
+            }
         </div>
-
-        @*<h5>Categories</h5>
-            <ul class="side-nav">
-                <li><a href="#">News</a></li>
-                <li><a href="#">Code</a></li>
-                <li><a href="#">Design</a></li>
-                <li><a href="#">Fun</a></li>
-                <li><a href="#">Weasels</a></li>
-            </ul>*@
-
-        
     </aside>
 
     <!-- End Sidebar -->

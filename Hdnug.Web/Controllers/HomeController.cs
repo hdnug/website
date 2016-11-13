@@ -5,6 +5,7 @@ using Hdnug.Domain.Data.Models.Queries;
 using Hdnug.Web.Models.ViewModels;
 using Highway.Data;
 using Hdnug.Web.Inrastructure.Interfaces;
+using System;
 
 namespace Hdnug.Web.Controllers
 {
@@ -22,12 +23,17 @@ namespace Hdnug.Web.Controllers
 
         public ActionResult Index()
         {
-            var meetings = _repo.Find(new FindAll<Meeting>()).ToList();
+            var meetings = _repo.Find(new LastTenMeetings()).ToList();
             var sliderImages = _repo.Find(new AllSliderImages()).ToList();
+            var prizeSponsors = _repo.Find(new ActivePrizeSponsors()).ToList();
+            var currentMonthMeetings = meetings.Where(x => x.MeetingStartDateTime.Month == DateTime.Today.Month && x.MeetingStartDateTime.Year == DateTime.Today.Year);
+            var sponsors = currentMonthMeetings.SelectMany(x => x.Sponsors);
             var viewModel = new HomeViewModel
             {
                 Meetings = meetings,
-                SliderImages = sliderImages
+                SliderImages = sliderImages,
+                Sponsors = sponsors,
+                PrizeSponsors = prizeSponsors
             };
              
             return View(viewModel);
