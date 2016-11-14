@@ -104,10 +104,22 @@ namespace Hdnug.Web.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Description,MeetingDate,MeetingStartDateTime,MeetingEndDateTime,Location")] Meeting meeting)
+        public ActionResult Edit(
+            [Bind(Include = "Id,Title,Description,MeetingDate,MeetingStartDateTime,MeetingEndDateTime,Location")] Meeting meeting
+            )
         {
             if (ModelState.IsValid)
             {
+                var m = _repo.Find(new GetById<int, Meeting>(meeting.Id));
+
+                m.Title = meeting.Title;
+                m.Description = meeting.Description;
+                m.Location = meeting.Location;
+                m.MeetingEndDateTime = meeting.MeetingEndDateTime;
+                m.MeetingStartDateTime = meeting.MeetingStartDateTime;
+
+                // TODO: update Sponsors and Presentations
+
                 _repo.Context.Commit();
                 return RedirectToAction("Index");
             }
