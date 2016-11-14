@@ -6,7 +6,7 @@
 
 <h2>@Model.SponsorName</h2>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "PrizeSponsorships", FormMethod.Post, new { enctype = "mutlipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     

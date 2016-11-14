@@ -202,7 +202,7 @@
                     <h6>@prizeSponsor.Sponsor.Name</h6>
                     if (prizeSponsor.Sponsor.Logo != null)
                     {
-                        <img src="@prizeSponsor.Sponsor.Logo.ImageUrl" style="min-width: 150px; max-width: 200px " />
+                        <img src="@Url.Content(prizeSponsor.Sponsor.Logo.ImageUrl)" style="min-width: 150px; max-width: 200px " />
                     }
                     <p>@prizeSponsor.Sponsor.TagLine</p>
                 }
