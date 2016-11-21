@@ -6,87 +6,105 @@
 <div class="row">
     <div class="large-8 columns">
         <h2>@Model.Title</h2>
-    </div>
-</div>
-<div class="row">
-    <div class="large-8 columns">
         @if (!string.IsNullOrEmpty(@Model.Description))
         {
             <p>@Model.Description</p>
         }
-    </div>
-    <div class="small-4 columns">
-        <address><a href="https://www.bing.com/mapspreview?q=@Model.Location" target="_blank">@Model.Location</a></address>
-        <p>@Model.MeetingStartDateTime.Date.ToShortDateString() from @Model.MeetingStartDateTime.ToString("HH:mm") to @Model.MeetingEndDateTime.ToString("HH:mm")</p>
-    </div>
-</div>
-
-@foreach (var presentation in @Model.Presentations)
-{
-    <div class="row">
-        <div class="small-8 columns">
-            <h3>@presentation.Title</h3>
-            <h5>Featured Speakers: @string.Join(", ", presentation.Speakers.Select(x => x.Name))</h5>
-            <p>@presentation.Description</p>
-        </div>
-        <div class="small-4 columns">
-            @foreach (var speaker in @presentation.Speakers)
-            {
-                <div class="row">
-                    <div class="small-12 columns">
-                        <div>@Html.DisplayFor(p => speaker.Photo)</div>
-                        <h3>@speaker.Name</h3>
-                        <a href="@speaker.WebSiteUrl">@speaker.WebSiteUrl</a><br />
-                        @speaker.Bio<br />
-                        <a href="mailto:@speaker.Email">@speaker.Email</a>
-                    </div>
+        <p>@Model.MeetingStartDateTime.Date.ToShortDateString() from @Model.MeetingStartDateTime.ToString("t") to @Model.MeetingEndDateTime.ToString("t")</p>
+        <p><a href="https://www.bing.com/mapspreview?q=@Model.Location" target="_blank">Microsoft Technology Center - Town & Country</a></p>
+        @foreach (var presentation in @Model.Presentations)
+        {
+            <div>
+                <div>
+                    <h3>@presentation.Title</h3>
+                    <h5>Featured Speakers: @string.Join(", ", presentation.Speakers.Select(x => x.Name))</h5>
+                    <p>@presentation.Description</p>
+                    @foreach (var speaker in @presentation.Speakers)
+                    {
+                        <div>
+                            <h5>About @speaker.Name</h5>
+                            <div class="float-left">
+                                @if (speaker.Photo != null)
+                                {
+                                    <img class="thumbnail" src="@Url.Content(speaker.Photo.ImageUrl)" style="width: 150px; margin: 0px 12px 12px 0px" />
+                                }
+                            </div>
+                            <p>
+                                @speaker.Bio
+                            </p>
+                            <p>
+                                @if (!string.IsNullOrEmpty(speaker.Email))
+                                { <span>email: <a href="mailto:@speaker.Email">@speaker.Email</a></span> }
+                                @if (!string.IsNullOrEmpty(speaker.WebSiteUrl))
+                                { <span>blog: <a href="@speaker.WebSiteUrl">@speaker.WebSiteUrl</a></span> }
+                            </p>
+                        </div>
+                    }
                 </div>
+            </div>
+        }
+
+        <div style="margin-top: 1em;">
+            <div id="disqus_thread"></div>
+            <script>
+
+                /**
+                 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+                /*
+                */
+                var disqus_config = function () {
+                    this.page.url = "@Request.Url.AbsoluteUri";  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = "MEETING/@Model.Id"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                (function () { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = '//hdnug.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+    <aside class="large-4 columns callout secondary">
+        <h5>When and Where</h5>
+        <p>@Model.MeetingStartDateTime.Date.ToShortDateString() from @Model.MeetingStartDateTime.ToString("t") to @Model.MeetingEndDateTime.ToString("t")</p>
+        <p>@Model.Location</p>
+        <h5>Meeting Sponsors</h5>
+        @if (Model.Sponsors.Any())
+        {
+            foreach (var sponsor in Model.Sponsors)
+            {
+                <h6>@sponsor.Name</h6>
+                if (sponsor.Logo != null)
+                {
+                    <img src="@sponsor.Logo.ImageUrl" style="min-width: 150px; max-width: 200px " />
+                }
+                <p>@sponsor.TagLine</p>
             }
-        </div>
-    </div>
-}
-
-
-<div class="row">
-    <div class="large-8 columns">
-        <h3>Sponsored By:</h3>
-    </div>
-</div>
-@foreach (var sponsor in @Model.Sponsors)
-{
-    <div class="row">
-        <div class="small-8 columns">
-            <a href="@sponsor.WebSiteUrl">
-                @Html.DisplayFor(p => sponsor.Logo)
-            </a>
-            @sponsor.Name<br />
-            @sponsor.SponsorMessage<br />
-            @sponsor.TagLine<br />
-            <a href="@sponsor.WebSiteUrl">@sponsor.WebSiteUrl</a>
-        </div>
-    </div>
-}
-<div class="row" style="margin-top: 1em;">
-    <div class="large-8 columns">
-        <div id="disqus_thread"></div>
-        <script>
-
-            /**
-             *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
-            /*
-            */
-            var disqus_config = function () {
-                this.page.url = "@Request.Url.AbsoluteUri";  // Replace PAGE_URL with your page's canonical URL variable
-                this.page.identifier = "MEETING/@Model.Id"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-            };
-            (function () { // DON'T EDIT BELOW THIS LINE
-                var d = document, s = d.createElement('script');
-                s.src = '//hdnug.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
+        }
+        else
+        {
+            <p class="subheader">No meeting sponsors yet for this month. Interested in sponsoring? <a href="mailto:sponsors@hdnug.org">Let us know!</a></p>
+        }
+        <h5>Door Prize Sponsors</h5>
+        @*@if (Model.PrizeSponsors.Any())
+        {
+            foreach (var prizeSponsor in Model.PrizeSponsors)
+            {
+                <h6>@prizeSponsor.Sponsor.Name</h6>
+                if (prizeSponsor.Sponsor.Logo != null)
+                {
+                    <img src="@Url.Content(prizeSponsor.Sponsor.Logo.ImageUrl)" style="min-width: 150px; max-width: 200px" />
+                }
+                <p>@prizeSponsor.Sponsor.TagLine</p>
+            }
+        }
+        else
+        {
+            <p class="subheader">No door prize sponsors yet. Want to donate some swag? <a href="mailto:sponsors@hdnug.org">Let us know!</a></p>
+        }*@
+    </aside>
 </div>

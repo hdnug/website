@@ -27,20 +27,20 @@
             padding-bottom: 3px;
         }
 
-        a.menu-link:after {
-            content: '';
-            display: block;
-            margin: auto;
-            height: 3px;
-            width: 0px;
-            background: transparent;
-            transition: width .2s ease, background-color .2s ease;
-        }
+            a.menu-link:after {
+                content: '';
+                display: block;
+                margin: auto;
+                height: 3px;
+                width: 0px;
+                background: transparent;
+                transition: width .2s ease, background-color .2s ease;
+            }
 
-        a.menu-link:hover:after {
-            width: 100%;
-            background: #ffffff;
-        }
+            a.menu-link:hover:after {
+                width: 100%;
+                background: #ffffff;
+            }
     </style>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/kendo")
@@ -56,7 +56,7 @@
                 <h4 style="color: #ffffff; padding-top: 12px">Houston Dot Net User Group</h4>
             </div>
             <div class="large-5 columns">
-                <div style="padding-top: 12px">
+                <div class="show-for-large" style="padding-top: 12px">
                     <ul class="menu">
                         <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "menu-link" })</li>
                         <li>@Html.ActionLink("Upcoming", "Index", "Home", null, new { @class = "menu-link" })</li>
@@ -64,6 +64,13 @@
                         <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "menu-link" })</li>
                         <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "menu-link" })</li>
                     </ul>
+                </div>
+                <div class="show-for-small-only">
+                    @Html.ActionLink("Home", "Index", "Home", null, new { @class = "menu-link" }) &nbsp;
+                    @Html.ActionLink("Upcoming", "Index", "Home", null, new { @class = "menu-link" }) &nbsp;
+                    @Html.ActionLink("Past", "Index", "Home", null, new { @class = "menu-link" }) &nbsp;
+                    @Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "menu-link" }) &nbsp;
+                    @Html.ActionLink("About", "About", "Home", null, new { @class = "menu-link" })
                 </div>
             </div>
             <div class="large-2 columns">

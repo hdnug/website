@@ -35,13 +35,27 @@
 @if (!string.IsNullOrEmpty(Model.PhotoUrl))
 {
     <div class="form-group">
-        <img src="@Url.Content(Model.PhotoUrl)" />
+        <img src="@Url.Content(Model.PhotoUrl)" style="width: 150px; margin-bottom: 12px" />
     </div>
 }
 
 <div class="form-group">
-    @Html.LabelFor(m => m.Photo)
+    @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.TextAreaFor(model => model.Bio)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+</div>
+
+<script>
+        function updateName() {
+            var fileName = document.getElementById("Photo").files[0].name;
+            document.getElementById("fileName").innerHTML = fileName;
+        }
+</script>
+<div class="form-group">
     <div class="panel">
-        <input type="file"/>
+        <label for="Photo" class="button">Upload Image</label>
+        <input id="Photo" name="Photo" class="show-for-sr" type="file" onchange="updateName()" /> <span id="fileName"></span>
     </div>
 </div>

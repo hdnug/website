@@ -5,6 +5,13 @@ namespace Hdnug.Web.Models.ViewModels
 {
     public class HomeViewModel
     {
+        public HomeViewModel()
+        {
+            Meetings = new List<Meeting>();
+            Sponsors = new List<Sponsor>();
+            PrizeSponsors = new List<PrizeSponsorship>();
+            SliderImages = new List<Image>();
+        }
         public IEnumerable<Meeting> Meetings { get; set; }
         public IEnumerable<Sponsor> Sponsors { get; set; }
         public IEnumerable<PrizeSponsorship> PrizeSponsors { get; set; }

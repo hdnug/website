@@ -38,7 +38,8 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                     Name = x.Name,
                     Phone = x.Phone,
                     WebSiteUrl = x.WebSiteUrl,
-                    PhotoUrl = x.Photo != null ? x.Photo.ImageUrl : string.Empty
+                    PhotoUrl = x.Photo != null ? x.Photo.ImageUrl : string.Empty,
+                    Bio = x.Bio
                 };
                 SpeakersViewModel.Add(speaker);
             });
@@ -57,7 +58,8 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 Name = speaker.Name,
                 Phone = speaker.Phone,
                 WebSiteUrl = speaker.WebSiteUrl,
-                PhotoUrl = speaker.Photo.ImageUrl
+                PhotoUrl = speaker.Photo.ImageUrl,
+                Bio = speaker.Bio
             };
             return View(viewModel);
         }
@@ -87,7 +89,8 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                     Email = SpeakerViewModel.Email,
                     Name = SpeakerViewModel.Name,
                     Phone = SpeakerViewModel.Phone,
-                    WebSiteUrl = SpeakerViewModel.WebSiteUrl
+                    WebSiteUrl = SpeakerViewModel.WebSiteUrl,
+                    Bio = SpeakerViewModel.Bio
                 };
                 var url = SpeakerViewModel.Photo.SaveImageUpload(_serverMapPathProvider, Constants.SponsorUploadDir);
                 var Photo = new Image { Title = imageInfo, AltText = imageInfo, ImageType = ImageType.Profile, ImageUrl = url };
@@ -110,7 +113,8 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 Name = speaker.Name,
                 Phone = speaker.Phone,
                 WebSiteUrl = speaker.WebSiteUrl,
-                PhotoUrl = speaker.Photo.ImageUrl
+                PhotoUrl = speaker.Photo.ImageUrl,
+                Bio = speaker.Bio
             };
             return View(viewModel);
         }
@@ -138,6 +142,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 speaker.Phone = SpeakerViewModel.Phone;
                 speaker.WebSiteUrl = SpeakerViewModel.WebSiteUrl;
                 speaker.Photo = Photo;
+                speaker.Bio = SpeakerViewModel.Bio;
 
                 _repository.Context.Commit();
 

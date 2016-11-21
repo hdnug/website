@@ -7,63 +7,6 @@
 
 @section Styles{
     <style>
-        .social-media-inline {
-            margin: 0;
-        }
-
-        .event {
-            padding: 1rem 1rem 0 0;
-            display: table;
-        }
-
-        .event-date {
-            width: 6rem;
-            margin: 0 auto 1rem;
-            display: table-cell;
-            width: auto;
-        }
-
-        .event-date .event-month {
-            margin: 0;
-            background: #eee;
-            padding: 0.5rem 2rem;
-            text-align: center;
-        }
-
-        .event-date .event-day {
-            margin: 0;
-            border: 1px solid #eee;
-            padding: 0 2rem;
-            text-align: center;
-            font-size: 2rem;
-        }
-
-        .event-desc {
-            padding: 0 0 0 1rem;
-            text-align: left;
-            display: table-cell;
-            vertical-align: top;
-        }
-
-        .event-desc .event-desc-header {
-            margin: 0 0 0.5rem 0;
-            padding: 0;
-        }
-
-        .event-desc .event-desc-detail {
-            margin: 0 0 0.25rem;
-            padding: 0;
-        }
-
-        .event-desc .event-desc-time {
-            font-weight: bold;
-        }
-
-        .event-desc .rsvp.button {
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-            margin: 0;
-        }
     </style>
 }
 <div class="orbit" data-orbit style="margin-bottom: 10px">
@@ -79,13 +22,10 @@
 </div>
 
 <div class="row">
-    <!-- Main Blog Content -->
+    <!-- Main Content -->
     <div class="large-8 columns" role="content">
-
-        <!-- Two-up Content Blocks -->
-
         <div class="row">
-            <div class="large-12 columns">
+            <div class="small-12 columns">
                 <h3>Welcome to HDNUG!</h3>
                 <p>
                     Whether you are a regular or someone just coming for the first time, whether you are a long-time .NET developer or new to .NET development, everyone who wants to learn about .NET and network with other developers is always welcome to HDNUG.
@@ -93,14 +33,14 @@
                 </p>
             </div>
         </div>
-
         <div class="row">
-            <div class="large-12 columns">
+            <div class="small-12 columns">
                 @if (Model.Meetings != null)
                 {
                     var counter = 0;
                     foreach (var meeting in Model.Meetings)
                     {
+                        var meetingDescription = meeting.Presentations != null ? meeting.Presentations.First().Description : meeting.Description;
                         counter++;
                         <article class="event">
                             <div>
@@ -113,7 +53,7 @@
                                 <h4>
                                     @(Html.ActionLink(meeting.Title, "Index", "Meeting", new { id = meeting.Id }, null))
                                 </h4>
-                                <p>@meeting.Description.TrimEndIfLongerThan(175)</p>
+                                <p>@meetingDescription.TrimEndIfLongerThan(175)</p>
                             </div>
                         </article>
 
@@ -130,13 +70,11 @@
                     </article>
                 }
             </div>
-
-            <!-- End Main Content -->
-
         </div>
+        <!-- End Main Content -->
     </div>
-    <!-- Sidebar -->
 
+    <!-- Sidebar -->
     <aside class="large-4 columns">
         <div style="padding: 4px">
             <ul class="menu expanded">
@@ -202,7 +140,7 @@
                     <h6>@prizeSponsor.Sponsor.Name</h6>
                     if (prizeSponsor.Sponsor.Logo != null)
                     {
-                        <img src="@Url.Content(prizeSponsor.Sponsor.Logo.ImageUrl)" style="min-width: 150px; max-width: 200px " />
+                        <img src="@Url.Content(prizeSponsor.Sponsor.Logo.ImageUrl)" style="min-width: 150px; max-width: 200px" />
                     }
                     <p>@prizeSponsor.Sponsor.TagLine</p>
                 }

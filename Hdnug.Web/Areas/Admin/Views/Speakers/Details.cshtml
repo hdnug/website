@@ -45,12 +45,20 @@
         @if (Model.PhotoUrl != null || Model.PhotoUrl != string.Empty)
         {
             <dt>
-                Logo
+                Photo
             </dt>
             <dd>
-                <img src="@Url.Content(Model.PhotoUrl)" />
+                <img src="@Url.Content(Model.PhotoUrl)" style="min-width: 150px; max-width: 200px; margin-bottom: 12px" />
             </dd>
         }
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bio)
+        </dd>
     </dl>
 </div>
 <p>
