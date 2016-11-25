@@ -9,11 +9,12 @@ namespace Hdnug.Domain.Data.Models.Mapping
             ToTable("Presentation");
             HasKey(t => t.Id);
 
-            HasMany(t => t.Meetings)
-                .WithMany(t => t.Presentations);
+            HasOptional(x => x.Meeting)
+                .WithMany(x => x.Presentations)
+                .HasForeignKey(x => x.MeetingId);
 
             HasMany(t => t.Speakers)
-                .WithMany(t => t.Presentations);
+                .WithOptional(t => t.Presentation);
         }
     }
 }

@@ -10,8 +10,7 @@ namespace Hdnug.Domain.Data.Models.Queries
             ContextQuery = context =>
             {
                 var speaker = context.AsQueryable<Speaker>().Single(s => s.Id == id);
-                var presentationIds = speaker.Presentations.Select(x => x.Id);
-                var presentations = context.AsQueryable<Presentation>().Where(p => presentationIds.Contains(p.Id));
+                var presentations = context.AsQueryable<Presentation>().Where(p => p.Speakers.Count < 2 && p.Speakers.Select(s => s.Id).Contains(id));
                 foreach (var presentation in presentations)
                 {
                     context.Remove(presentation);

@@ -13,8 +13,9 @@ namespace Hdnug.Domain.Data.Models
         public DateTime EndTime { get; set; }
         public string Location { get; set; }
         public string Url { get; set; }
+        public int? MeetingId { get; set; }
 
-        public virtual ICollection<Meeting> Meetings { get; set; }
-        public virtual ICollection<Speaker> Speakers { get; set; }
+        public Meeting Meeting { get; set; }
+        public ICollection<Speaker> Speakers { get; set; }
     }
 }

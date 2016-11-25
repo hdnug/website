@@ -13,7 +13,7 @@ namespace Hdnug.Domain.Data.Models
         public DateTime MeetingEndDateTime { get; set; }
         public string Location { get; set; }
 
-        public virtual ICollection<Sponsor> Sponsors { get; set; }
-        public virtual ICollection<Presentation> Presentations { get; set; } 
+        public ICollection<Sponsor> Sponsors { get; set; }
+        public ICollection<Presentation> Presentations { get; set; } 
     }
 }

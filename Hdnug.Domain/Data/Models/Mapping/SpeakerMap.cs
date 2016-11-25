@@ -13,8 +13,9 @@ namespace Hdnug.Domain.Data.Models.Mapping
                 .WithOptionalDependent()
                 .Map(m => m.MapKey("ImageId"));
 
-            HasMany(t => t.Presentations)
-                .WithMany(t => t.Speakers);
+            HasOptional(t => t.Presentation)
+                .WithMany(t => t.Speakers)
+                .HasForeignKey(m => m.PresentationId);
         }
     }
 }

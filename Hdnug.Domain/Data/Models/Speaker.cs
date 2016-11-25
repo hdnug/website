@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Hdnug.Domain.Data.Models
+﻿namespace Hdnug.Domain.Data.Models
 {
     public class Speaker
     {
@@ -10,8 +8,9 @@ namespace Hdnug.Domain.Data.Models
         public string Phone { get; set; }
         public string Bio { get; set; }
         public string WebSiteUrl { get; set; }
+        public int? PresentationId { get; set; }
 
-        public virtual Image Photo { get; set; }
-        public virtual ICollection<Presentation> Presentations { get; set; }
+        public Image Photo { get; set; }
+        public Presentation Presentation { get; set; }
     }
 }

@@ -160,6 +160,22 @@
     <Compile Include="Migrations\201610082015272_AddingMemberColumns.Designer.cs">
       <DependentUpon>201610082015272_AddingMemberColumns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611252148406_UpdateMeetingPresentationAssociation.cs" />
+    <Compile Include="Migrations\201611252148406_UpdateMeetingPresentationAssociation.Designer.cs">
+      <DependentUpon>201611252148406_UpdateMeetingPresentationAssociation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611252156517_UpdateMeetingPresentationAssociation1.cs" />
+    <Compile Include="Migrations\201611252156517_UpdateMeetingPresentationAssociation1.Designer.cs">
+      <DependentUpon>201611252156517_UpdateMeetingPresentationAssociation1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611252205234_UpdateMeetingSponsorAssociation.cs" />
+    <Compile Include="Migrations\201611252205234_UpdateMeetingSponsorAssociation.Designer.cs">
+      <DependentUpon>201611252205234_UpdateMeetingSponsorAssociation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201611252226337_UpdatePresentationSpeakerAssociation.cs" />
+    <Compile Include="Migrations\201611252226337_UpdatePresentationSpeakerAssociation.Designer.cs">
+      <DependentUpon>201611252226337_UpdatePresentationSpeakerAssociation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -188,6 +204,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610082015272_AddingMemberColumns.resx">
       <DependentUpon>201610082015272_AddingMemberColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611252148406_UpdateMeetingPresentationAssociation.resx">
+      <DependentUpon>201611252148406_UpdateMeetingPresentationAssociation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611252156517_UpdateMeetingPresentationAssociation1.resx">
+      <DependentUpon>201611252156517_UpdateMeetingPresentationAssociation1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611252205234_UpdateMeetingSponsorAssociation.resx">
+      <DependentUpon>201611252205234_UpdateMeetingSponsorAssociation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611252226337_UpdatePresentationSpeakerAssociation.resx">
+      <DependentUpon>201611252226337_UpdatePresentationSpeakerAssociation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
