@@ -419,9 +419,8 @@ namespace Hdnug.Domain.Migrations
                     Title = "My Awesome talk!",
                     Description =
                         "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa.",
-                    PresentationDate = new DateTime(2014, 06, 12),
-                    StartTime = new DateTime(2014, 06, 12, 18, 30, 00),
-                    EndTime = new DateTime(2014, 06, 12, 20, 30, 00),
+                    PresentationStartDateTime = new DateTime(2014, 06, 12, 18, 30, 00),
+                    PresentationEndDateTime = new DateTime(2014, 06, 12, 20, 30, 00),
                     Location = "Challenger Room",
                     Url = "/Presentations/presentation.ppt",
                     MeetingId = 1
@@ -432,9 +431,8 @@ namespace Hdnug.Domain.Migrations
                     Title = "How to code in .NET",
                     Description =
                         "Boudin aliqua adipisicing rump corned beef. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.",
-                    PresentationDate = new DateTime(2014, 06, 12),
-                    StartTime = new DateTime(2014, 06, 12, 18, 30, 00),
-                    EndTime = new DateTime(2014, 06, 12, 20, 30, 00),
+                    PresentationStartDateTime = new DateTime(2014, 06, 12, 18, 30, 00),
+                    PresentationEndDateTime = new DateTime(2014, 06, 12, 20, 30, 00),
                     Location = "Challenger Room",
                     Url = "/Presentations/presentation.ppt",
                     MeetingId = 2
@@ -445,9 +443,8 @@ namespace Hdnug.Domain.Migrations
                     Title = "Why .NET really Rocks!",
                     Description =
                         "Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.",
-                    PresentationDate = new DateTime(2014, 06, 12),
-                    StartTime = new DateTime(2014, 06, 12, 18, 30, 00),
-                    EndTime = new DateTime(2014, 06, 12, 20, 30, 00),
+                    PresentationStartDateTime = new DateTime(2014, 06, 12, 18, 30, 00),
+                    PresentationEndDateTime = new DateTime(2014, 06, 12, 20, 30, 00),
                     Location = "Challenger Room",
                     Url = "/Presentations/presentation.ppt",
                     MeetingId = 3
@@ -458,9 +455,8 @@ namespace Hdnug.Domain.Migrations
                     Title = "Welcome to Fight Club with Knockout.js",
                     Description =
                         "Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa.",
-                    PresentationDate = new DateTime(2014, 06, 12),
-                    StartTime = new DateTime(2014, 06, 12, 18, 30, 00),
-                    EndTime = new DateTime(2014, 06, 12, 20, 30, 00),
+                    PresentationStartDateTime = new DateTime(2014, 06, 12, 18, 30, 00),
+                    PresentationEndDateTime = new DateTime(2014, 06, 12, 20, 30, 00),
                     Location = "Challenger Room",
                     Url = "/Presentations/presentation.ppt",
                     MeetingId = 4

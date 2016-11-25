@@ -180,6 +180,10 @@
     <Compile Include="Migrations\201611252235057_AddLocationFieldsToMeeting.Designer.cs">
       <DependentUpon>201611252235057_AddLocationFieldsToMeeting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611252300237_UpdatePresentationDateFields.cs" />
+    <Compile Include="Migrations\201611252300237_UpdatePresentationDateFields.Designer.cs">
+      <DependentUpon>201611252300237_UpdatePresentationDateFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -223,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611252235057_AddLocationFieldsToMeeting.resx">
       <DependentUpon>201611252235057_AddLocationFieldsToMeeting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611252300237_UpdatePresentationDateFields.resx">
+      <DependentUpon>201611252300237_UpdatePresentationDateFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
