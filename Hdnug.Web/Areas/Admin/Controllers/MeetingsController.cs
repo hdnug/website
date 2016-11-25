@@ -87,7 +87,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 Id = meeting.Id,
                 Title = meeting.Title,
                 Description = meeting.Description,
-                Location = meeting.Location,
+                Location = meeting.LocationName,
                 MeetingStartDateTime = meeting.MeetingStartDateTime,
                 MeetingEndDateTime = meeting.MeetingEndDateTime,
                 SelectedPresentations = meeting.Presentations.Select(x => x.Id).ToArray(),
@@ -114,7 +114,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
 
                 m.Title = meeting.Title;
                 m.Description = meeting.Description;
-                m.Location = meeting.Location;
+                m.LocationName = meeting.LocationName;
                 m.MeetingEndDateTime = meeting.MeetingEndDateTime;
                 m.MeetingStartDateTime = meeting.MeetingStartDateTime;
 
