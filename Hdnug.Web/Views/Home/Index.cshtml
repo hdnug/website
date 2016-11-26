@@ -35,39 +35,41 @@
         </div>
         <div class="row">
             <div class="small-12 columns">
-                @if (Model.Meetings != null)
+                @foreach (var meeting in Model.Meetings)
                 {
-                    var counter = 0;
-                    foreach (var meeting in Model.Meetings)
+                    if (meeting.Presentations.Any())
                     {
-                        var meetingDescription = meeting.Presentations != null ? meeting.Presentations.First().Description : meeting.Description;
-                        counter++;
-                        <article class="event">
-                            <div>
-                                <div class="event-date">
-                                    <p class="event-month">@meeting.MeetingStartDateTime.ToString("MMM")</p>
-                                    <p class="event-day">@meeting.MeetingStartDateTime.ToString("dd")</p>
-                                </div>
-                            </div>
-                            <div class="event-desc">
-                                <h4>
-                                    @(Html.ActionLink(meeting.Title, "Index", "Meeting", new { id = meeting.Id }, null))
-                                </h4>
-                                <p>@meetingDescription.TrimEndIfLongerThan(175)</p>
-                            </div>
-                        </article>
-
-                        if (counter < Model.Meetings.Count())
+                        var counter = 0;
+                        foreach (var presentation in meeting.Presentations)
                         {
-                            <hr />
+                            counter++;
+                            <article class="event">
+                                <div>
+                                    <div class="event-date">
+                                        <p class="event-month">@presentation.PresentationStartDateTime.ToString("MMM")</p>
+                                        <p class="event-day">@presentation.PresentationStartDateTime.ToString("dd")</p>
+                                    </div>
+                                </div>
+                                <div class="event-desc">
+                                    <h4>
+                                        @(Html.RouteLink(presentation.Title, new { controller = "Meetings", action = "Details", meetingId = presentation.MeetingId, id = presentation.Id }))
+                                    </h4>
+                                    <p>@presentation.Description.TrimEndIfLongerThan(175)</p>
+                                </div>
+                            </article>
+
+                            if (counter < Model.Meetings.Count())
+                            {
+                                <hr />
+                            }
                         }
                     }
-                }
-                else
-                {
-                    <article>
-                        <p>No Meetings :(</p>
-                    </article>
+                    else
+                    {
+                        <article>
+                            <p> No Meetings: (</p>
+                        </article>
+                    }
                 }
             </div>
         </div>
@@ -118,7 +120,7 @@
             <h5>Meeting Sponsors</h5>
             @if (Model.Sponsors.Any())
             {
-                foreach(var sponsor in Model.Sponsors)
+                foreach (var sponsor in Model.Sponsors)
                 {
                     <h6>@sponsor.Name</h6>
                     if (sponsor.Logo != null)
@@ -135,7 +137,7 @@
             <h5>Door Prize Sponsors</h5>
             @if (Model.PrizeSponsors.Any())
             {
-                foreach(var prizeSponsor in Model.PrizeSponsors)
+                foreach (var prizeSponsor in Model.PrizeSponsors)
                 {
                     <h6>@prizeSponsor.Sponsor.Name</h6>
                     if (prizeSponsor.Sponsor.Logo != null)

@@ -242,7 +242,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MeetingsController.cs" />
-    <Compile Include="Controllers\MeetingController.cs" />
+    <Compile Include="Controllers\MeetingsController.cs" />
     <Compile Include="Controllers\NextMeetingController.cs" />
     <Compile Include="Areas\Admin\Controllers\PrizeSponsorshipsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SliderController.cs" />
@@ -264,6 +264,7 @@
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\ViewModels\HomeViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\MeetingViewModel.cs" />
+    <Compile Include="Models\ViewModels\MeetingDetailsViewModel.cs" />
     <Compile Include="Models\ViewModels\NextMeetingViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\ImageViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\PrizeSponsorshipViewModel.cs" />
@@ -1899,7 +1900,7 @@
     <Content Include="Scripts\kendo\messages\kendo.messages.zh-HK.min.js.map" />
     <Content Include="Scripts\kendo\messages\kendo.messages.zh-TW.min.js.map" />
     <Content Include="Views\Home\Mailinglist.cshtml" />
-    <Content Include="Views\Meeting\Index.cshtml" />
+    <Content Include="Views\Meetings\Details.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Image.cshtml" />
   </ItemGroup>
   <ItemGroup>

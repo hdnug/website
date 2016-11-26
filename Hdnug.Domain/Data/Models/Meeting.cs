@@ -11,6 +11,7 @@ namespace Hdnug.Domain.Data.Models
         public string Description { get; set; }
         public DateTime MeetingStartDateTime { get; set; }
         public DateTime MeetingEndDateTime { get; set; }
+        public string MeetingAddress => string.Join(",", LocationAddress1, LocationCity, LocationState, LocationZip);
         public string LocationName { get; set; }
         public string LocationAddress1 { get; set; }
         public string LocationAddress2 { get; set; }

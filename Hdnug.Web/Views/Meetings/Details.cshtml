@@ -1,0 +1,121 @@
+﻿@model Hdnug.Web.Models.ViewModels.MeetingDetailsViewModel
+
+@{
+    ViewBag.Title = "HDNUG Meeting - " + @Model.Presentation.Title;
+}
+<div class="row">
+    <div class="large-8 columns">
+        <h3>@Model.Presentation.Title</h3>
+        <p>
+            @Model.Meeting.MeetingStartDateTime.Date.ToLongDateString() from @Model.Presentation.PresentationStartDateTime.ToString("t") to @Model.Presentation.PresentationEndDateTime.ToString("t")<br />
+            @if (!string.IsNullOrEmpty(Model.Presentation.Location)){ @Model.Presentation.Location<span>,&nbsp;</span> }<a href="https://www.bing.com/mapspreview?q=@Model.Meeting.MeetingAddress" target="_blank">@Model.Meeting.LocationName</a>
+        </p>
+        <div>
+            <div>
+                @{
+                    var featuredSpeakerCaption = "Featured Speaker:";
+                    if (Model.Presentation.Speakers.Count > 1)
+                    {
+                        featuredSpeakerCaption = "Featured Speakers:";
+                    }
+                    <h4>@featuredSpeakerCaption @string.Join(", ", Model.Presentation.Speakers.Select(x => x.Name))</h4>
+                }
+                <p>@Model.Presentation.Description</p>
+                @foreach (var speaker in Model.Presentation.Speakers)
+                {
+                    <div>
+                        <h4>About @speaker.Name</h4>
+                        <div class="float-left">
+                            @if (speaker.Photo != null)
+                            {
+                                <img class="thumbnail" src="@Url.Content(speaker.Photo.ImageUrl)" style="width: 150px; margin: 0px 12px 12px 0px" />
+                            }
+                        </div>
+                        <p>
+                            @speaker.Bio
+                        </p>
+                        <p>
+                            @if (!string.IsNullOrEmpty(speaker.Email))
+                            { <span>email: <a href="mailto:@speaker.Email">@speaker.Email</a></span> }
+                            @if (!string.IsNullOrEmpty(speaker.WebSiteUrl))
+                            { <span>blog: <a href="@speaker.WebSiteUrl">@speaker.WebSiteUrl</a></span> }
+                        </p>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div style="margin-top: 1em;">
+            <div id="disqus_thread"></div>
+            <script>
+
+                /**
+                 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                 *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+                /*
+                */
+                var disqus_config = function () {
+                    this.page.url = "@Request.Url.AbsoluteUri";  // Replace PAGE_URL with your page's canonical URL variable
+                    this.page.identifier = "Meeting/@Model.Meeting.Id/Presentation/@Model.Presentation.Id"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                (function () { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = '//hdnug.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+    </div>
+
+    <aside class="large-4 columns callout secondary">
+        <h5>Meeting Details</h5>
+        <p>@Model.Meeting.Title</p>
+        <p>
+            @Model.Meeting.MeetingStartDateTime.Date.ToLongDateString()<br/> 
+            @Model.Meeting.MeetingStartDateTime.ToString("t") to @Model.Meeting.MeetingEndDateTime.ToString("t")
+        <p>
+            @Model.Meeting.LocationName<br />
+            @if (!string.IsNullOrEmpty(Model.Meeting.LocationAddress2))
+            { <span>@string.Join(", ", Model.Meeting.LocationAddress1, Model.Meeting.LocationAddress2)</span><br /> }
+            else
+            { @Model.Meeting.LocationAddress1<br /> }
+            @string.Join(",", Model.Meeting.LocationCity, Model.Meeting.LocationState, Model.Meeting.LocationZip)<br />
+        </p>
+        <h5>Meeting Sponsors</h5>
+        @if (Model.Sponsors.Any())
+        {
+            foreach (var sponsor in Model.Sponsors)
+            {
+                <h6>@sponsor.Name</h6>
+                if (sponsor.Logo != null)
+                {
+                    <img src="@Url.Content(sponsor.Logo.ImageUrl)" style="min-width: 150px; max-width: 200px " />
+                }
+                <p>@sponsor.TagLine</p>
+            }
+        }
+        else
+        {
+            <p class="subheader">No meeting sponsors yet for this month. Interested in sponsoring? <a href="mailto:sponsors@hdnug.org">Let us know!</a></p>
+        }
+        <h5>Door Prize Sponsors</h5>
+        @if (Model.PrizeSponsors.Any())
+        {
+            foreach (var prizeSponsor in Model.PrizeSponsors)
+            {
+                <h6>@prizeSponsor.Sponsor.Name</h6>
+                if (prizeSponsor.Sponsor.Logo != null)
+                {
+                    <img src="@Url.Content(prizeSponsor.Sponsor.Logo.ImageUrl)" style="min-width: 150px; max-width: 200px" />
+                }
+                <p>@prizeSponsor.Sponsor.TagLine</p>
+            }
+        }
+        else
+        {
+            <p class="subheader">No door prize sponsors yet. Want to donate some swag? <a href="mailto:sponsors@hdnug.org">Let us know!</a></p>
+        }
+    </aside>
+</div>
