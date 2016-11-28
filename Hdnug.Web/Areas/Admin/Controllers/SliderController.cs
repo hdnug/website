@@ -40,7 +40,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
         {
             var imageValidation = imageViewModel.ImageUpload.ValidateImageUpload();
 
-            if (imageViewModel.ImageUpload.ValidateImageUpload().ContainsKey("ModelError"))
+            if (imageValidation.ContainsKey("ModelError"))
             {
                 ModelState.AddModelError("ImageUpload", imageValidation["ModelError"]);
             }

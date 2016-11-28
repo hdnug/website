@@ -39,7 +39,7 @@
     {
         <tr>
             <td>
-                @item.ImageId
+                @item.Id
             </td>
             <td>
                 @item.Title
@@ -60,7 +60,7 @@
                 @item.CreatedDate.ToShortDateString()
             </td>
             <td>
-                @Html.ActionLink("Delete", "Delete", new { id = item.ImageId }, new
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new
                 {
                     onClick ="return confirm('Are you sure you want to delete this SliderImage?');" 
                 })

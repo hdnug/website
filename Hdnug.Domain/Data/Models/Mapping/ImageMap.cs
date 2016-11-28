@@ -7,7 +7,7 @@ namespace Hdnug.Domain.Data.Models.Mapping
         public ImageMap()
         {
             ToTable("Image");
-            HasKey(t => t.ImageId);
+            HasKey(t => t.Id);
         } 
     }
 }

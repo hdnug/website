@@ -9,7 +9,7 @@ namespace Hdnug.Domain.Data.Models.Queries
         {
             ContextQuery = context =>
             {
-                var slider = context.AsQueryable<Image>().Single(x => x.ImageId == id);
+                var slider = context.AsQueryable<Image>().Single(x => x.Id == id);
                 context.Remove(slider);
                 context.Commit();
             };

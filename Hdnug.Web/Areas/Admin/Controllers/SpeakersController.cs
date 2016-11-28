@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Hdnug.Domain.Data.Models;
 using Hdnug.Domain.Data.Models.Queries;
@@ -58,7 +55,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 Name = speaker.Name,
                 Phone = speaker.Phone,
                 WebSiteUrl = speaker.WebSiteUrl,
-                PhotoUrl = speaker.Photo.ImageUrl,
+                PhotoUrl = speaker.Photo != null ? speaker.Photo.ImageUrl : string.Empty,
                 Bio = speaker.Bio
             };
             return View(viewModel);
@@ -75,9 +72,9 @@ namespace Hdnug.Web.Areas.Admin.Controllers
         public ActionResult Create(SpeakerViewModel SpeakerViewModel)
         {
             var imageInfo = SpeakerViewModel.Name + " Photo";
-            var imageValidation = SpeakerViewModel.Photo.ValidateImage();
+            var imageValidation = SpeakerViewModel.Photo.ValidateImageUpload();
 
-            if (SpeakerViewModel.Photo.ValidateImageUpload().ContainsKey("ModelError"))
+            if (imageValidation.ContainsKey("ModelError"))
             {
                 ModelState.AddModelError("ImageUpload", imageValidation["ModelError"]);
             }
@@ -113,7 +110,8 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 Name = speaker.Name,
                 Phone = speaker.Phone,
                 WebSiteUrl = speaker.WebSiteUrl,
-                PhotoUrl = speaker.Photo.ImageUrl,
+                PhotoId = speaker.Photo != null ? speaker.Photo.Id : 0,
+                PhotoUrl = speaker.Photo?.ImageUrl,
                 Bio = speaker.Bio
             };
             return View(viewModel);
@@ -121,34 +119,63 @@ namespace Hdnug.Web.Areas.Admin.Controllers
 
         // POST: Speakers/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, SpeakerViewModel SpeakerViewModel)
+        public ActionResult Edit(int id, SpeakerViewModel speakerViewModel)
         {
-            var imageInfo = SpeakerViewModel.Name + " Photo";
-            var imageValidation = SpeakerViewModel.Photo.ValidateImage();
-
-            if (SpeakerViewModel.Photo.ValidateImageUpload().ContainsKey("ModelError"))
+            var imageInfo = speakerViewModel.Name + " Photo";
+            
+            if(speakerViewModel.Photo != null)
             {
-                ModelState.AddModelError("ImageUpload", imageValidation["ModelError"]);
+                var imageValidation = speakerViewModel.Photo.ValidateImageUpload();
+                if (imageValidation.ContainsKey("ModelError"))
+                {
+                    ModelState.AddModelError("ImageUpload", imageValidation["ModelError"]);
+                }
             }
 
             if (ModelState.IsValid)
             {
-                var url = SpeakerViewModel.Photo.SaveImageUpload(_serverMapPathProvider, Constants.SponsorUploadDir);
-                var Photo = new Image { Title = imageInfo, AltText = imageInfo, ImageType = ImageType.Profile, ImageUrl = url };
                 var speaker = _repository.Find(new GetSpeakerById(id));
 
-                speaker.Email = SpeakerViewModel.Email;
-                speaker.Name = SpeakerViewModel.Name;
-                speaker.Phone = SpeakerViewModel.Phone;
-                speaker.WebSiteUrl = SpeakerViewModel.WebSiteUrl;
-                speaker.Photo = Photo;
-                speaker.Bio = SpeakerViewModel.Bio;
+                speaker.Email = speakerViewModel.Email;
+                speaker.Name = speakerViewModel.Name;
+                speaker.Phone = speakerViewModel.Phone;
+                speaker.WebSiteUrl = speakerViewModel.WebSiteUrl;
+                speaker.Bio = speakerViewModel.Bio;
+
+                // Get existing image from database. 
+                var image = _repository.Find(new GetById<int, Image>(speakerViewModel.PhotoId));
+
+                // If image is cleared then we delete the image from the image store and set the speaker photo to null
+                if (speakerViewModel.ImageIsCleared)
+                {
+                    if(image != null)
+                    {
+                        image.DeleteImage(_serverMapPathProvider, Constants.SpeakerUploadDir);
+                    }
+                    image = null;
+                }
+
+                // Set image from viewModel. If the photo on the viewModel is not null then the user
+                // has changed the image from the screen so we overwrite the image retrieved from the database
+                if(speakerViewModel.Photo != null)
+                {
+                    var url = speakerViewModel.Photo.SaveImageUpload(_serverMapPathProvider, Constants.SpeakerUploadDir);
+                    var newImage = new Image { Title = imageInfo, AltText = imageInfo, ImageType = ImageType.Profile, ImageUrl = url };
+                    if(image != null)
+                    {
+                        image.DeleteImage(_serverMapPathProvider, Constants.SpeakerUploadDir);
+                    }
+                    image = newImage;
+                }
+                
+                // Set speaker photo to the existing image, no image, or the new image
+                speaker.Photo = image;
 
                 _repository.Context.Commit();
 
                 return RedirectToAction("Index");
             }
-            return View(SpeakerViewModel);
+            return View(speakerViewModel);
         }
 
         // GET: Speakers/Delete/5
@@ -158,7 +185,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             var speaker = _repository.Find(new GetSpeakerById(id));
 
             // TODO: Extension method should return error message when file could not be found or deleted
-            speaker.Photo.DeleteImage(_serverMapPathProvider, Constants.SponsorUploadDir, speaker.Photo.ImageUrl);
+            speaker.Photo.DeleteImage(_serverMapPathProvider, Constants.SponsorUploadDir);
 
             if (true)
             {

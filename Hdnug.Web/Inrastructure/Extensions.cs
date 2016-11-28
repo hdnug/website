@@ -9,18 +9,6 @@ namespace Hdnug.Web.Inrastructure
 {
     public static class Extensions
     {
-        public static Dictionary<string, string> ValidateImage(this HttpPostedFileBase postedImage)
-        {
-            var modelError = new Dictionary<string, string>();
-
-            if ((postedImage == null || postedImage.ContentLength == 0) && !Constants.ValidImageTypes.Contains(postedImage.ContentType))
-            {
-                modelError.Add("ModelError", "Please choose either a GIF, JPG or PNG image.");
-            }
-
-            return modelError;
-        }
-
         public static Dictionary<string, string> ValidateImageUpload(this HttpPostedFileBase postedImage)
         {
             var modelError = new Dictionary<string, string>();
@@ -48,13 +36,10 @@ namespace Hdnug.Web.Inrastructure
             return imageUrl;
         }
 
-        public static void DeleteImage(this Image imageFile, IProvideServerMapPath serverMapPathProvider, string uploadDir, string imageUrl)
+        public static void DeleteImage(this Image imageFile, IProvideServerMapPath serverMapPathProvider, string uploadDir)
         {
-            // TODO: Add file name property to image so this parse is not necessary
-            var fileName = imageUrl.Substring(imageUrl.LastIndexOf("/", System.StringComparison.Ordinal));
-
-            // BUG: image path is not being set correctly, so image is not being deleted
-            var imagePath = Path.Combine(serverMapPathProvider.MapPath(uploadDir), fileName);
+            var fileName = imageFile.ImageUrl.Substring(imageFile.ImageUrl.LastIndexOf("/", System.StringComparison.Ordinal));
+            var imagePath = Path.Combine(serverMapPathProvider.MapPath(uploadDir), Path.GetFileName(fileName.Replace("/", "\\")));
 
             if (File.Exists(imagePath))
             {

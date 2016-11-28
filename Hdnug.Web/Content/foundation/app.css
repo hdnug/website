@@ -16,6 +16,14 @@ body {
     font-family: "Source-Sans-Pro", sans-serif;
 }
 
+.img-container {
+    display: inline-block;
+}
+
+.figcaption-content {
+    text-align: center;
+}
+
 /* Home Page */
 .social-media-inline {
     margin: 0;
@@ -33,20 +41,20 @@ body {
     width: auto;
 }
 
-.event-date .event-month {
-    margin: 0;
-    background: #eee;
-    padding: 0.5rem 2rem;
-    text-align: center;
-}
+    .event-date .event-month {
+        margin: 0;
+        background: #eee;
+        padding: 0.5rem 2rem;
+        text-align: center;
+    }
 
-.event-date .event-day {
-    margin: 0;
-    border: 1px solid #eee;
-    padding: 0 2rem;
-    text-align: center;
-    font-size: 2rem;
-}
+    .event-date .event-day {
+        margin: 0;
+        border: 1px solid #eee;
+        padding: 0 2rem;
+        text-align: center;
+        font-size: 2rem;
+    }
 
 .event-desc {
     padding: 0 0 0 1rem;

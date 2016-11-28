@@ -12,8 +12,9 @@ namespace Hdnug.Web.Areas.Admin.Models.ViewModels
         public string TagLine { get; set; }
         public string SponsorMessage { get; set; }
         public string WebSiteUrl { get; set; }
-
+        public int LogoId { get; set; }
         public string LogoUrl { get; set; }
+        public bool ImageIsCleared { get; set; }
 
         public HttpPostedFileBase Logo { get; set; }
     }

@@ -1,5 +1,5 @@
 ﻿ul.k-pager-numbers.k-reset {
-    line-height: 32px
+    line-height: 32px;
 }
 
 tr.k-alt.k-state-selected {
@@ -8,11 +8,11 @@ tr.k-alt.k-state-selected {
 
 .header-info {
     display: table-cell;
-    vertical-align: bottom
+    vertical-align: bottom;
 }
 
 #right-side-header {
-    height: 205px
+    height: 205px;
 }
 
 .meeting-info {

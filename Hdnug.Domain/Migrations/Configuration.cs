@@ -56,10 +56,10 @@ namespace Hdnug.Domain.Migrations
             #endregion
 
             context.Images.AddOrUpdate(
-                i => i.ImageId,
+                i => i.Id,
                 new Image
                 {
-                    ImageId = 1,
+                    Id = 1,
                     Title = "My Title",
                     AltText = "AltText",
                     Caption = "My Clever Caption",
@@ -70,7 +70,7 @@ namespace Hdnug.Domain.Migrations
                 },
                 new Image
                 {
-                    ImageId = 2,
+                    Id = 2,
                     Title = "My Title",
                     AltText = "AltText",
                     Caption = "My Clever Caption",
@@ -81,7 +81,7 @@ namespace Hdnug.Domain.Migrations
                 },
                 new Image
                 {
-                    ImageId = 3,
+                    Id = 3,
                     Title = "My Title",
                     AltText = "AltText",
                     Caption = "My Clever Caption",
@@ -92,7 +92,7 @@ namespace Hdnug.Domain.Migrations
                 },
                 new Image
                 {
-                    ImageId = 4,
+                    Id = 4,
                     Title = "My Title",
                     AltText = "AltText",
                     Caption = "My Clever Caption",
@@ -103,7 +103,7 @@ namespace Hdnug.Domain.Migrations
                 },
                 new Image
                 {
-                    ImageId = 5,
+                    Id = 5,
                     Title = "My Title",
                     AltText = "AltText",
                     Caption = "My Clever Caption",
@@ -114,7 +114,7 @@ namespace Hdnug.Domain.Migrations
                 },
                 new Image
                 {
-                    ImageId = 6,
+                    Id = 6,
                     Title = "My Title",
                     AltText = "AltText",
                     Caption = "My Clever Caption",
@@ -125,7 +125,7 @@ namespace Hdnug.Domain.Migrations
                 },
                 new Image
                 {
-                    ImageId = 7,
+                    Id = 7,
                     Title = "My Title",
                     AltText = "AltText",
                     Caption = "My Clever Caption",
@@ -136,7 +136,7 @@ namespace Hdnug.Domain.Migrations
                 },
                 new Image
                 {
-                    ImageId = 8,
+                    Id = 8,
                     Title = "My Title",
                     AltText = "AltText",
                     Caption = "My Clever Caption",
@@ -147,7 +147,7 @@ namespace Hdnug.Domain.Migrations
                 },
                 new Image
                 {
-                    ImageId = 9,
+                    Id = 9,
                     Title = "My Title",
                     AltText = "AltText",
                     Caption = "My Clever Caption",
@@ -158,7 +158,7 @@ namespace Hdnug.Domain.Migrations
                 },
                 new Image
                 {
-                    ImageId = 10,
+                    Id = 10,
                     Title = "My Title",
                     AltText = "AltText",
                     Caption = "My Clever Caption",
@@ -169,7 +169,7 @@ namespace Hdnug.Domain.Migrations
                 },
                 new Image
                 {
-                    ImageId = 11,
+                    Id = 11,
                     Title = "My Title",
                     AltText = "AltText",
                     Caption = "My Clever Caption",
@@ -180,7 +180,7 @@ namespace Hdnug.Domain.Migrations
                 },
                 new Image
                 {
-                    ImageId = 12,
+                    Id = 12,
                     Title = "My Title",
                     AltText = "AltText",
                     Caption = "My Clever Caption",
@@ -191,7 +191,7 @@ namespace Hdnug.Domain.Migrations
                 },
                 new Image
                 {
-                    ImageId = 13,
+                    Id = 13,
                     Title = "My Title",
                     AltText = "AltText",
                     Caption = "My Clever Caption",
@@ -202,7 +202,7 @@ namespace Hdnug.Domain.Migrations
                 },
                 new Image
                 {
-                    ImageId = 14,
+                    Id = 14,
                     Title = "My Title",
                     AltText = "AltText",
                     Caption = "My Clever Caption",
@@ -213,7 +213,7 @@ namespace Hdnug.Domain.Migrations
                 },
                 new Image
                 {
-                    ImageId = 15,
+                    Id = 15,
                     Title = "My Title",
                     AltText = "AltText",
                     Caption = "My Clever Caption",
@@ -296,7 +296,7 @@ namespace Hdnug.Domain.Migrations
                 {
                     Id = 1,
                     Name = "Improving Enterprises",
-                    Logo = context.Images.Single(t => t.ImageId == 1),
+                    Logo = context.Images.Single(t => t.Id == 1),
                     Contact = "Christina Liles",
                     Email = "christina.liles@improvingenterprises.com",
                     Phone = "555-555-5555",
@@ -309,7 +309,7 @@ namespace Hdnug.Domain.Migrations
                 {
                     Id = 2,
                     Name = "Whitaker IT",
-                    Logo = context.Images.Single(t => t.ImageId == 2),
+                    Logo = context.Images.Single(t => t.Id == 2),
                     Contact = "Lisa Gibbons",
                     Email = "lgibbons@whitaker.com",
                     Phone = "555-555-5555",
@@ -322,7 +322,7 @@ namespace Hdnug.Domain.Migrations
                 {
                     Id = 3,
                     Name = "Waste Management",
-                    Logo = context.Images.Single(t => t.ImageId == 3),
+                    Logo = context.Images.Single(t => t.Id == 3),
                     Contact = "Oscar Grouch",
                     Email = "oscar.grouch@wastemanagement.com",
                     Phone = "555-555-5555",
@@ -335,7 +335,7 @@ namespace Hdnug.Domain.Migrations
                 {
                     Id = 4,
                     Name = "Strategic Careers",
-                    Logo = context.Images.Single(t => t.ImageId == 4),
+                    Logo = context.Images.Single(t => t.Id == 4),
                     Contact = "Brad Jefferson",
                     Email = "bradJ@strategic.com",
                     Phone = "555-555-5555",
@@ -348,7 +348,7 @@ namespace Hdnug.Domain.Migrations
                 {
                     Id = 5,
                     Name = "O'reilly",
-                    Logo = context.Images.Single(t => t.ImageId == 5),
+                    Logo = context.Images.Single(t => t.Id == 5),
                     Contact = "Bill Bixby",
                     Email = "bb@gmail.com",
                     Phone = "555-555-5555",
@@ -360,7 +360,7 @@ namespace Hdnug.Domain.Migrations
                 {
                     Id = 6,
                     Name = "PluralSite",
-                    Logo = context.Images.Single(t => t.ImageId == 6),
+                    Logo = context.Images.Single(t => t.Id == 6),
                     Contact = "Brad Jefferson",
                     Email = "bradJ@strategic.com",
                     Phone = "555-555-5555",
@@ -372,7 +372,7 @@ namespace Hdnug.Domain.Migrations
                 {
                     Id = 7,
                     Name = "Microsoft",
-                    Logo = context.Images.Single(t => t.ImageId == 7),
+                    Logo = context.Images.Single(t => t.Id == 7),
                     Contact = "Brad Jefferson",
                     Email = "bradJ@strategic.com",
                     Phone = "555-555-5555",
@@ -384,7 +384,7 @@ namespace Hdnug.Domain.Migrations
                 {
                     Id = 8,
                     Name = "Amazon",
-                    Logo = context.Images.Single(t => t.ImageId == 8),
+                    Logo = context.Images.Single(t => t.Id == 8),
                     Contact = "Brad Jefferson",
                     Email = "bradJ@strategic.com",
                     Phone = "555-555-5555",
@@ -471,7 +471,7 @@ namespace Hdnug.Domain.Migrations
                     Name = "Bob Martin",
                     Email = "unclebob@objectmentor.com",
                     Phone = "555-555-5555",
-                    Photo = context.Images.Single(t => t.ImageId == 9),
+                    Photo = context.Images.Single(t => t.Id == 9),
                     Bio = "Me, me, me....all about me!",
                     WebSiteUrl = "www.myblog.com",
                     PresentationId = 1
@@ -482,7 +482,7 @@ namespace Hdnug.Domain.Migrations
                     Name = "Scott Guthrie",
                     Email = "scottgnu@microsoft.com",
                     Phone = "555-555-5555",
-                    Photo = context.Images.Single(t => t.ImageId == 10),
+                    Photo = context.Images.Single(t => t.Id == 10),
                     Bio = "Me, me, me....all about me!...Me too!",
                     WebSiteUrl = "www.myblog.com",
                     PresentationId = 2
@@ -493,7 +493,7 @@ namespace Hdnug.Domain.Migrations
                     Name = "Scott Hanselman",
                     Email = "scott@hanselman.com",
                     Phone = "555-555-5555",
-                    Photo = context.Images.Single(t => t.ImageId == 11),
+                    Photo = context.Images.Single(t => t.Id == 11),
                     Bio = "Me, me, me....all about me!...Me too!...Ha-ha-ha!!!!",
                     WebSiteUrl = "www.myblog.com",
                     PresentationId = 3

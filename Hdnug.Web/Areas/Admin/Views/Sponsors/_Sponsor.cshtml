@@ -59,13 +59,51 @@
 @if (!string.IsNullOrEmpty(Model.LogoUrl))
 {
     <div class="form-group">
-        <img src="@Url.Content(Model.LogoUrl)" style="min-width: 150px; max-width: 200px; margin-bottom: 12px" />
+        <label>Logo</label>
+        <div class="float-left">
+            <img id="pic" src="@Url.Content(Model.LogoUrl)" style="width: 150px; margin-bottom: 10px" />
+            <div>
+                <label for="Logo" class="small button" style="width: 48%">Change</label>
+                <input id="Logo" name="Logo" class="show-for-sr" type="file" />
+                <button id="clearButton" class="small button secondary" style="width: 48%">Clear</button>
+            </div>
+        </div>
+        <div id="fileName" style="float: left; margin-left: 10px"></div>
+        <div class="clearfix"></div>
+    </div>
+}
+else
+{
+    <div class="form-group">
+        <label>Logo</label>
+        <div class="float-left">
+            <img src="http://placehold.it/200x100" style="width: 200px; margin-bottom: 10px" />
+            <div>
+                <label for="Logo" class="small button" style="width: 100%">Upload</label>
+                <input id="Logo" name="Logo" class="show-for-sr" type="file" />
+            </div>
+        </div>
+        <div id="fileName" style="float: left; margin-left: 10px"></div>
+        <div class="clearfix"></div>
     </div>
 }
 
-<div class="form-group">
-    <div class="panel">
-        <label for="Logo" class="button">Upload Image</label>
-        <input id="Logo" name="Logo" class="show-for-sr" type="file" />
-    </div>
-</div>
+@Html.HiddenFor(x => x.LogoId)
+@Html.HiddenFor(x => x.ImageIsCleared)
+<script>
+        function updateName() {
+            var fileName = document.getElementById("Logo").files[0].name;
+            document.getElementById("fileName").innerHTML = fileName;
+        }
+        function clearImage(e) {
+            e.preventDefault();
+            document.getElementById("pic").src = "http://placehold.it/200x100"
+            document.getElementById("ImageIsCleared").setAttribute("value", true);
+        }
+        document.getElementById('Logo').addEventListener('change', updateName, false);
+        var clearButton = document.getElementById('clearButton');
+        if (clearButton !== null) {
+            clearButton.addEventListener('click', clearImage, false);
+        }
+
+</script>

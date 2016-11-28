@@ -12,7 +12,9 @@ namespace Hdnug.Web.Areas.Admin.Models.ViewModels
         public string Phone { get; set; }
         public string Bio { get; set; }
         public string WebSiteUrl { get; set; }
+        public int PhotoId { get; set; }
         public string PhotoUrl { get; set; }
+        public bool ImageIsCleared { get; set; }
 
         public HttpPostedFileBase Photo { get; set; }
         public virtual ICollection<Presentation> Presentations { get; set; }

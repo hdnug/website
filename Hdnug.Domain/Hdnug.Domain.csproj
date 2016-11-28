@@ -184,6 +184,10 @@
     <Compile Include="Migrations\201611252300237_UpdatePresentationDateFields.Designer.cs">
       <DependentUpon>201611252300237_UpdatePresentationDateFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611272248122_UpdateImageId.cs" />
+    <Compile Include="Migrations\201611272248122_UpdateImageId.Designer.cs">
+      <DependentUpon>201611272248122_UpdateImageId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -230,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611252300237_UpdatePresentationDateFields.resx">
       <DependentUpon>201611252300237_UpdatePresentationDateFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611272248122_UpdateImageId.resx">
+      <DependentUpon>201611272248122_UpdateImageId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

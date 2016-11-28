@@ -1,8 +1,9 @@
+using Highway.Data;
 using System;
 
 namespace Hdnug.Domain.Data.Models
 {
-    public class Image
+    public class Image : IIdentifiable<int>
     {
         public Image()
         {
@@ -10,7 +11,7 @@ namespace Hdnug.Domain.Data.Models
 
         public Image(Image image)
         {
-            ImageId = image.ImageId;
+            Id = image.Id;
             Title = image.Title;
             AltText = image.AltText;
             Caption = image.Caption;
@@ -21,7 +22,7 @@ namespace Hdnug.Domain.Data.Models
             CreatedDate = image.CreatedDate;
         }
 
-        public int ImageId { get; set; }
+        public int Id { get; set; }
 
         public string Title { get; set; }
 

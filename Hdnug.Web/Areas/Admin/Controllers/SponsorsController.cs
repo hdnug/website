@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using Hdnug.Domain.Data.Models;
 using Hdnug.Domain.Data.Models.Queries;
@@ -63,7 +60,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 TagLine = sponsor.TagLine,
                 SponsorMessage = sponsor.SponsorMessage,
                 WebSiteUrl = sponsor.WebSiteUrl,
-                LogoUrl = sponsor.Logo.ImageUrl
+                LogoUrl = sponsor.Logo != null ? sponsor.Logo.ImageUrl : string.Empty,
             };
             return View(viewModel);
         }
@@ -79,9 +76,9 @@ namespace Hdnug.Web.Areas.Admin.Controllers
         public ActionResult Create(SponsorViewModel sponsorViewModel)
         {
             var imageInfo = sponsorViewModel.Name + " Logo";
-            var imageValidation = sponsorViewModel.Logo.ValidateImage();
+            var imageValidation = sponsorViewModel.Logo.ValidateImageUpload();
 
-            if (sponsorViewModel.Logo.ValidateImageUpload().ContainsKey("ModelError"))
+            if (imageValidation.ContainsKey("ModelError"))
             {
                 ModelState.AddModelError("ImageUpload", imageValidation["ModelError"]);
             }
@@ -122,7 +119,8 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 TagLine = sponsor.TagLine,
                 SponsorMessage = sponsor.SponsorMessage,
                 WebSiteUrl = sponsor.WebSiteUrl,
-                LogoUrl = sponsor.Logo.ImageUrl
+                LogoId = sponsor.Logo != null ? sponsor.Logo.Id : 0,
+                LogoUrl = sponsor.Logo?.ImageUrl
             };
             return View(viewModel);
         }
@@ -132,17 +130,18 @@ namespace Hdnug.Web.Areas.Admin.Controllers
         public ActionResult Edit(int id, SponsorViewModel sponsorViewModel)
         {
             var imageInfo = sponsorViewModel.Name + " Logo";
-            var imageValidation = sponsorViewModel.Logo.ValidateImage();
 
-            if (sponsorViewModel.Logo.ValidateImageUpload().ContainsKey("ModelError"))
+            if (sponsorViewModel.Logo != null)
             {
-                ModelState.AddModelError("ImageUpload", imageValidation["ModelError"]);
+                var imageValidation = sponsorViewModel.Logo.ValidateImageUpload();
+                if (imageValidation.ContainsKey("ModelError"))
+                {
+                    ModelState.AddModelError("ImageUpload", imageValidation["ModelError"]);
+                }
             }
 
             if (ModelState.IsValid)
             {
-                var url = sponsorViewModel.Logo.SaveImageUpload(_serverMapPathProvider, Constants.SponsorUploadDir);
-                var logo = new Image { Title = imageInfo, AltText = imageInfo, ImageType = ImageType.Logo, ImageUrl = url };
                 var sponsor = _repository.Find(new GetSponsorById(id));
 
                 sponsor.Contact = sponsorViewModel.Contact;
@@ -152,7 +151,35 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 sponsor.TagLine = sponsorViewModel.TagLine;
                 sponsor.SponsorMessage = sponsorViewModel.SponsorMessage;
                 sponsor.WebSiteUrl = sponsorViewModel.WebSiteUrl;
-                sponsor.Logo = logo;
+
+                // Get existing image from database. 
+                var image = _repository.Find(new GetById<int, Image>(sponsorViewModel.LogoId));
+
+                // If image is cleared then we delete the image from the image store and set the sponsor logo to null
+                if (sponsorViewModel.ImageIsCleared)
+                {
+                    if (image != null)
+                    {
+                        image.DeleteImage(_serverMapPathProvider, Constants.SponsorUploadDir);
+                    }
+                    image = null;
+                }
+
+                // Set image from viewModel. If the logo on the viewModel is not null then the user
+                // has changed the image from the screen so we overwrite the image retrieved from the database
+                if (sponsorViewModel.Logo != null)
+                {
+                    var url = sponsorViewModel.Logo.SaveImageUpload(_serverMapPathProvider, Constants.SponsorUploadDir);
+                    var newImage = new Image { Title = imageInfo, AltText = imageInfo, ImageType = ImageType.Profile, ImageUrl = url };
+                    if (image != null)
+                    {
+                        image.DeleteImage(_serverMapPathProvider, Constants.SponsorUploadDir);
+                    }
+                    image = newImage;
+                }
+
+                // Set speaker photo to the existing image, no image, or the new image
+                sponsor.Logo = image;
 
                 _repository.Context.Commit();
 
@@ -168,7 +195,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             var sponsor = _repository.Find(new GetSponsorById(id));
 
             // TODO: Extension method should return error message when file could not be found or deleted
-            sponsor.Logo.DeleteImage(_serverMapPathProvider, Constants.SponsorUploadDir, sponsor.Logo.ImageUrl);
+            sponsor.Logo.DeleteImage(_serverMapPathProvider, Constants.SponsorUploadDir);
 
             if (true)
             {
