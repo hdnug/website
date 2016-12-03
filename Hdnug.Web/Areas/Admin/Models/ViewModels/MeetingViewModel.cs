@@ -12,9 +12,14 @@ namespace Hdnug.Web.Areas.Admin.Models.ViewModels
         public string Description { get; set; }
         public DateTime MeetingStartDateTime { get; set; } = DateTime.Today;
         public DateTime MeetingEndDateTime { get; set; } = DateTime.Today;
-        public string Location { get; set; }
-        public int[] SelectedSponsors { get; set; }
-        public int[] SelectedPresentations { get; set; }
+        public string LocationName { get; set; } = "Microsoft Technology Center - Houston";
+        public string LocationAddress1 { get; set; } = "Suite 1000";
+        public string LocationAddress2 { get; set; } = "750 Town and Country Blvd.";
+        public string LocationCity { get; set; } = "Houston";
+        public string LocationState { get; set; } = "TX";
+        public string LocationZip { get; set; } = "77024";
+        public List<int> SelectedSponsors { get; set; } = new List<int>();
+        public List<int> SelectedPresentations { get; set; } = new List<int>();
 
         public ICollection<Sponsor> Sponsors { get; set; } = new List<Sponsor>();
         public ICollection<Presentation> Presentations { get; set; } = new List<Presentation>(); 

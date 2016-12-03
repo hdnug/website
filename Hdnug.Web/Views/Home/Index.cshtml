@@ -9,12 +9,14 @@
     <style>
     </style>
 }
-<div class="orbit" data-orbit style="margin-bottom: 10px">
+<div class="orbit" data-orbit data-options="animInFromLeft:fade-in; animInFromRight:fade-in; animOutToLeft:fade-out; animOutToRight:fade-out;" style="margin-bottom: 10px; max-height: 350px; overflow: hidden">
+    <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
+    <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
     <ul class="orbit-container">
         @foreach (var image in Model.SliderImages)
             {
             <li class="orbit-slide is-active">
-                <img class="orbit-image" src="@image.ImageUrl" alt="@image.AltText" height="@image.Height" width="@image.Width" />
+                <img class="orbit-image" src="@Url.Content(image.ImageUrl)" alt="@image.AltText" height="300" width="1000" />
                 <figcaption class="orbit-caption">@image.Caption</figcaption>
             </li>
         }
@@ -35,41 +37,44 @@
         </div>
         <div class="row">
             <div class="small-12 columns">
-                @foreach (var meeting in Model.Meetings)
+                @if (Model.Meetings.Any())
                 {
-                    if (meeting.Presentations.Any())
+                    foreach (var meeting in Model.Meetings)
                     {
-                        var counter = 0;
-                        foreach (var presentation in meeting.Presentations)
+                        if (meeting.Presentations.Any())
                         {
-                            counter++;
-                            <article class="event">
-                                <div>
-                                    <div class="event-date">
-                                        <p class="event-month">@presentation.PresentationStartDateTime.ToString("MMM")</p>
-                                        <p class="event-day">@presentation.PresentationStartDateTime.ToString("dd")</p>
-                                    </div>
-                                </div>
-                                <div class="event-desc">
-                                    <h4>
-                                        @(Html.RouteLink(presentation.Title, new { controller = "Meetings", action = "Details", meetingId = presentation.MeetingId, id = presentation.Id }))
-                                    </h4>
-                                    <p>@presentation.Description.TrimEndIfLongerThan(175)</p>
-                                </div>
-                            </article>
-
-                            if (counter < Model.Meetings.Count())
+                            var counter = 0;
+                            foreach (var presentation in meeting.Presentations)
                             {
-                                <hr />
+                                counter++;
+                                <article class="event">
+                                    <div>
+                                        <div class="event-date">
+                                            <p class="event-month">@presentation.PresentationStartDateTime.ToString("MMM")</p>
+                                            <p class="event-day">@presentation.PresentationStartDateTime.ToString("dd")</p>
+                                        </div>
+                                    </div>
+                                    <div class="event-desc">
+                                        <h4>
+                                            @(Html.RouteLink(presentation.Title, new { controller = "Meetings", action = "Details", meetingId = presentation.MeetingId, id = presentation.Id }))
+                                        </h4>
+                                        <p>@presentation.Description.TrimEndIfLongerThan(175)</p>
+                                    </div>
+                                </article>
+
+                                if (counter < Model.Meetings.Count())
+                                {
+                                    <hr />
+                                }
                             }
                         }
                     }
-                    else
-                    {
-                        <article>
-                            <p> No Meetings: (</p>
-                        </article>
-                    }
+                }
+                else
+                {
+                    <article>
+                        <p> No Meetings :(</p>
+                    </article>
                 }
             </div>
         </div>

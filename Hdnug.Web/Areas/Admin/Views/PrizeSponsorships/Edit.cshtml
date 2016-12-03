@@ -4,15 +4,13 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>@Model.SponsorName</h2>
-
+<h3>@Model.SponsorName</h3>
+<hr/>
 @using (Html.BeginForm("Edit", "PrizeSponsorships", FormMethod.Post, new { enctype = "mutlipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Edit Prize Sponsorship</h4>
-        <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.Id)
 

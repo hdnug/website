@@ -1,0 +1,66 @@
+﻿@model Hdnug.Web.Areas.Admin.Models.ViewModels.PresentationViewModel
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PresentationStartDateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PresentationStartDateTime, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PresentationStartDateTime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PresentationEndDateTime, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.PresentationEndDateTime, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PresentationEndDateTime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.Label("speakers", "Speakers")
+        <div class="col-md-10">
+            @Html.ListBoxFor(model => model.SelectedSpeakers, new MultiSelectList(Model.Speakers, "Id", "Name", Model.SelectedSpeakers), new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var today = new Date();
+            $("#PresentationStartDateTime").kendoDateTimePicker({
+                format: "MM/dd/yyyy h:mm tt"
+            });
+            $("#PresentationEndDateTime").kendoDateTimePicker({
+                format: "MM/dd/yyyy h:mm tt"
+            });
+
+            $("#SelectedSpeakers").kendoMultiSelect({
+                placeholder: "Select a sponsor"
+            });
+        });
+    </script>

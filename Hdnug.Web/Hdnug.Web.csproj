@@ -238,6 +238,9 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminAreaBaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PresentationsController.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\MeetingListViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ViewModels\PresentationViewModel.cs" />
     <Compile Include="Code\Extensions.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -713,6 +716,11 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Presentations\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Presentations\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Presentations\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Presentations\_Presentation.cshtml" />
+    <Content Include="Areas\Admin\Views\Presentations\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\Hdnug - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\fastclick.js" />
@@ -1322,9 +1330,7 @@
     <Content Include="Areas\Admin\Views\Slider\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Slider\Create.cshtml" />
     <Content Include="Views\NextMeeting\_NextMeeting.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\_Upload.cshtml" />
     <Content Include="Areas\Admin\Views\Meetings\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Meetings\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Meetings\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Meetings\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Meetings\Index.cshtml" />

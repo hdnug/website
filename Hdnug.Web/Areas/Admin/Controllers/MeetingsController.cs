@@ -20,8 +20,12 @@ namespace Hdnug.Web.Areas.Admin.Controllers
         // GET: Meetings
         public ActionResult Index()
         {
-            // TODO: Don't use Meeting; transform to MeetingViewModel instead.
-            return View(_repo.Find(new FindAll<Meeting>()).ToList());
+            var meetings = _repo.Find(new FindAll<Meeting>()).ToList();
+            var viewModel = new MeetingListViewModel
+            {
+                Meetings = meetings
+            };
+            return View(viewModel);
         }
 
         // GET: Meetings/Details/5
@@ -31,39 +35,72 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Meeting meeting = _repo.Find(new GetById<int, Meeting>((int)id));
+            var meeting = _repo.Find(new GetMeetingById((int)id));
+            var viewModel = new MeetingViewModel
+            {
+                Id = meeting.Id,
+                Title = meeting.Title,
+                Description = meeting.Description,
+                MeetingStartDateTime = meeting.MeetingStartDateTime,
+                MeetingEndDateTime = meeting.MeetingEndDateTime,
+                LocationName = meeting.LocationName,
+                LocationAddress1 = meeting.LocationAddress1,
+                LocationAddress2 = meeting.LocationAddress2,
+                LocationCity = meeting.LocationCity,
+                LocationState = meeting.LocationState,
+                LocationZip = meeting.LocationZip,
+                Sponsors = meeting.Sponsors,
+                Presentations = meeting.Presentations
+            };
             if (meeting == null)
             {
                 return HttpNotFound();
             }
-            return View(meeting);
+            return View(viewModel);
         }
 
         // GET: Meetings/Create
         public ActionResult Create()
         {
-            // TODO: This needs some work here
             var sponsors = _repo.Find(new FindAll<Sponsor>()).ToList();
             var presentations = _repo.Find(new FindAll<Presentation>()).ToList();
-            var viewModel = new MeetingViewModel { Sponsors = sponsors, Presentations = presentations};
+            var viewModel = new MeetingViewModel { Sponsors = sponsors, Presentations = presentations };
             return View(viewModel);
         }
 
         // POST: Meetings/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Description,MeetingStartDateTime,MeetingEndDateTime,Location")] Meeting meeting)
+        public ActionResult Create(MeetingViewModel meetingViewModel)
         {
             if (ModelState.IsValid)
             {
+                var sponsors = _repo.Find(new GetSponsorsByIds(meetingViewModel.SelectedSponsors.ToArray())).ToList();
+                var presentations = _repo.Find(new GetPresentationsByIds(meetingViewModel.SelectedPresentations.ToArray())).ToList();
+                var meeting = new Meeting
+                {
+                    Id = meetingViewModel.Id,
+                    Title = meetingViewModel.Title,
+                    Description = meetingViewModel.Description,
+                    MeetingStartDateTime = meetingViewModel.MeetingStartDateTime,
+                    MeetingEndDateTime = meetingViewModel.MeetingEndDateTime,
+                    LocationName = meetingViewModel.LocationName,
+                    LocationAddress1 = meetingViewModel.LocationAddress1,
+                    LocationAddress2 = meetingViewModel.LocationAddress2,
+                    LocationCity = meetingViewModel.LocationCity,
+                    LocationState = meetingViewModel.LocationState,
+                    LocationZip = meetingViewModel.LocationZip,
+                    Sponsors = sponsors,
+                    Presentations = presentations
+                };
                 _repo.Context.Add(meeting);
                 _repo.Context.Commit();
                 return RedirectToAction("Index");
             }
+            meetingViewModel.Presentations = _repo.Find(new FindAll<Presentation>()).ToList();
+            meetingViewModel.Sponsors = _repo.Find(new FindAll<Sponsor>()).ToList();
 
-            return View(meeting);
+            return View(meetingViewModel);
         }
 
         // GET: Meetings/Edit/5
@@ -87,68 +124,64 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 Id = meeting.Id,
                 Title = meeting.Title,
                 Description = meeting.Description,
-                Location = meeting.LocationName,
+                LocationName = meeting.LocationName,
+                LocationAddress1 = meeting.LocationAddress1,
+                LocationAddress2 = meeting.LocationAddress2,
+                LocationCity = meeting.LocationCity,
+                LocationState = meeting.LocationState,
+                LocationZip = meeting.LocationZip,
                 MeetingStartDateTime = meeting.MeetingStartDateTime,
                 MeetingEndDateTime = meeting.MeetingEndDateTime,
-                SelectedPresentations = meeting.Presentations.Select(x => x.Id).ToArray(),
-                SelectedSponsors = meeting.Sponsors.Select(x => x.Id).ToArray(),
                 Presentations = presentations,
-                Sponsors = sponsors
+                Sponsors = sponsors,
             };
+            meetingViewModel.SelectedPresentations.AddRange(meeting.Presentations.Select(x => x.Id));
+            meetingViewModel.SelectedSponsors.AddRange(meeting.Sponsors.Select(x => x.Id));
 
             return View(meetingViewModel);
         }
 
         // POST: Meetings/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(
-            [Bind(Include = "Id,Title,Description,MeetingDate,MeetingStartDateTime,MeetingEndDateTime,Location")] Meeting meeting
-            )
+        public ActionResult Edit(MeetingViewModel meetingViewModel)
         {
+            var meeting = _repo.Find(new GetMeetingById(meetingViewModel.Id));
             if (ModelState.IsValid)
             {
-                var m = _repo.Find(new GetById<int, Meeting>(meeting.Id));
-
-                m.Title = meeting.Title;
-                m.Description = meeting.Description;
-                m.LocationName = meeting.LocationName;
-                m.MeetingEndDateTime = meeting.MeetingEndDateTime;
-                m.MeetingStartDateTime = meeting.MeetingStartDateTime;
-
-                // TODO: update Sponsors and Presentations
+                var sponsors = _repo.Find(new GetSponsorsByIds(meetingViewModel.SelectedSponsors.ToArray())).ToList();
+                var presentations = _repo.Find(new GetPresentationsByIds(meetingViewModel.SelectedPresentations.ToArray())).ToList();
+                meeting.Title = meetingViewModel.Title;
+                meeting.Description = meetingViewModel.Description;
+                meeting.LocationName = meetingViewModel.LocationName;
+                meeting.LocationAddress1 = meetingViewModel.LocationAddress1;
+                meeting.LocationAddress2 = meetingViewModel.LocationAddress2;
+                meeting.LocationCity = meetingViewModel.LocationCity;
+                meeting.LocationState = meetingViewModel.LocationState;
+                meeting.LocationZip = meetingViewModel.LocationZip;
+                meeting.MeetingEndDateTime = meetingViewModel.MeetingEndDateTime;
+                meeting.MeetingStartDateTime = meetingViewModel.MeetingStartDateTime;
+                meeting.Sponsors = sponsors;
+                meeting.Presentations = presentations;
 
                 _repo.Context.Commit();
                 return RedirectToAction("Index");
             }
-            return View(meeting);
-        }
-
-        // GET: Meetings/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Meeting meeting = _repo.Find(new GetById<int, Meeting>((int)id));
-            if (meeting == null)
-            {
-                return HttpNotFound();
-            }
-            return View(meeting);
+            var allPresentations = _repo.Find(new FindAll<Presentation>()).ToList();
+            var allSponsors = _repo.Find(new FindAll<Sponsor>()).ToList();
+            meetingViewModel.Presentations = allPresentations;
+            meetingViewModel.Sponsors = allSponsors;
+            meetingViewModel.SelectedPresentations.AddRange(allPresentations.Select(x => x.Id).Except(meetingViewModel.SelectedPresentations));
+            meetingViewModel.SelectedSponsors.AddRange(allSponsors.Select(x => x.Id).Except(meetingViewModel.SelectedSponsors));
+            return View(meetingViewModel);
         }
 
         // POST: Meetings/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Delete(int id)
         {
-            Meeting meeting = _repo.Find(new GetById<int, Meeting>((int)id));
-            _repo.Context.Remove(meeting);
-            _repo.Context.Commit();
+            _repo.Execute(new RemoveMeetingById(id));
             return RedirectToAction("Index");
         }
     }

@@ -60,167 +60,29 @@ namespace Hdnug.Domain.Migrations
                 new Image
                 {
                     Id = 1,
-                    Title = "My Title",
-                    AltText = "AltText",
-                    Caption = "My Clever Caption",
-                    Height = 400,
-                    Width = 1000,
-                    ImageType = ImageType.Logo,
-                    ImageUrl = "Content/Images/Sponsor/improving1.png"
+                    Title = "Dot Net Rocks in Houston with Venkat",
+                    AltText = "Dot Net Rocks in Houston with Venkat",
+                    Caption = "Dot Net Rocks in Houston with Venkat",
+                    ImageType = ImageType.Slider,
+                    ImageUrl = "~/Content/Images/Site/IMG_0117.jpg"
                 },
                 new Image
                 {
                     Id = 2,
-                    Title = "My Title",
-                    AltText = "AltText",
-                    Caption = "My Clever Caption",
-                    Height = 400,
-                    Width = 1000,
-                    ImageType = ImageType.Logo,
-                    ImageUrl = "Content/Images/Sponsor/improving2.png"
+                    Title = "June Meeting",
+                    AltText = "June Meeting",
+                    Caption = "June Meeting",
+                    ImageType = ImageType.Slider,
+                    ImageUrl = "~/Content/Images/Site/IMG_1626.jpg"
                 },
                 new Image
                 {
                     Id = 3,
-                    Title = "My Title",
-                    AltText = "AltText",
-                    Caption = "My Clever Caption",
-                    Height = 400,
-                    Width = 1000,
-                    ImageType = ImageType.Logo,
-                    ImageUrl = "Content/Images/Sponsor/improving3.png"
-                },
-                new Image
-                {
-                    Id = 4,
-                    Title = "My Title",
-                    AltText = "AltText",
-                    Caption = "My Clever Caption",
-                    Height = 400,
-                    Width = 1000,
-                    ImageType = ImageType.Logo,
-                    ImageUrl = "Content/Images/Sponsor/improving4.png"
-                },
-                new Image
-                {
-                    Id = 5,
-                    Title = "My Title",
-                    AltText = "AltText",
-                    Caption = "My Clever Caption",
-                    Height = 400,
-                    Width = 1000,
-                    ImageType = ImageType.Logo,
-                    ImageUrl = "Content/Images/Sponsor/improving5.png"
-                },
-                new Image
-                {
-                    Id = 6,
-                    Title = "My Title",
-                    AltText = "AltText",
-                    Caption = "My Clever Caption",
-                    Height = 400,
-                    Width = 1000,
-                    ImageType = ImageType.Logo,
-                    ImageUrl = "Content/Images/Sponsor/improving6.png"
-                },
-                new Image
-                {
-                    Id = 7,
-                    Title = "My Title",
-                    AltText = "AltText",
-                    Caption = "My Clever Caption",
-                    Height = 400,
-                    Width = 1000,
-                    ImageType = ImageType.Logo,
-                    ImageUrl = "Content/Images/Sponsor/improving7.png"
-                },
-                new Image
-                {
-                    Id = 8,
-                    Title = "My Title",
-                    AltText = "AltText",
-                    Caption = "My Clever Caption",
-                    Height = 400,
-                    Width = 1000,
-                    ImageType = ImageType.Profile,
-                    ImageUrl = "Content/Images/Sponsor/improving8.png"
-                },
-                new Image
-                {
-                    Id = 9,
-                    Title = "My Title",
-                    AltText = "AltText",
-                    Caption = "My Clever Caption",
-                    Height = 400,
-                    Width = 1000,
-                    ImageType = ImageType.Profile,
-                    ImageUrl = "Content/Images/Sponsor/improving9.png"
-                },
-                new Image
-                {
-                    Id = 10,
-                    Title = "My Title",
-                    AltText = "AltText",
-                    Caption = "My Clever Caption",
-                    Height = 400,
-                    Width = 1000,
-                    ImageType = ImageType.Profile,
-                    ImageUrl = "Content/Images/Sponsor/improvin10.png"
-                },
-                new Image
-                {
-                    Id = 11,
-                    Title = "My Title",
-                    AltText = "AltText",
-                    Caption = "My Clever Caption",
-                    Height = 400,
-                    Width = 1000,
-                    ImageType = ImageType.Profile,
-                    ImageUrl = "Content/Images/Sponsor/improving11.png"
-                },
-                new Image
-                {
-                    Id = 12,
-                    Title = "My Title",
-                    AltText = "AltText",
-                    Caption = "My Clever Caption",
-                    Height = 400,
-                    Width = 1000,
-                    ImageType = ImageType.Profile,
-                    ImageUrl = "Content/Images/Sponsor/improving12.png"
-                },
-                new Image
-                {
-                    Id = 13,
-                    Title = "My Title",
-                    AltText = "AltText",
-                    Caption = "My Clever Caption",
-                    Height = 300,
-                    Width = 1000,
+                    Title = "Discussion Panel",
+                    AltText = "Discussion Panel",
+                    Caption = "Discussion Panel",
                     ImageType = ImageType.Slider,
-                    ImageUrl = "Content/Images/Site/IMG_0117.jpg"
-                },
-                new Image
-                {
-                    Id = 14,
-                    Title = "My Title",
-                    AltText = "AltText",
-                    Caption = "My Clever Caption",
-                    Height = 300,
-                    Width = 1000,
-                    ImageType = ImageType.Slider,
-                    ImageUrl = "Content/Images/Site/IMG_1626.jpg"
-                },
-                new Image
-                {
-                    Id = 15,
-                    Title = "My Title",
-                    AltText = "AltText",
-                    Caption = "My Clever Caption",
-                    Height = 300,
-                    Width = 1000,
-                    ImageType = ImageType.Slider,
-                    ImageUrl = "Content/Images/Site/IMG_1782.jpg"
+                    ImageUrl = "~/Content/Images/Site/IMG_1782.jpg"
                 }
                 );
 
@@ -296,7 +158,6 @@ namespace Hdnug.Domain.Migrations
                 {
                     Id = 1,
                     Name = "Improving Enterprises",
-                    Logo = context.Images.Single(t => t.Id == 1),
                     Contact = "Christina Liles",
                     Email = "christina.liles@improvingenterprises.com",
                     Phone = "555-555-5555",
@@ -309,7 +170,6 @@ namespace Hdnug.Domain.Migrations
                 {
                     Id = 2,
                     Name = "Whitaker IT",
-                    Logo = context.Images.Single(t => t.Id == 2),
                     Contact = "Lisa Gibbons",
                     Email = "lgibbons@whitaker.com",
                     Phone = "555-555-5555",
@@ -322,7 +182,6 @@ namespace Hdnug.Domain.Migrations
                 {
                     Id = 3,
                     Name = "Waste Management",
-                    Logo = context.Images.Single(t => t.Id == 3),
                     Contact = "Oscar Grouch",
                     Email = "oscar.grouch@wastemanagement.com",
                     Phone = "555-555-5555",
@@ -335,7 +194,6 @@ namespace Hdnug.Domain.Migrations
                 {
                     Id = 4,
                     Name = "Strategic Careers",
-                    Logo = context.Images.Single(t => t.Id == 4),
                     Contact = "Brad Jefferson",
                     Email = "bradJ@strategic.com",
                     Phone = "555-555-5555",
@@ -348,7 +206,6 @@ namespace Hdnug.Domain.Migrations
                 {
                     Id = 5,
                     Name = "O'reilly",
-                    Logo = context.Images.Single(t => t.Id == 5),
                     Contact = "Bill Bixby",
                     Email = "bb@gmail.com",
                     Phone = "555-555-5555",
@@ -360,7 +217,6 @@ namespace Hdnug.Domain.Migrations
                 {
                     Id = 6,
                     Name = "PluralSite",
-                    Logo = context.Images.Single(t => t.Id == 6),
                     Contact = "Brad Jefferson",
                     Email = "bradJ@strategic.com",
                     Phone = "555-555-5555",
@@ -372,7 +228,6 @@ namespace Hdnug.Domain.Migrations
                 {
                     Id = 7,
                     Name = "Microsoft",
-                    Logo = context.Images.Single(t => t.Id == 7),
                     Contact = "Brad Jefferson",
                     Email = "bradJ@strategic.com",
                     Phone = "555-555-5555",
@@ -384,7 +239,6 @@ namespace Hdnug.Domain.Migrations
                 {
                     Id = 8,
                     Name = "Amazon",
-                    Logo = context.Images.Single(t => t.Id == 8),
                     Contact = "Brad Jefferson",
                     Email = "bradJ@strategic.com",
                     Phone = "555-555-5555",
@@ -471,7 +325,6 @@ namespace Hdnug.Domain.Migrations
                     Name = "Bob Martin",
                     Email = "unclebob@objectmentor.com",
                     Phone = "555-555-5555",
-                    Photo = context.Images.Single(t => t.Id == 9),
                     Bio = "Me, me, me....all about me!",
                     WebSiteUrl = "www.myblog.com",
                     PresentationId = 1
@@ -482,7 +335,6 @@ namespace Hdnug.Domain.Migrations
                     Name = "Scott Guthrie",
                     Email = "scottgnu@microsoft.com",
                     Phone = "555-555-5555",
-                    Photo = context.Images.Single(t => t.Id == 10),
                     Bio = "Me, me, me....all about me!...Me too!",
                     WebSiteUrl = "www.myblog.com",
                     PresentationId = 2
@@ -493,7 +345,6 @@ namespace Hdnug.Domain.Migrations
                     Name = "Scott Hanselman",
                     Email = "scott@hanselman.com",
                     Phone = "555-555-5555",
-                    Photo = context.Images.Single(t => t.Id == 11),
                     Bio = "Me, me, me....all about me!...Me too!...Ha-ha-ha!!!!",
                     WebSiteUrl = "www.myblog.com",
                     PresentationId = 3

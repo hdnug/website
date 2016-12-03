@@ -4,15 +4,13 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
+<h3>Create Speaker</h3>
+<hr/>
 @using (Html.BeginForm("Create", "Speakers", FormMethod.Post, new { id = "uploadForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Create Speaker</h4>
-        <hr />
         @Html.ValidationSummary(true)
 
         @Html.Partial("_Speaker", Model)

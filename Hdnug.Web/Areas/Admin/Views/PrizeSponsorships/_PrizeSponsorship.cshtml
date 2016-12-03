@@ -23,3 +23,13 @@
         @Html.ValidationMessageFor(model => model.EndDate)
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+            $("#StartDate").kendoDatePicker({
+                format: "MM/dd/yyyy"
+            });
+            $("#EndDate").kendoDateTimePicker({
+                format: "MM/dd/yyyy"
+            });
+        });
+</script>

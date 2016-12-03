@@ -15,6 +15,7 @@ namespace Hdnug.Web.Tests.Controllers
 {
     using Hdnug.Web.Areas.Admin.Controllers;
     using Hdnug.Web.Areas.Admin.Models.ViewModels;
+    using System.Web.Mvc;
 
     [TestFixture]
     public class SliderControllerTests
@@ -72,7 +73,7 @@ namespace Hdnug.Web.Tests.Controllers
         public void CreateShouldAddModelErrorIfImageIsNull()
         {
             // Act
-            var result = _controller.Create(_imageViewModel);
+            var result = (ViewResult)_controller.Create(_imageViewModel);
 
             // Assert
             Assert.IsNotNull(result.ViewData.ModelState["ImageUpload"].Errors);
@@ -87,7 +88,7 @@ namespace Hdnug.Web.Tests.Controllers
             _imageViewModel.ImageUpload = _imageUpload;
 
             // Act
-            var result = _controller.Create(_imageViewModel);
+            var result = (ViewResult)_controller.Create(_imageViewModel);
 
             // Assert
             Assert.IsNotNull(result.ViewData.ModelState["ImageUpload"].Errors);

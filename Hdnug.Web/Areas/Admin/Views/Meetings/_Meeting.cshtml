@@ -9,6 +9,9 @@
 
     @Html.LabelFor(x => x.Title)
     @Html.TextBoxFor(x => x.Title, new { required = "required" })
+
+    @Html.LabelFor(x => x.Description)
+    @Html.TextAreaFor(x => x.Description)
     
     <div>
         <div>
@@ -23,32 +26,50 @@
     <div>
         <div>
             @Html.Label("sponsors", "Sponsors")
-            @Html.ListBoxFor(x => x.Sponsors, new MultiSelectList(Model.Sponsors, "Id", "Name", Model.SelectedSponsors))
+            @Html.ListBoxFor(x => x.SelectedSponsors, new MultiSelectList(Model.Sponsors, "Id", "Name", Model.SelectedSponsors))
         </div>
         <div>
             @Html.Label("presentations", "Presentations")
-            @Html.ListBoxFor(x=>x.Presentations, new MultiSelectList(Model.Presentations, "Id", "Title", Model.SelectedPresentations))
+            @Html.ListBoxFor(x => x.SelectedPresentations, new MultiSelectList(Model.Presentations, "Id", "Title", Model.SelectedPresentations))
         </div>
     </div>
     <div class="clearfix"></div>
     
-    @Html.LabelFor(x => x.Location)
-    @Html.TextBoxFor(x => x.Location)
+    @Html.LabelFor(x => x.LocationName)
+    @Html.TextBoxFor(x => x.LocationName)
     
-    @Html.LabelFor(x => x.Description)
-    @Html.TextAreaFor(x => x.Description)
+    @Html.LabelFor(x => x.LocationAddress1)
+    @Html.TextBoxFor(x => x.LocationAddress1)
+
+    @Html.LabelFor(x => x.LocationAddress2)
+    @Html.TextBoxFor(x => x.LocationAddress2)
+
+    @Html.LabelFor(x => x.LocationCity)
+    @Html.TextBoxFor(x => x.LocationCity)
+
+    @Html.LabelFor(x => x.LocationState)
+    @Html.TextBoxFor(x => x.LocationState)
+
+    @Html.LabelFor(x => x.LocationZip)
+    @Html.TextBoxFor(x => x.LocationZip)
+    
 
 </section>
 <script>
-        $(document).ready(function () {
-            $("#MeetingStartDateTime").kendoDateTimePicker();
-            $("#MeetingEndDateTime").kendoDateTimePicker();
+    $(document).ready(function () {
+        var today = new Date();
+            $("#MeetingStartDateTime").kendoDateTimePicker({
+                format: "MM/dd/yyyy h:mm tt"
+            });
+            $("#MeetingEndDateTime").kendoDateTimePicker({
+                format: "MM/dd/yyyy h:mm tt"
+            });
 
-            $("#Sponsors").kendoMultiSelect({
+            $("#SelectedSponsors").kendoMultiSelect({
                 placeholder: "Select a sponsor"
             });
 
-            $("#Presentations").kendoMultiSelect({
+            $("#SelectedPresentations").kendoMultiSelect({
                 placeholder: "Select a presentation"
             });
         });

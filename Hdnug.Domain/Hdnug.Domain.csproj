@@ -114,17 +114,23 @@
     <Compile Include="Data\Models\PrizeSponsorship.cs" />
     <Compile Include="Data\Models\Queries\ActiveSponsorships.cs" />
     <Compile Include="Data\Models\Queries\AddMember.cs" />
+    <Compile Include="Data\Models\Queries\AllPresentations.cs" />
     <Compile Include="Data\Models\Queries\AllSliderImages.cs" />
     <Compile Include="Data\Models\Queries\AllPrizeSponsorships.cs" />
     <Compile Include="Data\Models\Queries\AllSpeakers.cs" />
     <Compile Include="Data\Models\Queries\AllSponsors.cs" />
     <Compile Include="Data\Models\Queries\GetMeetingById.cs" />
+    <Compile Include="Data\Models\Queries\GetPresnetationById.cs" />
+    <Compile Include="Data\Models\Queries\GetSpeakersByIds.cs" />
     <Compile Include="Data\Models\Queries\GetPrizeSponsorhipById.cs" />
     <Compile Include="Data\Models\Queries\GetSpeakerById.cs" />
+    <Compile Include="Data\Models\Queries\GetPresnetationsByIds.cs" />
+    <Compile Include="Data\Models\Queries\GetSponsorsByIds.cs" />
     <Compile Include="Data\Models\Queries\LastTenMeetings.cs" />
+    <Compile Include="Data\Models\Queries\RemoveMeetingById.cs" />
+    <Compile Include="Data\Models\Queries\RemovePresentationById.cs" />
     <Compile Include="Data\Models\Queries\RemovePrizeSponsorshipById.cs" />
     <Compile Include="Data\Models\Queries\RemoveSliderById.cs" />
-    <Compile Include="Data\Models\Queries\RemoveSponsorById - Copy.cs" />
     <Compile Include="Data\Models\Queries\RemoveSponsorById.cs" />
     <Compile Include="Data\Models\Queries\GetSponsorById.cs" />
     <Compile Include="Data\Models\Queries\GetNextMeeting.cs" />
@@ -188,6 +194,10 @@
     <Compile Include="Migrations\201611272248122_UpdateImageId.Designer.cs">
       <DependentUpon>201611272248122_UpdateImageId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611280453565_RemoveSizeFieldsFromImage.cs" />
+    <Compile Include="Migrations\201611280453565_RemoveSizeFieldsFromImage.Designer.cs">
+      <DependentUpon>201611280453565_RemoveSizeFieldsFromImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -237,6 +247,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611272248122_UpdateImageId.resx">
       <DependentUpon>201611272248122_UpdateImageId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611280453565_RemoveSizeFieldsFromImage.resx">
+      <DependentUpon>201611280453565_RemoveSizeFieldsFromImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

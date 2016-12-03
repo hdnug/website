@@ -36,7 +36,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ViewResult Create(ImageViewModel imageViewModel)
+        public ActionResult Create(ImageViewModel imageViewModel)
         {
             var imageValidation = imageViewModel.ImageUpload.ValidateImageUpload();
 
@@ -54,7 +54,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 _repo.Context.Add(imageViewModel.Image);
                 _repo.Context.Commit();
 
-                return View("Index");
+                return RedirectToAction("Index");
             }
 
             return View(imageViewModel);   

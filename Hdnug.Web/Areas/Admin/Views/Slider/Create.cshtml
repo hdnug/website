@@ -4,12 +4,36 @@
     ViewBag.Title = "Add Slider Image";
 }
 
-<h2>Add Slider Image</h2>
-
+<h3>Add Slider Image</h3>
+<hr/>
 @using (@Html.BeginForm("Create", "Slider", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    @Html.Partial("_Upload", Model)
+    <div class="row">
+        <div class="large-12 columns">
+            @Html.LabelFor(m => m.Image.Title)
+            @Html.EditorFor(m => m.Image.Title)
+        </div>
+        <div class="large-12 columns">
+            @Html.LabelFor(m => m.Image.AltText)
+            @Html.EditorFor(m => m.Image.AltText)
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            @Html.LabelFor(m => m.Image.Caption)
+            @Html.EditorFor(m => m.Image.Caption)
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            @Html.LabelFor(m => m.ImageUpload)
+            <div class="panel">
+                <input id="ImageUpload" name="ImageUpload" type="file" />
+            </div>
+            <p class="help-text">Images for slider must be cropped to 1000px by 300px to display properly.</p>
+        </div>
+    </div>
     <button type="submit" class="button">Create</button>
 }

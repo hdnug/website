@@ -161,6 +161,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                     if (image != null)
                     {
                         image.DeleteImage(_serverMapPathProvider, Constants.SponsorUploadDir);
+                        _repository.Execute(new RemoveSponsorById(id));
                     }
                     image = null;
                 }
@@ -174,6 +175,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                     if (image != null)
                     {
                         image.DeleteImage(_serverMapPathProvider, Constants.SponsorUploadDir);
+                        _repository.Execute(new RemoveSponsorById(id));
                     }
                     image = newImage;
                 }
@@ -191,7 +193,6 @@ namespace Hdnug.Web.Areas.Admin.Controllers
         // GET: Sponsors/Delete/5
         public ActionResult Delete(int id)
         {
-            
             var sponsor = _repository.Find(new GetSponsorById(id));
 
             // TODO: Extension method should return error message when file could not be found or deleted
@@ -203,7 +204,6 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             }
             
             return RedirectToAction("Index");
-
         }
     }
 }

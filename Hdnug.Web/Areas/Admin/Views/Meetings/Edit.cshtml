@@ -4,23 +4,20 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-
-
+<h3>Edit Meeting</h3>
+<hr/>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Meeting</h4>
-        <hr />
         @Html.ValidationSummary(true)
 
         @Html.Partial("_Meeting", Model)
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input id="SaveButton" type="submit" value="Save" class="btn btn-default" />
+                <input id="SaveButton" type="submit" value="Save" class="button" />
             </div>
         </div>
     </div>

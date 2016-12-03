@@ -23,10 +23,10 @@ namespace Hdnug.Web.Areas.Admin.Controllers
         // GET: Speakers
         public ActionResult Index()
         {
-            var Speakers = _repository.Find(new AllSpeakers());
-            var SpeakersViewModel = new List<SpeakerViewModel>();
+            var speakers = _repository.Find(new AllSpeakers());
+            var viewModel = new List<SpeakerViewModel>();
 
-            Speakers.ForEach(x =>
+            speakers.ForEach(x =>
             {
                 var speaker = new SpeakerViewModel
                 {
@@ -38,10 +38,10 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                     PhotoUrl = x.Photo != null ? x.Photo.ImageUrl : string.Empty,
                     Bio = x.Bio
                 };
-                SpeakersViewModel.Add(speaker);
+                viewModel.Add(speaker);
             });
 
-            return View(SpeakersViewModel);
+            return View(viewModel);
         }
 
         // GET: Speakers/Details/5
@@ -151,6 +151,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                     if(image != null)
                     {
                         image.DeleteImage(_serverMapPathProvider, Constants.SpeakerUploadDir);
+                        _repository.Execute(new RemoveSponsorById(id));
                     }
                     image = null;
                 }
@@ -164,6 +165,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                     if(image != null)
                     {
                         image.DeleteImage(_serverMapPathProvider, Constants.SpeakerUploadDir);
+                        _repository.Execute(new RemoveSponsorById(id));
                     }
                     image = newImage;
                 }
@@ -181,10 +183,8 @@ namespace Hdnug.Web.Areas.Admin.Controllers
         // GET: Speakers/Delete/5
         public ActionResult Delete(int id)
         {
-            
             var speaker = _repository.Find(new GetSpeakerById(id));
 
-            // TODO: Extension method should return error message when file could not be found or deleted
             speaker.Photo.DeleteImage(_serverMapPathProvider, Constants.SponsorUploadDir);
 
             if (true)
@@ -193,7 +193,6 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             }
             
             return RedirectToAction("Index");
-
         }
     }
 }

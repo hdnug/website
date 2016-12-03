@@ -7,14 +7,14 @@ namespace Hdnug.Domain.Migrations
     {
         public override void Up()
         {
-            RenameColumn(table: "dbo.Presentation", name: "Meeting_Id", newName: "MeetingId");
-            RenameIndex(table: "dbo.Presentation", name: "IX_Meeting_Id", newName: "IX_MeetingId");
+            //RenameColumn(table: "dbo.Presentation", name: "Meeting_Id", newName: "MeetingId");
+            //RenameIndex(table: "dbo.Presentation", name: "IX_Meeting_Id", newName: "IX_MeetingId");
         }
         
         public override void Down()
         {
-            RenameIndex(table: "dbo.Presentation", name: "IX_MeetingId", newName: "IX_Meeting_Id");
-            RenameColumn(table: "dbo.Presentation", name: "MeetingId", newName: "Meeting_Id");
+            //RenameIndex(table: "dbo.Presentation", name: "IX_MeetingId", newName: "IX_Meeting_Id");
+            //RenameColumn(table: "dbo.Presentation", name: "MeetingId", newName: "Meeting_Id");
         }
     }
 }
