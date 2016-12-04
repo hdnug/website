@@ -1,6 +1,6 @@
 ﻿@model Hdnug.Web.Areas.Admin.Models.ViewModels.PresentationViewModel
 
-<div class="form-horizontal">
+<div class="form-horizontal" style="margin-bottom: 12px">
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
         @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -49,18 +49,19 @@
             @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
         </div>
     </div>
-    <script>
-        $(document).ready(function () {
-            var today = new Date();
-            $("#PresentationStartDateTime").kendoDateTimePicker({
-                format: "MM/dd/yyyy h:mm tt"
-            });
-            $("#PresentationEndDateTime").kendoDateTimePicker({
-                format: "MM/dd/yyyy h:mm tt"
-            });
-
-            $("#SelectedSpeakers").kendoMultiSelect({
-                placeholder: "Select a sponsor"
-            });
+</div>
+<script>
+    $(document).ready(function () {
+        var today = new Date();
+        $("#PresentationStartDateTime").kendoDateTimePicker({
+            format: "MM/dd/yyyy h:mm tt"
         });
-    </script>
+        $("#PresentationEndDateTime").kendoDateTimePicker({
+            format: "MM/dd/yyyy h:mm tt"
+        });
+
+        $("#SelectedSpeakers").kendoMultiSelect({
+            placeholder: "Select a speaker"
+        });
+    });
+</script>

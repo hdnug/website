@@ -9,8 +9,8 @@ namespace Hdnug.Web.Areas.Admin.Models.ViewModels
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public DateTime PresentationStartDateTime { get; set; } = DateTime.Today;
-        public DateTime PresentationEndDateTime { get; set; } = DateTime.Today;
+        public DateTime PresentationStartDateTime { get; set; } = DateTime.Today.AddHours(18).AddMinutes(30);
+        public DateTime PresentationEndDateTime { get; set; } = DateTime.Today.AddHours(20).AddMinutes(30);
         public string Location { get; set; }
         public string Url { get; set; }
         public List<int> SelectedSpeakers { get; set; } = new List<int>();

@@ -10,8 +10,8 @@ namespace Hdnug.Web.Areas.Admin.Models.ViewModels
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public DateTime MeetingStartDateTime { get; set; } = DateTime.Today;
-        public DateTime MeetingEndDateTime { get; set; } = DateTime.Today;
+        public DateTime MeetingStartDateTime { get; set; } = DateTime.Today.AddHours(18).AddMinutes(30);
+        public DateTime MeetingEndDateTime { get; set; } = DateTime.Today.AddHours(20).AddMinutes(30);
         public string LocationName { get; set; } = "Microsoft Technology Center - Houston";
         public string LocationAddress1 { get; set; } = "Suite 1000";
         public string LocationAddress2 { get; set; } = "750 Town and Country Blvd.";

@@ -135,6 +135,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 PresentationEndDateTime = p.PresentationEndDateTime,
                 Location = p.Location
             };
+            viewModel.SelectedSpeakers.AddRange(p.Speakers.Select(x => x.Id));
             return viewModel;
         }
     }

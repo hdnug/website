@@ -49,11 +49,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Url)
+            @Html.DisplayNameFor(model => model.Speakers)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Url)
+            @string.Join(", ", Model.Speakers.Select(x => x.Name))
         </dd>
 
     </dl>
