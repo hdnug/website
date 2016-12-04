@@ -10,9 +10,9 @@ namespace Hdnug.Domain.Data.Models.Mapping
             HasKey(t => t.Id);
 
             HasMany(t => t.Sponsors)
-                .WithOptional(t => t.Meeting);
+                .WithMany(t => t.Meetings);
             HasMany(t => t.Presentations)
-                .WithOptional(x => x.Meeting);
+                .WithMany(x => x.Meetings);
         }
     }
 }

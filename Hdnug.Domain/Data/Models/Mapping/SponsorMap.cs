@@ -10,9 +10,8 @@ namespace Hdnug.Domain.Data.Models.Mapping
             HasKey(t => t.Id);
 
 
-            HasOptional(t => t.Meeting)
-                .WithMany(t => t.Sponsors)
-                .HasForeignKey(x => x.MeetingId);
+            HasMany(t => t.Meetings)
+                .WithMany(t => t.Sponsors);
 
             HasOptional(t => t.Logo)
                 .WithOptionalDependent()

@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="event-desc">
                                         <h4>
-                                            @(Html.RouteLink(presentation.Title, new { controller = "Meetings", action = "Details", meetingId = presentation.MeetingId, id = presentation.Id }))
+                                            @(Html.RouteLink(presentation.Title, new { controller = "Meetings", action = "Details", meetingId = meeting.Id, id = presentation.Id }))
                                         </h4>
                                         <p>@presentation.Description.TrimEndIfLongerThan(175)</p>
                                     </div>

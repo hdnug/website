@@ -7,13 +7,13 @@ namespace Hdnug.Domain.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class UpdateMeetingSponsorAssociation : IMigrationMetadata
+    public sealed partial class ConsolidatedSchemaChanges : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateMeetingSponsorAssociation));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ConsolidatedSchemaChanges));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611252205234_UpdateMeetingSponsorAssociation"; }
+            get { return "201612041347151_ConsolidatedSchemaChanges"; }
         }
         
         string IMigrationMetadata.Source

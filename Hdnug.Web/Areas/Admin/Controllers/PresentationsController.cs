@@ -133,7 +133,8 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 Description = p.Description,
                 PresentationStartDateTime = p.PresentationStartDateTime,
                 PresentationEndDateTime = p.PresentationEndDateTime,
-                Location = p.Location
+                Location = p.Location,
+                Speakers = p.Speakers
             };
             viewModel.SelectedSpeakers.AddRange(p.Speakers.Select(x => x.Id));
             return viewModel;

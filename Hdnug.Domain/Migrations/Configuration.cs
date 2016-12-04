@@ -86,71 +86,23 @@ namespace Hdnug.Domain.Migrations
                 }
                 );
 
-            context.Meetings.AddOrUpdate(
-                m => m.Id,
-                new Meeting
+            context.PrizeSponsorships.AddOrUpdate(
+                p => p.Id,
+                new PrizeSponsorship
                 {
                     Id = 1,
-                    Title = "June Meeting",
-                    Description =
-                        "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa.",
-                    MeetingStartDateTime = new DateTime(2014, 06, 12, 18, 30, 00),
-                    MeetingEndDateTime = new DateTime(2014, 06, 12, 20, 30, 00),
-                    LocationName = "Microsoft Technology Center - Houston",
-                    LocationAddress1 = "750 Town and Country Blvd.",
-                    LocationAddress2 = "Suite 1000",
-                    LocationCity = "Houston",
-                    LocationState = "TX",
-                    LocationZip = "77024"
+                    SponsorId = 5,
+                    StartDate = new DateTime(2014, 01, 01),
+                    EndDate = new DateTime(2014, 12, 31)
                 },
-                new Meeting
+                new PrizeSponsorship
                 {
-                    Id = 2,
-                    Title = "July Meeting",
-                    Description =
-                        "Boudin aliqua adipisicing rump corned beef. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.",
-                    MeetingStartDateTime = new DateTime(2014, 07, 10, 18, 30, 00),
-                    MeetingEndDateTime = new DateTime(2014, 07, 10, 20, 30, 00),
-                    LocationName = "Microsoft Technology Center - Houston",
-                    LocationAddress1 = "750 Town and Country Blvd.",
-                    LocationAddress2 = "Suite 1000",
-                    LocationCity = "Houston",
-                    LocationState = "TX",
-                    LocationZip = "77024"
-                },
-                new Meeting
-                {
-                    Id = 3,
-                    Title = "August Meeting",
-                    Description =
-                        "Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.",
-                    MeetingStartDateTime = new DateTime(2014, 08, 07, 18, 30, 00),
-                    MeetingEndDateTime = new DateTime(2014, 08, 07, 20, 30, 00),
-                    LocationName = "Microsoft Technology Center - Houston",
-                    LocationAddress1 = "750 Town and Country Blvd.",
-                    LocationAddress2 = "Suite 1000",
-                    LocationCity = "Houston",
-                    LocationState = "TX",
-                    LocationZip = "77024"
-                },
-                new Meeting
-                {
-                    Id = 4,
-                    Title = "November Meeting",
-                    Description =
-                        "Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa.",
-                    MeetingStartDateTime = new DateTime(2014, 11, 11, 18, 30, 00),
-                    MeetingEndDateTime = new DateTime(2014, 11, 11, 20, 30, 00),
-                    LocationName = "Microsoft Technology Center - Houston",
-                    LocationAddress1 = "750 Town and Country Blvd.",
-                    LocationAddress2 = "Suite 1000",
-                    LocationCity = "Houston",
-                    LocationState = "TX",
-                    LocationZip = "77024"
+                    Id = 1,
+                    SponsorId = 7,
+                    StartDate = new DateTime(2014, 01, 01),
+                    EndDate = new DateTime(2014, 12, 31)
                 }
                 );
-
-            context.SaveChanges();
 
             context.Sponsors.AddOrUpdate(
                 s => s.Id,
@@ -164,7 +116,6 @@ namespace Hdnug.Domain.Migrations
                     SponsorMessage = "We are the best ever!",
                     TagLine = "Improving...that's what we do.",
                     WebSiteUrl = "www.improvingenterprises.com",
-                    MeetingId = 1
                 },
                 new Sponsor
                 {
@@ -176,7 +127,6 @@ namespace Hdnug.Domain.Migrations
                     SponsorMessage = "We really rock!",
                     TagLine = "Finding people for IT problems.",
                     WebSiteUrl = "www.whitakerit.com",
-                    MeetingId = 2
                 },
                 new Sponsor
                 {
@@ -188,7 +138,6 @@ namespace Hdnug.Domain.Migrations
                     SponsorMessage = "We are an ok company.",
                     TagLine = "Fixing the world's trash problems one bananna peel at a time.",
                     WebSiteUrl = "www.wastemanagement.com",
-                    MeetingId = 3
                 },
                 new Sponsor
                 {
@@ -200,7 +149,6 @@ namespace Hdnug.Domain.Migrations
                     SponsorMessage = "We are so awesome!",
                     TagLine = "We have good strategies for resources.",
                     WebSiteUrl = "www.strategic.com",
-                    MeetingId = 4
                 },
                 new Sponsor
                 {
@@ -247,24 +195,39 @@ namespace Hdnug.Domain.Migrations
                     WebSiteUrl = "www.amazon.com"
                 }
                 );
-
-            context.PrizeSponsorships.AddOrUpdate(
-                p => p.Id,
-                new PrizeSponsorship
+            
+            context.Speakers.AddOrUpdate(
+                s => s.Id,
+                new Speaker
                 {
                     Id = 1,
-                    SponsorId = 5,
-                    StartDate = new DateTime(2014, 01, 01),
-                    EndDate = new DateTime(2014, 12, 31)
+                    Name = "Speaker1",
+                    Email = "speaker1@aol.com",
+                    Phone = "555-555-5555",
+                    Bio = "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa.",
+                    WebSiteUrl = "www.myblog.com"
                 },
-                new PrizeSponsorship
+                new Speaker
                 {
-                    Id = 1,
-                    SponsorId = 7,
-                    StartDate = new DateTime(2014, 01, 01),
-                    EndDate = new DateTime(2014, 12, 31)
+                    Id = 2,
+                    Name = "Speaker2",
+                    Email = "speaker2@aol.com",
+                    Phone = "555-555-5555",
+                    Bio = "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa.",
+                    WebSiteUrl = "www.myblog.com"
+                },
+                new Speaker
+                {
+                    Id = 3,
+                    Name = "Speaker3",
+                    Email = "speaker3@aol.com",
+                    Phone = "555-555-5555",
+                    Bio = "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit.Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.Eiusmod swine spare ribs reprehenderit culpa.",
+                    WebSiteUrl = "www.myblog.com"
                 }
                 );
+
+            context.SaveChanges();
 
             context.Presentations.AddOrUpdate(
                 new Presentation
@@ -276,8 +239,10 @@ namespace Hdnug.Domain.Migrations
                     PresentationStartDateTime = new DateTime(2014, 06, 12, 18, 30, 00),
                     PresentationEndDateTime = new DateTime(2014, 06, 12, 20, 30, 00),
                     Location = "Challenger Room",
-                    Url = "/Presentations/presentation.ppt",
-                    MeetingId = 1
+                    Speakers = new List<Speaker>
+                    {
+                        context.Speakers.Single(x => x.Id == 1)
+                    }
                 },
                 new Presentation
                 {
@@ -285,11 +250,13 @@ namespace Hdnug.Domain.Migrations
                     Title = "How to code in .NET",
                     Description =
                         "Boudin aliqua adipisicing rump corned beef. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.",
-                    PresentationStartDateTime = new DateTime(2014, 06, 12, 18, 30, 00),
-                    PresentationEndDateTime = new DateTime(2014, 06, 12, 20, 30, 00),
+                    PresentationStartDateTime = new DateTime(2014, 07, 10, 18, 30, 00),
+                    PresentationEndDateTime = new DateTime(2014, 07, 10, 20, 30, 00),
                     Location = "Challenger Room",
-                    Url = "/Presentations/presentation.ppt",
-                    MeetingId = 2
+                    Speakers = new List<Speaker>
+                    {
+                        context.Speakers.Single(x => x.Id == 1)
+                    }
                 },
                 new Presentation
                 {
@@ -297,11 +264,13 @@ namespace Hdnug.Domain.Migrations
                     Title = "Why .NET really Rocks!",
                     Description =
                         "Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami.",
-                    PresentationStartDateTime = new DateTime(2014, 06, 12, 18, 30, 00),
-                    PresentationEndDateTime = new DateTime(2014, 06, 12, 20, 30, 00),
+                    PresentationStartDateTime = new DateTime(2014, 08, 07, 18, 30, 00),
+                    PresentationEndDateTime = new DateTime(2014, 08, 07, 20, 30, 00),
                     Location = "Challenger Room",
-                    Url = "/Presentations/presentation.ppt",
-                    MeetingId = 3
+                    Speakers = new List<Speaker>
+                    {
+                        context.Speakers.Single(x => x.Id == 2)
+                    }
                 },
                 new Presentation
                 {
@@ -309,50 +278,111 @@ namespace Hdnug.Domain.Migrations
                     Title = "Welcome to Fight Club with Knockout.js",
                     Description =
                         "Pork drumstick turkey fugiat. Tri-tip elit turducken pork chop in. Swine short ribs meatball irure bacon nulla pork belly cupidatat meatloaf cow. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami. Nulla corned beef sunt ball tip, qui bresaola enim jowl. Capicola short ribs minim salami nulla nostrud pastrami. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa.",
-                    PresentationStartDateTime = new DateTime(2014, 06, 12, 18, 30, 00),
-                    PresentationEndDateTime = new DateTime(2014, 06, 12, 20, 30, 00),
+                    PresentationStartDateTime = new DateTime(2014, 11, 11, 18, 30, 00),
+                    PresentationEndDateTime = new DateTime(2014, 11, 11, 20, 30, 00),
                     Location = "Challenger Room",
-                    Url = "/Presentations/presentation.ppt",
-                    MeetingId = 4
-                }
-                );
-
-            context.Speakers.AddOrUpdate(
-                s => s.Id,
-                new Speaker
-                {
-                    Id = 1,
-                    Name = "Bob Martin",
-                    Email = "unclebob@objectmentor.com",
-                    Phone = "555-555-5555",
-                    Bio = "Me, me, me....all about me!",
-                    WebSiteUrl = "www.myblog.com",
-                    PresentationId = 1
-                },
-                new Speaker
-                {
-                    Id = 2,
-                    Name = "Scott Guthrie",
-                    Email = "scottgnu@microsoft.com",
-                    Phone = "555-555-5555",
-                    Bio = "Me, me, me....all about me!...Me too!",
-                    WebSiteUrl = "www.myblog.com",
-                    PresentationId = 2
-                },
-                new Speaker
-                {
-                    Id = 3,
-                    Name = "Scott Hanselman",
-                    Email = "scott@hanselman.com",
-                    Phone = "555-555-5555",
-                    Bio = "Me, me, me....all about me!...Me too!...Ha-ha-ha!!!!",
-                    WebSiteUrl = "www.myblog.com",
-                    PresentationId = 3
+                    Speakers = new List<Speaker>
+                    {
+                        context.Speakers.Single(x => x.Id == 3)
+                    }
                 }
                 );
 
             context.SaveChanges();
 
+            context.Meetings.AddOrUpdate(
+                m => m.Id,
+                new Meeting
+                {
+                    Id = 1,
+                    Title = "Meeting #1",
+                    Description = "June 2014 Meeting",
+                    MeetingStartDateTime = new DateTime(2014, 06, 12, 18, 30, 00),
+                    MeetingEndDateTime = new DateTime(2014, 06, 12, 20, 30, 00),
+                    LocationName = "Microsoft Technology Center - Houston",
+                    LocationAddress1 = "750 Town and Country Blvd.",
+                    LocationAddress2 = "Suite 1000",
+                    LocationCity = "Houston",
+                    LocationState = "TX",
+                    LocationZip = "77024",
+                    Sponsors = new List<Sponsor>
+                    {
+                        context.Sponsors.Single(x => x.Id == 1)
+                    },
+                    Presentations = new List<Presentation>
+                    {
+                        context.Presentations.Single(x => x.Id == 1)
+                    }
+                },
+                new Meeting
+                {
+                    Id = 2,
+                    Title = "Meeting #2",
+                    Description = "July 2014 Meeting",
+                    MeetingStartDateTime = new DateTime(2014, 07, 10, 18, 30, 00),
+                    MeetingEndDateTime = new DateTime(2014, 07, 10, 20, 30, 00),
+                    LocationName = "Microsoft Technology Center - Houston",
+                    LocationAddress1 = "750 Town and Country Blvd.",
+                    LocationAddress2 = "Suite 1000",
+                    LocationCity = "Houston",
+                    LocationState = "TX",
+                    LocationZip = "77024",
+                    Sponsors = new List<Sponsor>
+                    {
+                        context.Sponsors.Single(x => x.Id == 2)
+                    },
+                    Presentations = new List<Presentation>
+                    {
+                        context.Presentations.Single(x => x.Id == 2)
+                    }
+                },
+                new Meeting
+                {
+                    Id = 3,
+                    Title = "Meeting #3",
+                    Description = "August 2014 Meeting",
+                    MeetingStartDateTime = new DateTime(2014, 08, 07, 18, 30, 00),
+                    MeetingEndDateTime = new DateTime(2014, 08, 07, 20, 30, 00),
+                    LocationName = "Microsoft Technology Center - Houston",
+                    LocationAddress1 = "750 Town and Country Blvd.",
+                    LocationAddress2 = "Suite 1000",
+                    LocationCity = "Houston",
+                    LocationState = "TX",
+                    LocationZip = "77024",
+                    Sponsors = new List<Sponsor>
+                    {
+                        context.Sponsors.Single(x => x.Id == 3)
+                    },
+                    Presentations = new List<Presentation>
+                    {
+                        context.Presentations.Single(x => x.Id == 3)
+                    }
+                },
+                new Meeting
+                {
+                    Id = 4,
+                    Title = "Meeting #4",
+                    Description = "November 2014 Meeting",
+                    MeetingStartDateTime = new DateTime(2014, 11, 11, 18, 30, 00),
+                    MeetingEndDateTime = new DateTime(2014, 11, 11, 20, 30, 00),
+                    LocationName = "Microsoft Technology Center - Houston",
+                    LocationAddress1 = "750 Town and Country Blvd.",
+                    LocationAddress2 = "Suite 1000",
+                    LocationCity = "Houston",
+                    LocationState = "TX",
+                    LocationZip = "77024",
+                    Sponsors = new List<Sponsor>
+                    {
+                        context.Sponsors.Single(x => x.Id == 4)
+                    },
+                    Presentations = new List<Presentation>
+                    {
+                        context.Presentations.Single(x => x.Id == 4)
+                    }
+                }
+                );
+
+            context.SaveChanges();
         }
     }
 }

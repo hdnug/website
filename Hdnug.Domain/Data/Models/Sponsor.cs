@@ -1,4 +1,5 @@
 ﻿using Highway.Data;
+using System.Collections.Generic;
 
 namespace Hdnug.Domain.Data.Models
 {
@@ -12,9 +13,8 @@ namespace Hdnug.Domain.Data.Models
         public string TagLine { get; set; }
         public string SponsorMessage { get; set; }
         public string WebSiteUrl { get; set; }
-        public int? MeetingId { get; set; }
 
         public Image Logo { get; set; }
-        public Meeting Meeting  { get; set; }
+        public ICollection<Meeting> Meetings  { get; set; }
     }
 }
