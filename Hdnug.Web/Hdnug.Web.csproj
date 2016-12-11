@@ -246,11 +246,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MeetingsController.cs" />
     <Compile Include="Controllers\MeetingsController.cs" />
-    <Compile Include="Controllers\NextMeetingController.cs" />
     <Compile Include="Areas\Admin\Controllers\PrizeSponsorshipsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SliderController.cs" />
     <Compile Include="Areas\Admin\Controllers\SpeakersController.cs" />
     <Compile Include="Areas\Admin\Controllers\SponsorsController.cs" />
+    <Compile Include="Controllers\UpcomingMeetingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -268,7 +268,7 @@
     <Compile Include="Models\ViewModels\HomeViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\MeetingViewModel.cs" />
     <Compile Include="Models\ViewModels\MeetingDetailsViewModel.cs" />
-    <Compile Include="Models\ViewModels\NextMeetingViewModel.cs" />
+    <Compile Include="Models\ViewModels\MeetingListViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\ImageViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\PrizeSponsorshipViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\SpeakerViewModel.cs" />
@@ -1329,7 +1329,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Slider\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Slider\Create.cshtml" />
-    <Content Include="Views\NextMeeting\_NextMeeting.cshtml" />
     <Content Include="Areas\Admin\Views\Meetings\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Meetings\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Meetings\Edit.cshtml" />
@@ -1908,12 +1907,16 @@
     <Content Include="Views\Home\Mailinglist.cshtml" />
     <Content Include="Views\Meetings\Details.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\Image.cshtml" />
+    <Content Include="Views\Shared\_MeetingList.cshtml" />
+    <Content Include="Views\Home\PastMeetings.cshtml" />
+    <Content Include="Views\Home\UpcomingMeetings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\AdminAreaBase\" />
     <Folder Include="Content\Images\Speakers\" />
     <Folder Include="Content\Images\Sponsors\" />
+    <Folder Include="Views\UpcomingMeetings\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

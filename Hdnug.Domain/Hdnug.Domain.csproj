@@ -126,6 +126,8 @@
     <Compile Include="Data\Models\Queries\GetSpeakerById.cs" />
     <Compile Include="Data\Models\Queries\GetPresnetationsByIds.cs" />
     <Compile Include="Data\Models\Queries\GetSponsorsByIds.cs" />
+    <Compile Include="Data\Models\Queries\PastMeetings.cs" />
+    <Compile Include="Data\Models\Queries\UpcomingMeetings.cs" />
     <Compile Include="Data\Models\Queries\LastTenMeetings.cs" />
     <Compile Include="Data\Models\Queries\RemoveMeetingById.cs" />
     <Compile Include="Data\Models\Queries\RemovePresentationById.cs" />

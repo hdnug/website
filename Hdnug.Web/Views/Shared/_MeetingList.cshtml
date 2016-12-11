@@ -1,0 +1,39 @@
+﻿@using Hdnug.Web.Code
+@model Hdnug.Web.Models.ViewModels.MeetingListViewModel
+
+<div class="row">
+    <div class="small-12 columns meetings">
+        @if (Model.Meetings.Any())
+        {
+            var counter = 0;
+            foreach (var meeting in Model.Meetings)
+            {
+                if (meeting.Presentations.Any())
+                {
+                    foreach (var presentation in meeting.Presentations)
+                    {
+                        counter++;
+                        <article>
+                            <h5>@presentation.PresentationStartDateTime.ToString("D")</h5>
+                            <h4>
+                                @(Html.RouteLink(presentation.Title, new { controller = "Meetings", action = "Details", meetingId = meeting.Id, id = presentation.Id }))
+                            </h4>
+                            <p>@presentation.Description.TrimEndIfLongerThan(175)</p>
+                        </article>
+                        if (counter < Model.PresentationCount)
+                        {
+                            <hr />
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            <article>
+                <p> No Meetings :(</p>
+            </article>
+        }
+    </div>
+</div>
+

@@ -36,14 +36,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="small-12 columns">
+            <div class="small-12 columns meetings">
                 @if (Model.Meetings.Any())
                 {
+                    var counter = 0;
                     foreach (var meeting in Model.Meetings)
                     {
                         if (meeting.Presentations.Any())
                         {
-                            var counter = 0;
                             foreach (var presentation in meeting.Presentations)
                             {
                                 counter++;
@@ -62,7 +62,7 @@
                                     </div>
                                 </article>
 
-                                if (counter < Model.Meetings.Count())
+                                if (counter < Model.PresentationCount)
                                 {
                                     <hr />
                                 }

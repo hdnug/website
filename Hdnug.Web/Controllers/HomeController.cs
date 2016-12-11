@@ -24,12 +24,14 @@ namespace Hdnug.Web.Controllers
         public ActionResult Index()
         {
             var meetings = _repo.Find(new LastTenMeetings()).ToList();
+            var presentationCount = meetings.Select(x => x.Presentations).Count();
             var sliderImages = _repo.Find(new AllSliderImages()).ToList();
             var prizeSponsors = _repo.Find(new ActivePrizeSponsors()).ToList();
             var currentMonthMeetings = meetings.Where(x => x.MeetingStartDateTime.Month == DateTime.Today.Month && x.MeetingStartDateTime.Year == DateTime.Today.Year);
             var sponsors = currentMonthMeetings.SelectMany(x => x.Sponsors);
             var viewModel = new HomeViewModel
             {
+                PresentationCount = presentationCount,
                 Meetings = meetings,
                 SliderImages = sliderImages,
                 Sponsors = sponsors,
@@ -39,25 +41,47 @@ namespace Hdnug.Web.Controllers
             return View(viewModel);
         }
 
-        [HttpPost]
-        public ActionResult Mailinglist(string firstname, string lastname, string company, string email)
+        public ActionResult UpcomingMeetings()
         {
-            _repo.Execute(new AddMember(firstname, lastname, company, email));
-            _mailingListService.AddMember("LIST", firstname, lastname, company, email);
+            var meetings = _repo.Find(new UpcomingMeetings()).ToList();
+            var presentationCount = meetings.Select(x => x.Presentations).Count();
+            var viewModel = new MeetingListViewModel
+            {
+                PresentationCount = presentationCount,
+                Meetings = meetings,
+            };
 
-            return View();
+            return View(viewModel);
+        }
+
+        public ActionResult PastMeetings()
+        {
+            var meetings = _repo.Find(new PastMeetings()).ToList();
+            var presentationCount = meetings.Select(x => x.Presentations).Count();
+            var viewModel = new MeetingListViewModel
+            {
+                PresentationCount = presentationCount,
+                Meetings = meetings,
+            };
+
+            return View(viewModel);
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Mailinglist(string firstname, string lastname, string company, string email)
+        {
+            _repo.Execute(new AddMember(firstname, lastname, company, email));
+            _mailingListService.AddMember("LIST", firstname, lastname, company, email);
 
             return View();
         }

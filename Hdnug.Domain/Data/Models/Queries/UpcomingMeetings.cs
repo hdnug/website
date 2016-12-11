@@ -5,15 +5,15 @@ using System.Linq;
 
 namespace Hdnug.Domain.Data.Models.Queries
 {
-    public class LastTenMeetings : Query<Meeting>
+    public class UpcomingMeetings : Query<Meeting>
     {
-        public LastTenMeetings()
+        public UpcomingMeetings()
         {
             ContextQuery = context => context.AsQueryable<Meeting>()
                 .Include(x => x.Presentations.Select(p => p.Speakers))
                 .Include(x => x.Sponsors)
-                .Where(x => x.MeetingStartDateTime <= DateTime.Today && x.MeetingStartDateTime.Year <= DateTime.Today.Year)
-                .OrderByDescending(x => x.MeetingStartDateTime).Take(10);
+                .Where(x => x.MeetingStartDateTime > DateTime.Today)
+                .OrderBy(x => x.MeetingStartDateTime);
         }
     }
 }
