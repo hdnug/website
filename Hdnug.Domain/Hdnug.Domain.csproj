@@ -121,6 +121,7 @@
     <Compile Include="Data\Models\Queries\AllSponsors.cs" />
     <Compile Include="Data\Models\Queries\GetMeetingById.cs" />
     <Compile Include="Data\Models\Queries\GetPresnetationById.cs" />
+    <Compile Include="Data\Models\Queries\GetMemberByEmailAddress.cs" />
     <Compile Include="Data\Models\Queries\GetSpeakersByIds.cs" />
     <Compile Include="Data\Models\Queries\GetPrizeSponsorhipById.cs" />
     <Compile Include="Data\Models\Queries\GetSpeakerById.cs" />

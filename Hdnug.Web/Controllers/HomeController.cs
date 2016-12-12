@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using Hdnug.Domain.Data.Models;
 using Hdnug.Domain.Data.Models.Queries;
 using Hdnug.Web.Models.ViewModels;
 using Highway.Data;
@@ -78,11 +77,21 @@ namespace Hdnug.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Mailinglist(string firstname, string lastname, string company, string email)
+        public ActionResult Mailinglist(string email)
         {
-            _repo.Execute(new AddMember(firstname, lastname, company, email));
-            _mailingListService.AddMember("LIST", firstname, lastname, company, email);
+            // TODO: Validate email address and handle negative cases.
+            var emailAddress = email.Trim();
+            var isExistingMember = _repo.Find(new GetMemberByEmailAddress(emailAddress)) != null;
 
+            // Add member to hdnug database if not existing member.
+            if(!isExistingMember)
+            {
+                _repo.Execute(new AddMember(email));
+            }
+
+            // Add to Announcements Mailing List. 
+            // Note: If user isExistingMember the mailingListService will update the existing member.
+            _mailingListService.AddMember("Announcements", email);
             return View();
         }
     }

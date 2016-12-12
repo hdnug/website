@@ -1,11 +1,6 @@
 ﻿using Hdnug.Web.Inrastructure.Interfaces;
 using RestSharp;
 using RestSharp.Authenticators;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hdnug.Web.Inrastructure.Providers
 {
@@ -19,7 +14,7 @@ namespace Hdnug.Web.Inrastructure.Providers
         {
             this.apiPath = "https://api.mailgun.net/v3";
             this.apiKey = "YOUR_API_KEY";
-            this.domain = "hdnug.org";
+            this.domain = "YOUR_MAILGUN_DOMAIN";
         }
 
         private RestClient BuildClient()
@@ -31,6 +26,21 @@ namespace Hdnug.Web.Inrastructure.Providers
             return client;
         }
 
+        public void AddMember(string listname, string email)
+        {
+            var client = BuildClient();
+            var request = new RestRequest("lists/{list}/members", Method.POST);
+            request.AddParameter("list", $"{listname}@{domain}", ParameterType.UrlSegment);
+            request.AddObject(new
+            {
+                subscribed = true,
+                address = email,
+                upsert = true
+            });
+
+            var response = client.Execute(request);
+        }
+
         public void AddMember(string listname, string firstname, string lastname, string company, string email)
         {
             var client = BuildClient();
@@ -39,10 +49,10 @@ namespace Hdnug.Web.Inrastructure.Providers
             request.AddObject(new
             {
                 subscribed = true,
-                address = "bar@example.com",
-                name = "Bob Bar",
-                description = "Developer",
-                vars = "{'age': 26}"
+                address = email,
+                name = $"{firstname} {lastname}",
+                vars = "{'company':" + company + "}",
+                upsert = true
             });
 
             var response = client.Execute(request);
