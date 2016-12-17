@@ -278,7 +278,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\app\normalize.css" />
-    <Content Include="Content\app\site.css" />
     <Content Include="Content\foundation\app.css" />
     <Content Include="Content\foundation\foundation.css" />
     <Content Include="Content\foundation\foundation.min.css" />
