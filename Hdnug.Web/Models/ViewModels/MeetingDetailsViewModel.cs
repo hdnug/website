@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Hdnug.Web.Models.ViewModels
 {
-    public class MeetingDetailsViewModel
+    public class MeetingDetailsViewModel : ViewModelBase
     {
         public Meeting Meeting { get; set; }
 

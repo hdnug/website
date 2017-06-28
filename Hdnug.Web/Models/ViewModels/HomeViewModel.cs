@@ -3,7 +3,7 @@ using Hdnug.Domain.Data.Models;
 
 namespace Hdnug.Web.Models.ViewModels
 {
-    public class HomeViewModel
+    public class HomeViewModel : ViewModelBase
     {
         public HomeViewModel()
         {

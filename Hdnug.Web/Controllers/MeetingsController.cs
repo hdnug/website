@@ -34,12 +34,14 @@ namespace Hdnug.Web.Controllers
             var presentation = meeting.Presentations.Single(x => x.Id == id);
             var sponsors = meeting.Sponsors.ToList();
             var prizeSponsors = _repository.Find(new ActivePrizeSponsors()).ToList();
+            var upcomingMeetingCount = _repository.Find(new UpcomingMeetings()).ToList().Count;
             var meetingDetailsViewModel = new MeetingDetailsViewModel
             {
                 Meeting = meeting,
                 Presentation = presentation,
                 Sponsors = sponsors,
-                PrizeSponsors = prizeSponsors
+                PrizeSponsors = prizeSponsors,
+                UpcomingMeetingCount = upcomingMeetingCount
             };
             return View(meetingDetailsViewModel);
         }

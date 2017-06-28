@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model Hdnug.Web.Models.ViewModels.ViewModelBase
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -26,7 +27,7 @@
                 <div class="show-for-large" style="padding-top: 12px">
                     <ul class="menu">
                         <li>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "menu-link" })</li>
-                        <li>@Html.ActionLink("Upcoming", "UpcomingMeetings", "Home", null, new { @class = "menu-link" })</li>
+                        <li>@Html.ActionLink(string.Format("Upcoming({0})", Model.UpcomingMeetingCount), "UpcomingMeetings", "Home", null, new { @class = "menu-link" })</li>
                         <li>@Html.ActionLink("Past", "PastMeetings", "Home", null, new { @class = "menu-link" })</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "menu-link" })</li>
                         <li>@Html.ActionLink("About", "About", "Home", null, new { @class = "menu-link" })</li>
