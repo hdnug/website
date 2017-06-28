@@ -265,6 +265,7 @@
     <Compile Include="Installers\InfrastructureInstaller.cs" />
     <Compile Include="Installers\ServerMapPathProviderInstaller.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
+    <Compile Include="Models\ViewModels\ViewModelBase.cs" />
     <Compile Include="Models\ViewModels\HomeViewModel.cs" />
     <Compile Include="Areas\Admin\Models\ViewModels\MeetingViewModel.cs" />
     <Compile Include="Models\ViewModels\MeetingDetailsViewModel.cs" />

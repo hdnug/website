@@ -28,13 +28,15 @@ namespace Hdnug.Web.Controllers
             var prizeSponsors = _repo.Find(new ActivePrizeSponsors()).ToList();
             var currentMonthMeetings = meetings.Where(x => x.MeetingStartDateTime.Month == DateTime.Today.Month && x.MeetingStartDateTime.Year == DateTime.Today.Year);
             var sponsors = currentMonthMeetings.SelectMany(x => x.Sponsors);
+            var upcomingMeetingCount = _repo.Find(new UpcomingMeetings()).ToList().Count;
             var viewModel = new HomeViewModel
             {
                 PresentationCount = presentationCount,
                 Meetings = meetings,
                 SliderImages = sliderImages,
                 Sponsors = sponsors,
-                PrizeSponsors = prizeSponsors
+                PrizeSponsors = prizeSponsors,
+                UpcomingMeetingCount = upcomingMeetingCount
             };
              
             return View(viewModel);
@@ -44,10 +46,12 @@ namespace Hdnug.Web.Controllers
         {
             var meetings = _repo.Find(new UpcomingMeetings()).ToList();
             var presentationCount = meetings.Select(x => x.Presentations).Count();
+            var upcomingMeetingCount = meetings.Count;
             var viewModel = new MeetingListViewModel
             {
                 PresentationCount = presentationCount,
                 Meetings = meetings,
+                UpcomingMeetingCount = upcomingMeetingCount
             };
 
             return View(viewModel);
@@ -57,10 +61,12 @@ namespace Hdnug.Web.Controllers
         {
             var meetings = _repo.Find(new PastMeetings()).ToList();
             var presentationCount = meetings.Select(x => x.Presentations).Count();
+            var upcomingMeetingCount = _repo.Find(new UpcomingMeetings()).ToList().Count;
             var viewModel = new MeetingListViewModel
             {
                 PresentationCount = presentationCount,
                 Meetings = meetings,
+                UpcomingMeetingCount = upcomingMeetingCount
             };
 
             return View(viewModel);
@@ -68,12 +74,22 @@ namespace Hdnug.Web.Controllers
 
         public ActionResult About()
         {
-            return View();
+            var upcomingMeetingCount = _repo.Find(new UpcomingMeetings()).ToList().Count;
+            var viewModel = new ViewModelBase
+            {
+                UpcomingMeetingCount = upcomingMeetingCount
+            };
+            return View(viewModel);
         }
 
         public ActionResult Contact()
         {
-            return View();
+            var upcomingMeetingCount = _repo.Find(new UpcomingMeetings()).ToList().Count;
+            var viewModel = new ViewModelBase
+            {
+                UpcomingMeetingCount = upcomingMeetingCount
+            };
+            return View(viewModel);
         }
 
         [HttpPost]
