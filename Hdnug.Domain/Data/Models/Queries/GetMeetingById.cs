@@ -11,6 +11,7 @@ namespace Hdnug.Domain.Data.Models.Queries
             ContextQuery = context => context.AsQueryable<Meeting>()
                 .Include(m=>m.Sponsors)
                 .Include(m=>m.Presentations).Include(m=>m.Presentations.Select(p=>p.Speakers))
+                .Include(m => m.Location)
                 .Single(m=>m.Id == id);
         }
     }

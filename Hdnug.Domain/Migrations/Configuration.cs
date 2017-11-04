@@ -13,7 +13,8 @@ namespace Hdnug.Domain.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            
             ContextKey = "HdnugContext";
         }
 
@@ -54,6 +55,32 @@ namespace Hdnug.Domain.Migrations
             }
 
             #endregion
+
+            context.Locations.AddOrUpdate(i => i.Id, new Location()
+            {
+                Id=1, 
+                Name = "Microsoft Houston Tech Center", 
+                Address1 = "750 Town and Country Blvd", 
+                Address2 = "Suite 1000", 
+                City = "Houston", 
+                State = "Texas", 
+                PostalCode = "77024"
+
+            });
+
+            context.Locations.AddOrUpdate(i => i.Id, new Location()
+            {
+                Id = 2,
+                Name = "Improving Houston",
+                Address1 = "10111 Richmond Ave",
+                Address2 = "Suite 100",
+                City = "Houston",
+                State = "Texas",
+                PostalCode = "77042"
+
+            });
+
+
 
             context.Images.AddOrUpdate(
                 i => i.Id,
@@ -299,12 +326,7 @@ namespace Hdnug.Domain.Migrations
                     Description = "June 2014 Meeting",
                     MeetingStartDateTime = new DateTime(2014, 06, 12, 18, 30, 00),
                     MeetingEndDateTime = new DateTime(2014, 06, 12, 20, 30, 00),
-                    LocationName = "Microsoft Technology Center - Houston",
-                    LocationAddress1 = "750 Town and Country Blvd.",
-                    LocationAddress2 = "Suite 1000",
-                    LocationCity = "Houston",
-                    LocationState = "TX",
-                    LocationZip = "77024",
+                    LocationId = 1, 
                     Sponsors = new List<Sponsor>
                     {
                         context.Sponsors.Single(x => x.Id == 1)
@@ -321,12 +343,7 @@ namespace Hdnug.Domain.Migrations
                     Description = "July 2014 Meeting",
                     MeetingStartDateTime = new DateTime(2014, 07, 10, 18, 30, 00),
                     MeetingEndDateTime = new DateTime(2014, 07, 10, 20, 30, 00),
-                    LocationName = "Microsoft Technology Center - Houston",
-                    LocationAddress1 = "750 Town and Country Blvd.",
-                    LocationAddress2 = "Suite 1000",
-                    LocationCity = "Houston",
-                    LocationState = "TX",
-                    LocationZip = "77024",
+                    LocationId = 1,
                     Sponsors = new List<Sponsor>
                     {
                         context.Sponsors.Single(x => x.Id == 2)
@@ -343,12 +360,7 @@ namespace Hdnug.Domain.Migrations
                     Description = "August 2014 Meeting",
                     MeetingStartDateTime = new DateTime(2014, 08, 07, 18, 30, 00),
                     MeetingEndDateTime = new DateTime(2014, 08, 07, 20, 30, 00),
-                    LocationName = "Microsoft Technology Center - Houston",
-                    LocationAddress1 = "750 Town and Country Blvd.",
-                    LocationAddress2 = "Suite 1000",
-                    LocationCity = "Houston",
-                    LocationState = "TX",
-                    LocationZip = "77024",
+                    LocationId = 1,
                     Sponsors = new List<Sponsor>
                     {
                         context.Sponsors.Single(x => x.Id == 3)
@@ -365,12 +377,7 @@ namespace Hdnug.Domain.Migrations
                     Description = "November 2014 Meeting",
                     MeetingStartDateTime = new DateTime(2014, 11, 11, 18, 30, 00),
                     MeetingEndDateTime = new DateTime(2014, 11, 11, 20, 30, 00),
-                    LocationName = "Microsoft Technology Center - Houston",
-                    LocationAddress1 = "750 Town and Country Blvd.",
-                    LocationAddress2 = "Suite 1000",
-                    LocationCity = "Houston",
-                    LocationState = "TX",
-                    LocationZip = "77024",
+                    LocationId = 2,
                     Sponsors = new List<Sponsor>
                     {
                         context.Sponsors.Single(x => x.Id == 4)

@@ -97,7 +97,9 @@
     <Compile Include="Data\HdnugContext.cs" />
     <Compile Include="Data\Models\Image.cs" />
     <Compile Include="Data\Models\ImageType.cs" />
+    <Compile Include="Data\Models\Location.cs" />
     <Compile Include="Data\Models\Mapping\ImageMap.cs" />
+    <Compile Include="Data\Models\Mapping\LocationMap.cs" />
     <Compile Include="Data\Models\Mapping\PresentationMap.cs" />
     <Compile Include="Data\Models\Mapping\PrizeSponsorshipMap.cs" />
     <Compile Include="Data\Models\Meeting.cs" />
@@ -140,6 +142,7 @@
     <Compile Include="Data\Models\Speaker.cs" />
     <Compile Include="Data\Models\Sponsor.cs" />
     <Compile Include="Data\Models\Presentation.cs" />
+    <Compile Include="Data\Queries\MeetingList.cs" />
     <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Migrations\201410161127449_Initial.cs" />
     <Compile Include="Migrations\201410161127449_Initial.Designer.cs">
@@ -173,6 +176,18 @@
     <Compile Include="Migrations\201612041347151_ConsolidatedSchemaChanges.Designer.cs">
       <DependentUpon>201612041347151_ConsolidatedSchemaChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711042217206_AddLocation.cs" />
+    <Compile Include="Migrations\201711042217206_AddLocation.Designer.cs">
+      <DependentUpon>201711042217206_AddLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711042233596_LocationUrl.cs" />
+    <Compile Include="Migrations\201711042233596_LocationUrl.Designer.cs">
+      <DependentUpon>201711042233596_LocationUrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711042249067_LocationRelationship.cs" />
+    <Compile Include="Migrations\201711042249067_LocationRelationship.Designer.cs">
+      <DependentUpon>201711042249067_LocationRelationship.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -204,6 +219,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612041347151_ConsolidatedSchemaChanges.resx">
       <DependentUpon>201612041347151_ConsolidatedSchemaChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711042217206_AddLocation.resx">
+      <DependentUpon>201711042217206_AddLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711042233596_LocationUrl.resx">
+      <DependentUpon>201711042233596_LocationUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711042249067_LocationRelationship.resx">
+      <DependentUpon>201711042249067_LocationRelationship.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

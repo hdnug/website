@@ -35,24 +35,12 @@
     </div>
     <div class="clearfix"></div>
     
-    @Html.LabelFor(x => x.LocationName)
-    @Html.TextBoxFor(x => x.LocationName)
-    
-    @Html.LabelFor(x => x.LocationAddress1)
-    @Html.TextBoxFor(x => x.LocationAddress1)
-
-    @Html.LabelFor(x => x.LocationAddress2)
-    @Html.TextBoxFor(x => x.LocationAddress2)
-
-    @Html.LabelFor(x => x.LocationCity)
-    @Html.TextBoxFor(x => x.LocationCity)
-
-    @Html.LabelFor(x => x.LocationState)
-    @Html.TextBoxFor(x => x.LocationState)
-
-    @Html.LabelFor(x => x.LocationZip)
-    @Html.TextBoxFor(x => x.LocationZip)
-    
+    <div>
+        @Html.Label("location", "Location")
+        @Html.DropDownListFor(x => x.LocationId, 
+            Model.Locations.Select(l => new SelectListItem(){Value = l.Id.ToString(), Text = l.Name, Selected = (l.Id == Model.LocationId)}));
+    </div>
+        
 
 </section>
 <script>

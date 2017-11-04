@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.Linq.Dynamic;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -32,7 +33,24 @@ namespace Hdnug.Web.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            if (UserManager.FindById("jsawyer") == null)
+            {
+                PopulateInitialAdminUsers(UserManager);
+            }
             return View();
+        }
+
+        private void PopulateInitialAdminUsers(UserManager<IdentityUser> userManager)
+        {
+            var user = new IdentityUser("jsawyer")
+            {
+                Id = "jsawyer@live.com",
+                Email = "jsawyer@live.com",
+                EmailConfirmed = true,
+                PhoneNumber = "713.705.1991",
+            };
+            userManager.Create(user, "Pass@word1");
+            userManager.AddToRole(user.Id, "ApplicationAdministrator");
         }
 
         //

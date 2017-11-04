@@ -3,6 +3,7 @@ using System.Net;
 using System.Web.Mvc;
 using Hdnug.Domain.Data.Models;
 using Hdnug.Domain.Data.Models.Queries;
+using Hdnug.Domain.Data.Queries;
 using Hdnug.Web.Areas.Admin.Models.ViewModels;
 using Highway.Data;
 
@@ -20,7 +21,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
         // GET: Meetings
         public ActionResult Index()
         {
-            var meetings = _repo.Find(new FindAll<Meeting>()).ToList();
+            var meetings = _repo.Find(new MeetingList()).ToList();
             var viewModel = new MeetingListViewModel
             {
                 Meetings = meetings
@@ -36,26 +37,12 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             var meeting = _repo.Find(new GetMeetingById((int)id));
-            var viewModel = new MeetingViewModel
-            {
-                Id = meeting.Id,
-                Title = meeting.Title,
-                Description = meeting.Description,
-                MeetingStartDateTime = meeting.MeetingStartDateTime,
-                MeetingEndDateTime = meeting.MeetingEndDateTime,
-                LocationName = meeting.LocationName,
-                LocationAddress1 = meeting.LocationAddress1,
-                LocationAddress2 = meeting.LocationAddress2,
-                LocationCity = meeting.LocationCity,
-                LocationState = meeting.LocationState,
-                LocationZip = meeting.LocationZip,
-                Sponsors = meeting.Sponsors,
-                Presentations = meeting.Presentations
-            };
             if (meeting == null)
             {
                 return HttpNotFound();
             }
+
+            var viewModel = new MeetingViewModel(meeting);
             return View(viewModel);
         }
 
@@ -84,12 +71,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                     Description = meetingViewModel.Description,
                     MeetingStartDateTime = meetingViewModel.MeetingStartDateTime,
                     MeetingEndDateTime = meetingViewModel.MeetingEndDateTime,
-                    LocationName = meetingViewModel.LocationName,
-                    LocationAddress1 = meetingViewModel.LocationAddress1,
-                    LocationAddress2 = meetingViewModel.LocationAddress2,
-                    LocationCity = meetingViewModel.LocationCity,
-                    LocationState = meetingViewModel.LocationState,
-                    LocationZip = meetingViewModel.LocationZip,
+                    LocationId = meetingViewModel.LocationId, 
                     Sponsors = sponsors,
                     Presentations = presentations
                 };
@@ -99,7 +81,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             }
             meetingViewModel.Presentations = _repo.Find(new FindAll<Presentation>()).ToList();
             meetingViewModel.Sponsors = _repo.Find(new FindAll<Sponsor>()).ToList();
-
+            meetingViewModel.Locations = _repo.Find(new FindAll<Location>()).ToList();
             return View(meetingViewModel);
         }
 
@@ -124,17 +106,14 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 Id = meeting.Id,
                 Title = meeting.Title,
                 Description = meeting.Description,
-                LocationName = meeting.LocationName,
-                LocationAddress1 = meeting.LocationAddress1,
-                LocationAddress2 = meeting.LocationAddress2,
-                LocationCity = meeting.LocationCity,
-                LocationState = meeting.LocationState,
-                LocationZip = meeting.LocationZip,
+                LocationId = meeting.LocationId, 
+                LocationName = meeting.Location.Name,
                 MeetingStartDateTime = meeting.MeetingStartDateTime,
                 MeetingEndDateTime = meeting.MeetingEndDateTime,
                 Presentations = presentations,
                 Sponsors = sponsors,
-            };
+                Locations = _repo.Find(new FindAll<Location>()).ToList()
+        };
             meetingViewModel.SelectedPresentations.AddRange(meeting.Presentations.Select(x => x.Id));
             meetingViewModel.SelectedSponsors.AddRange(meeting.Sponsors.Select(x => x.Id));
 
@@ -149,20 +128,16 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             var meeting = _repo.Find(new GetMeetingById(meetingViewModel.Id));
             if (ModelState.IsValid)
             {
-                var sponsors = _repo.Find(new GetSponsorsByIds(meetingViewModel.SelectedSponsors.ToArray())).ToList();
-                var presentations = _repo.Find(new GetPresentationsByIds(meetingViewModel.SelectedPresentations.ToArray())).ToList();
+                meeting.Sponsors = _repo.Find(new GetSponsorsByIds(meetingViewModel.SelectedSponsors.ToArray())).ToList();
+                meeting.Presentations = _repo.Find(new GetPresentationsByIds(meetingViewModel.SelectedPresentations.ToArray())).ToList();
+                meetingViewModel.ToMeeting(meeting);
                 meeting.Title = meetingViewModel.Title;
                 meeting.Description = meetingViewModel.Description;
-                meeting.LocationName = meetingViewModel.LocationName;
-                meeting.LocationAddress1 = meetingViewModel.LocationAddress1;
-                meeting.LocationAddress2 = meetingViewModel.LocationAddress2;
-                meeting.LocationCity = meetingViewModel.LocationCity;
-                meeting.LocationState = meetingViewModel.LocationState;
-                meeting.LocationZip = meetingViewModel.LocationZip;
+                meeting.LocationId = meetingViewModel.LocationId;
                 meeting.MeetingEndDateTime = meetingViewModel.MeetingEndDateTime;
                 meeting.MeetingStartDateTime = meetingViewModel.MeetingStartDateTime;
-                meeting.Sponsors = sponsors;
-                meeting.Presentations = presentations;
+                //meeting.Sponsors = sponsors;
+                //meeting.Presentations = presentations;
 
                 _repo.Context.Commit();
                 return RedirectToAction("Index");

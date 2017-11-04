@@ -11,6 +11,7 @@ namespace Hdnug.Domain.Data
         public HdnugContext()
             : base("Name=HdnugContext", new MappingConfiguration())
         {
+            
         }
 
         public DbSet<IdentityUserClaim> Claims { get; set; }
@@ -19,6 +20,8 @@ namespace Hdnug.Domain.Data
         public DbSet<IdentityUser> Users { get; set; }
         public DbSet<Meeting> Meetings { get; set; }
         public DbSet<Sponsor> Sponsors { get; set; }
+
+        public DbSet<Location> Locations { get; set; }
         public DbSet<PrizeSponsorship> PrizeSponsorships { get; set; } 
         public DbSet<Speaker> Speakers { get; set; }
         public DbSet<Presentation> Presentations { get; set; }

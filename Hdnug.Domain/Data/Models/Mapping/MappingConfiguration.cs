@@ -9,6 +9,7 @@ namespace Hdnug.Domain.Data.Models.Mapping
         {
             modelBuilder.Configurations.Add(new ClaimMap());
             modelBuilder.Configurations.Add(new LoginMap());
+            modelBuilder.Configurations.Add(new LocationMap());
             modelBuilder.Configurations.Add(new RoleMap());
             modelBuilder.Configurations.Add(new UserMap());
             modelBuilder.Configurations.Add(new UserRoleMap());
@@ -19,6 +20,7 @@ namespace Hdnug.Domain.Data.Models.Mapping
             modelBuilder.Configurations.Add(new SpeakerMap());
             modelBuilder.Configurations.Add(new PresentationMap());
             modelBuilder.Configurations.Add(new ImageMap());
+            
         }
     }
 }

@@ -9,6 +9,8 @@ namespace Hdnug.Domain.Data.Models.Mapping
             ToTable("Meeting");
             HasKey(t => t.Id);
 
+            HasRequired(e => e.Location).WithMany().HasForeignKey(e => e.LocationId);
+
             HasMany(t => t.Sponsors)
                 .WithMany(t => t.Meetings);
             HasMany(t => t.Presentations)
