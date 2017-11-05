@@ -8,7 +8,7 @@
         <h3>@Model.Presentation.Title</h3>
         <p>
             @Model.Meeting.MeetingStartDateTime.Date.ToLongDateString() from @Model.Presentation.PresentationStartDateTime.ToString("t") to @Model.Presentation.PresentationEndDateTime.ToString("t")<br />
-            @if (!string.IsNullOrEmpty(Model.Presentation.Location)){ @Model.Presentation.Location<span>,&nbsp;</span> }<a href="https://www.bing.com/mapspreview?q=@Model.Meeting.MeetingAddress" target="_blank">@Model.Meeting.LocationName</a>
+            @if (!string.IsNullOrEmpty(Model.Presentation.Location)){ @Model.Presentation.Location<span>,&nbsp;</span> }<a href="https://www.bing.com/mapspreview?q=@Model.Meeting.Location.LocationAddress" target="_blank">@Model.Meeting.Location.Name</a>
         </p>
         <div>
             <div>
@@ -76,12 +76,12 @@
             @Model.Meeting.MeetingStartDateTime.Date.ToLongDateString()<br/> 
             @Model.Meeting.MeetingStartDateTime.ToString("t") to @Model.Meeting.MeetingEndDateTime.ToString("t")
         <p>
-            @Model.Meeting.LocationName<br />
-            @if (!string.IsNullOrEmpty(Model.Meeting.LocationAddress2))
-            { <span>@string.Join(", ", Model.Meeting.LocationAddress1, Model.Meeting.LocationAddress2)</span><br /> }
+            @Model.Meeting.Location.Name<br />
+            @if (!string.IsNullOrEmpty(Model.Meeting.Location.Address2))
+            { <span>@string.Join(", ", Model.Meeting.Location.Address1, Model.Meeting.Location.Address2)</span><br /> }
             else
-            { @Model.Meeting.LocationAddress1<br /> }
-            @string.Join(",", Model.Meeting.LocationCity, Model.Meeting.LocationState, Model.Meeting.LocationZip)<br />
+            { @Model.Meeting.Location.Address1<br /> }
+            @string.Join(",", Model.Meeting.Location.City, Model.Meeting.Location.State, Model.Meeting.Location.PostalCode)<br />
         </p>
         <h5>Meeting Sponsors</h5>
         @if (Model.Sponsors.Any())
