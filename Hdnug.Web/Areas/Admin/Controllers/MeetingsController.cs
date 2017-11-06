@@ -129,14 +129,40 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             var meeting = _repo.Find(new GetMeetingById(meetingViewModel.Id));
             if (ModelState.IsValid)
             {
-                meeting.Sponsors = _repo.Find(new GetSponsorsByIds(meetingViewModel.SelectedSponsors.ToArray())).ToList();
-                meeting.Presentations = _repo.Find(new GetPresentationsByIds(meetingViewModel.SelectedPresentations.ToArray())).ToList();
                 meetingViewModel.ToMeeting(meeting);
                 meeting.Title = meetingViewModel.Title;
                 meeting.Description = meetingViewModel.Description;
                 meeting.LocationId = meetingViewModel.LocationId;
                 meeting.MeetingEndDateTime = meetingViewModel.MeetingEndDateTime;
                 meeting.MeetingStartDateTime = meetingViewModel.MeetingStartDateTime;
+
+                var sponsorIdsToAdd =
+                    meetingViewModel.SelectedSponsors.Where(e => meeting.Sponsors.All(s => s.Id != e));
+                foreach (var newSponsor in _repo.Find(new GetSponsorsByIds(sponsorIdsToAdd.ToArray())).ToArray())
+                {
+                    meeting.Sponsors.Add(newSponsor);
+                }
+                var sponsorIdsToRemove =
+                    meeting.Sponsors.Where(e => meetingViewModel.SelectedSponsors.All(s => s != e.Id));
+                foreach (var sponsorToRemove in sponsorIdsToRemove)
+                {
+                    meeting.Sponsors.Remove(sponsorToRemove);
+                }
+
+                var presentationIdsToAdd =
+                    meetingViewModel.SelectedPresentations.Where(e => meeting.Presentations.All(s => s.Id != e));
+                foreach (var newPresentation in _repo.Find(new GetPresentationsByIds(presentationIdsToAdd.ToArray())).ToArray())
+                {
+                    meeting.Presentations.Add(newPresentation);
+                }
+                var presentationIdsToRemove =
+                    meeting.Presentations.Where(e => meetingViewModel.SelectedPresentations.All(s => s != e.Id));
+                foreach (var presentationToRemove in presentationIdsToRemove)
+                {
+                    meeting.Presentations.Remove(presentationToRemove);
+                }
+
+
                 //meeting.Sponsors = sponsors;
                 //meeting.Presentations = presentations;
 

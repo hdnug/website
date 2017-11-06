@@ -34,8 +34,7 @@ namespace Hdnug.Web
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
-            "~/Scripts/kendo/kendo.ui.core.min.js",
-            "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
+                "~/Scripts/kendo/2017.3.1026/kendo.ui.core.min.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/foundation").Include(
