@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -26,14 +27,30 @@ namespace Hdnug.Web.Inrastructure
             return modelError;
         }
 
-        public static string SaveImageUpload(this HttpPostedFileBase postedImage, IProvideServerMapPath serverMapPathProvider, string uploadDir)
+        public static string SaveImageUpload(this HttpPostedFileBase postedImage, IProvideServerMapPath serverMapPathProvider, string uploadDir, string newFileName = null)
         {
-            var imagePath = Path.Combine(serverMapPathProvider.MapPath(uploadDir), postedImage.FileName);
-            var imageUrl = Path.Combine(uploadDir + "/", postedImage.FileName);
+            if (newFileName != null)
+            {
+                //Get the file extension. 
+                var fileExtension = Path.GetExtension(postedImage.FileName);
+                if (!Path.GetExtension(newFileName).Equals(fileExtension, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    newFileName += "." + fileExtension;
+                }
+            }
+            var imageFileName = newFileName ?? Path.GetFileName(postedImage.FileName);
+            if (imageFileName == null) throw new InvalidOperationException("Cannot save file; no file name found.");
+            
+            var imageSavePath = Path.Combine(serverMapPathProvider.MapPath(uploadDir), imageFileName);
 
-            postedImage.SaveAs(imagePath);
-
-            return imageUrl;
+            if (File.Exists(imageSavePath))
+            {
+                File.Delete(imageSavePath);
+            }
+            
+            postedImage.SaveAs(imageSavePath);
+            return Path.Combine(uploadDir + "/", imageFileName); ;
+            
         }
 
         public static void DeleteImage(this Image imageFile, IProvideServerMapPath serverMapPathProvider, string uploadDir)

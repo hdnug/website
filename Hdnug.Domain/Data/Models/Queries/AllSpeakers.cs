@@ -8,7 +8,7 @@ namespace Hdnug.Domain.Data.Models.Queries
     {
         public AllSpeakers()
         {
-            ContextQuery = context => context.AsQueryable<Speaker>().Include(s => s.Photo).OrderBy(s => s.Name);
+            ContextQuery = context => context.AsQueryable<Speaker>().Include(s => s.Photo).OrderBy(s => s.LastName);
         }
     }
 }

@@ -51,7 +51,8 @@ namespace Hdnug.Web.Areas.Admin.Controllers
         {
             var sponsors = _repo.Find(new FindAll<Sponsor>()).ToList();
             var presentations = _repo.Find(new FindAll<Presentation>()).ToList();
-            var viewModel = new MeetingViewModel { Sponsors = sponsors, Presentations = presentations };
+            var locations = _repo.Find(new FindAll<Location>()).ToList();
+            var viewModel = new MeetingViewModel { Sponsors = sponsors, Presentations = presentations , Locations = locations};
             return View(viewModel);
         }
 
@@ -114,8 +115,8 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 Sponsors = sponsors,
                 Locations = _repo.Find(new FindAll<Location>()).ToList()
         };
-            meetingViewModel.SelectedPresentations.AddRange(meeting.Presentations.Select(x => x.Id));
-            meetingViewModel.SelectedSponsors.AddRange(meeting.Sponsors.Select(x => x.Id));
+            meetingViewModel.SelectedPresentations = (meeting.Presentations.Select(x => x.Id)).ToList();
+            meetingViewModel.SelectedSponsors = meeting.Sponsors.Select(e => e.Id).ToList();
 
             return View(meetingViewModel);
         }
@@ -146,6 +147,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             var allSponsors = _repo.Find(new FindAll<Sponsor>()).ToList();
             meetingViewModel.Presentations = allPresentations;
             meetingViewModel.Sponsors = allSponsors;
+            meetingViewModel.Locations = _repo.Find(new FindAll<Location>()).ToList();
             meetingViewModel.SelectedPresentations.AddRange(allPresentations.Select(x => x.Id).Except(meetingViewModel.SelectedPresentations));
             meetingViewModel.SelectedSponsors.AddRange(allSponsors.Select(x => x.Id).Except(meetingViewModel.SelectedSponsors));
             return View(meetingViewModel);

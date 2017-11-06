@@ -33,7 +33,7 @@ namespace Hdnug.Web.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            if (UserManager.FindById("jsawyer") == null)
+            if (UserManager.FindByName("jsawyer") == null)
             {
                 PopulateInitialAdminUsers(UserManager);
             }

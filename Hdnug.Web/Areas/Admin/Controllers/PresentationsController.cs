@@ -47,7 +47,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
         // GET: Presentation/Create
         public ActionResult Create()
         {
-            var speakers = _repository.Find(new FindAll<Speaker>()).OrderBy(s => s.Name).ToList();
+            var speakers = _repository.Find(new FindAll<Speaker>()).OrderBy(s => s.LastName).ToList();
             var viewModel = new PresentationViewModel
             {
                 Speakers = speakers
@@ -79,7 +79,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
 
                 return RedirectToAction("Index");
             }
-            presentationViewModel.Speakers = _repository.Find(new FindAll<Speaker>()).OrderBy(s => s.Name).ToList();
+            presentationViewModel.Speakers = _repository.Find(new FindAll<Speaker>()).OrderBy(s => s.LastName).ToList();
             return View(presentationViewModel);
         }
 
@@ -87,7 +87,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
         public ActionResult Edit(int id)
         {
             var presentationViewModel = BuildPresentationViewModel(id);
-            presentationViewModel.Speakers = _repository.Find(new FindAll<Speaker>()).OrderBy(s => s.Name).ToList();
+            presentationViewModel.Speakers = _repository.Find(new FindAll<Speaker>()).OrderBy(s => s.LastName).ToList();
             return View(presentationViewModel);
         }
 
@@ -110,7 +110,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
 
                 return RedirectToAction("Index");
             }
-            var allSpeakers = _repository.Find(new FindAll<Speaker>()).OrderBy(s => s.Name).ToList();
+            var allSpeakers = _repository.Find(new FindAll<Speaker>()).OrderBy(s => s.LastName).ToList();
             presentationViewModel.Speakers = allSpeakers;
             presentationViewModel.SelectedSpeakers.AddRange(allSpeakers.Select(s => s.Id).Except(presentationViewModel.SelectedSpeakers));
             return View(presentationViewModel);

@@ -228,7 +228,8 @@ namespace Hdnug.Domain.Migrations
                 new Speaker
                 {
                     Id = 1,
-                    Name = "Speaker1",
+                    FirstName = "J", LastName = "Sawyer",
+                    
                     Email = "speaker1@aol.com",
                     Phone = "555-555-5555",
                     Bio = "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa.",
@@ -237,7 +238,8 @@ namespace Hdnug.Domain.Migrations
                 new Speaker
                 {
                     Id = 2,
-                    Name = "Speaker2",
+                    FirstName = "Richard",
+                    LastName = "Flores",
                     Email = "speaker2@aol.com",
                     Phone = "555-555-5555",
                     Bio = "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong. Eiusmod swine spare ribs reprehenderit culpa.",
@@ -246,7 +248,8 @@ namespace Hdnug.Domain.Migrations
                 new Speaker
                 {
                     Id = 3,
-                    Name = "Speaker3",
+                    FirstName = "Devlin",
+                    LastName = "Liles",
                     Email = "speaker3@aol.com",
                     Phone = "555-555-5555",
                     Bio = "Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit.Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.Eiusmod swine spare ribs reprehenderit culpa.",

@@ -32,7 +32,8 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 {
                     Id = x.Id,
                     Email = x.Email,
-                    Name = x.Name,
+                    FirstName = x.FirstName, 
+                    LastName = x.LastName, 
                     Phone = x.Phone,
                     WebSiteUrl = x.WebSiteUrl,
                     PhotoUrl = x.Photo != null ? x.Photo.ImageUrl : string.Empty,
@@ -52,7 +53,6 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             {
                 Id = speaker.Id,
                 Email = speaker.Email,
-                Name = speaker.Name,
                 Phone = speaker.Phone,
                 WebSiteUrl = speaker.WebSiteUrl,
                 PhotoUrl = speaker.Photo != null ? speaker.Photo.ImageUrl : string.Empty,
@@ -84,7 +84,9 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 var speaker = new Speaker
                 {
                     Email = SpeakerViewModel.Email,
-                    Name = SpeakerViewModel.Name,
+                    FirstName = SpeakerViewModel.FirstName, 
+                    LastName = SpeakerViewModel.LastName,
+                    
                     Phone = SpeakerViewModel.Phone,
                     WebSiteUrl = SpeakerViewModel.WebSiteUrl,
                     Bio = SpeakerViewModel.Bio
@@ -107,7 +109,6 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             var viewModel = new SpeakerViewModel
             {
                 Email = speaker.Email,
-                Name = speaker.Name,
                 Phone = speaker.Phone,
                 WebSiteUrl = speaker.WebSiteUrl,
                 PhotoId = speaker.Photo != null ? speaker.Photo.Id : 0,
@@ -132,52 +133,40 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 }
             }
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid) return View(speakerViewModel);
+
+            var speaker = _repository.Find(new GetSpeakerById(id));
+            speaker.Email = speakerViewModel.Email;
+            speaker.FirstName = speakerViewModel.Name;
+            speaker.Phone = speakerViewModel.Phone;
+            speaker.WebSiteUrl = speakerViewModel.WebSiteUrl;
+            speaker.Bio = speakerViewModel.Bio;
+
+            // Get existing image from database. 
+            var image = _repository.Find(new GetById<int, Image>(speakerViewModel.PhotoId));
+
+            // If image is cleared then we delete the image from the image store and set the speaker photo to null
+            if (speakerViewModel.ImageIsCleared)
             {
-                var speaker = _repository.Find(new GetSpeakerById(id));
-
-                speaker.Email = speakerViewModel.Email;
-                speaker.Name = speakerViewModel.Name;
-                speaker.Phone = speakerViewModel.Phone;
-                speaker.WebSiteUrl = speakerViewModel.WebSiteUrl;
-                speaker.Bio = speakerViewModel.Bio;
-
-                // Get existing image from database. 
-                var image = _repository.Find(new GetById<int, Image>(speakerViewModel.PhotoId));
-
-                // If image is cleared then we delete the image from the image store and set the speaker photo to null
-                if (speakerViewModel.ImageIsCleared)
-                {
-                    if(image != null)
-                    {
-                        image.DeleteImage(_serverMapPathProvider, Constants.SpeakerUploadDir);
-                        _repository.Execute(new RemoveSponsorById(id));
-                    }
-                    image = null;
-                }
-
-                // Set image from viewModel. If the photo on the viewModel is not null then the user
-                // has changed the image from the screen so we overwrite the image retrieved from the database
-                if(speakerViewModel.Photo != null)
-                {
-                    var url = speakerViewModel.Photo.SaveImageUpload(_serverMapPathProvider, Constants.SpeakerUploadDir);
-                    var newImage = new Image { Title = imageInfo, AltText = imageInfo, ImageType = ImageType.Profile, ImageUrl = url };
-                    if(image != null)
-                    {
-                        image.DeleteImage(_serverMapPathProvider, Constants.SpeakerUploadDir);
-                        _repository.Execute(new RemoveSponsorById(id));
-                    }
-                    image = newImage;
-                }
-                
-                // Set speaker photo to the existing image, no image, or the new image
-                speaker.Photo = image;
-
-                _repository.Context.Commit();
-
-                return RedirectToAction("Index");
+                image?.DeleteImage(_serverMapPathProvider, Constants.SpeakerUploadDir);
+                image = null;
             }
-            return View(speakerViewModel);
+
+            // Set image from viewModel. If the photo on the viewModel is not null then the user
+            // has changed the image from the screen so we overwrite the image retrieved from the database
+            if(speakerViewModel.Photo != null)
+            {
+                var url = speakerViewModel.Photo.SaveImageUpload(_serverMapPathProvider, Constants.SpeakerUploadDir, "speaker." + id.ToString());
+                var newImage = new Image { Title = imageInfo, AltText = imageInfo, ImageType = ImageType.Profile, ImageUrl = url }; 
+                image = newImage;
+            }
+                
+            // Set speaker photo to the existing image, no image, or the new image
+            speaker.Photo = image;
+
+            _repository.Context.Commit();
+
+            return RedirectToAction("Index");
         }
 
         // GET: Speakers/Delete/5

@@ -186,6 +186,10 @@
     <Compile Include="Migrations\201711042249067_LocationRelationship.Designer.cs">
       <DependentUpon>201711042249067_LocationRelationship.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711060138308_Refactor Speaker Name.cs" />
+    <Compile Include="Migrations\201711060138308_Refactor Speaker Name.Designer.cs">
+      <DependentUpon>201711060138308_Refactor Speaker Name.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -226,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711042249067_LocationRelationship.resx">
       <DependentUpon>201711042249067_LocationRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711060138308_Refactor Speaker Name.resx">
+      <DependentUpon>201711060138308_Refactor Speaker Name.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
