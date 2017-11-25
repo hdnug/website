@@ -108,6 +108,8 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             var speaker = _repository.Find(new GetSpeakerById(id));
             var viewModel = new SpeakerViewModel
             {
+                FirstName = speaker.FirstName, 
+                LastName = speaker.LastName, 
                 Email = speaker.Email,
                 Phone = speaker.Phone,
                 WebSiteUrl = speaker.WebSiteUrl,
@@ -137,7 +139,8 @@ namespace Hdnug.Web.Areas.Admin.Controllers
 
             var speaker = _repository.Find(new GetSpeakerById(id));
             speaker.Email = speakerViewModel.Email;
-            speaker.FirstName = speakerViewModel.Name;
+            speaker.FirstName = speakerViewModel.FirstName;
+            speaker.LastName = speakerViewModel.LastName;
             speaker.Phone = speakerViewModel.Phone;
             speaker.WebSiteUrl = speakerViewModel.WebSiteUrl;
             speaker.Bio = speakerViewModel.Bio;

@@ -17,6 +17,8 @@ namespace Hdnug.Domain.Data.Models
             Caption = image.Caption;
             ImageUrl = image.ImageUrl;
             ImageType = image.ImageType;
+            Height = image.Height;
+            Width = image.Width; 
             CreatedDate = image.CreatedDate;
         }
 
@@ -29,6 +31,10 @@ namespace Hdnug.Domain.Data.Models
         public string Caption { get; set; }
 
         public string ImageUrl { get; set; }
+
+        public int Height { get; set; }
+
+        public int Width { get; set; }
 
         public ImageType ImageType { get; set; }
 

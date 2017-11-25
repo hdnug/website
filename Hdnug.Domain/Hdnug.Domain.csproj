@@ -190,6 +190,10 @@
     <Compile Include="Migrations\201711060138308_Refactor Speaker Name.Designer.cs">
       <DependentUpon>201711060138308_Refactor Speaker Name.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201711250204245_ImageSize.cs" />
+    <Compile Include="Migrations\201711250204245_ImageSize.Designer.cs">
+      <DependentUpon>201711250204245_ImageSize.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -233,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201711060138308_Refactor Speaker Name.resx">
       <DependentUpon>201711060138308_Refactor Speaker Name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711250204245_ImageSize.resx">
+      <DependentUpon>201711250204245_ImageSize.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

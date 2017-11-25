@@ -91,7 +91,9 @@ namespace Hdnug.Domain.Migrations
                     AltText = "Dot Net Rocks in Houston with Venkat",
                     Caption = "Dot Net Rocks in Houston with Venkat",
                     ImageType = ImageType.Slider,
-                    ImageUrl = "~/Content/Images/Site/IMG_0117.jpg"
+                    ImageUrl = "~/Content/Images/Site/IMG_0117.jpg", 
+                    Height = 300, 
+                    Width = 1000
                 },
                 new Image
                 {
@@ -100,7 +102,9 @@ namespace Hdnug.Domain.Migrations
                     AltText = "June Meeting",
                     Caption = "June Meeting",
                     ImageType = ImageType.Slider,
-                    ImageUrl = "~/Content/Images/Site/IMG_1626.jpg"
+                    ImageUrl = "~/Content/Images/Site/IMG_1626.jpg", 
+                    Height = 300, 
+                    Width=1000
                 },
                 new Image
                 {
@@ -109,7 +113,10 @@ namespace Hdnug.Domain.Migrations
                     AltText = "Discussion Panel",
                     Caption = "Discussion Panel",
                     ImageType = ImageType.Slider,
-                    ImageUrl = "~/Content/Images/Site/IMG_1782.jpg"
+                    ImageUrl = "~/Content/Images/Site/IMG_1782.jpg", 
+                    Height = 300, 
+                    Width = 1000 
+                   
                 }
                 );
 
