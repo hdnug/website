@@ -142,6 +142,7 @@
     <Compile Include="Data\Models\Presentation.cs" />
     <Compile Include="Data\Queries\MeetingList.cs" />
     <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Extensions\Size.cs" />
     <Compile Include="Migrations\201410161127449_Initial.cs" />
     <Compile Include="Migrations\201410161127449_Initial.Designer.cs">
       <DependentUpon>201410161127449_Initial.cs</DependentUpon>

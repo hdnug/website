@@ -8,16 +8,16 @@
 /* Site */
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Source-Sans-Pro", sans-serif;
+    font-family: "Consolas", monospace
 }
 
 a {
-    font-family: "Source-Sans-Pro", sans-serif;
+    font-family: "Segoe UI", Verdana, sans-serif;
 }
 
 body {
     font-size: 1rem;
-    font-family: "Source-Sans-Pro", sans-serif;
+    font-family: "Segoe UI", Verdana, sans-serif;
 }
 
 .img-container {
@@ -73,6 +73,13 @@ a.menu-link {
 }
 
 /* Home Page */
+
+.sponsor-name {
+    font-weight: bold; 
+}
+.sponsor-tagline {
+    font-style: italic
+}
 .social-media-inline {
     margin: 0;
 }

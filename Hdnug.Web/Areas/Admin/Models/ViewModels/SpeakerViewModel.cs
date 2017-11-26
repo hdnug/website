@@ -2,6 +2,7 @@
 using Hdnug.Domain.Data.Models;
 using System.Collections.Generic;
 using System.Web;
+using Hdnug.Domain.Extensions;
 
 namespace Hdnug.Web.Areas.Admin.Models.ViewModels
 {
@@ -26,7 +27,7 @@ namespace Hdnug.Web.Areas.Admin.Models.ViewModels
         public int PhotoId { get; set; }
         public string PhotoUrl { get; set; }
         public bool ImageIsCleared { get; set; }
-
+        public Size ImageSize { get; set; }
         public HttpPostedFileBase Photo { get; set; }
         public virtual ICollection<Presentation> Presentations { get; set; }
     }

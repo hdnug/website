@@ -42,7 +42,7 @@
     <div class="form-group">
         <label>Photo</label>
         <div class="float-left">
-            <img id="pic" src="@Url.Content(Model.PhotoUrl)" style="width: 150px; margin-bottom: 10px" />
+            <img id="pic" src="@Url.Content(Model.PhotoUrl)" style="width: @Model.ImageSize.Width.ToString("###px");height: @Model.ImageSize.Height.ToString("####px") margin-bottom: 10px" />
             <div>
                 <label for="Photo" class="small button" style="width: 48%">Change</label>
                 <input id="Photo" name="Photo" class="show-for-sr" type="file" />

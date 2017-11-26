@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Hdnug.Domain.Data.Models;
 using Hdnug.Domain.Data.Models.Queries;
+using Hdnug.Domain.Extensions;
 using Hdnug.Web.Inrastructure;
 using Hdnug.Web.Interfaces;
 using Hdnug.Web.Areas.Admin.Models.ViewModels;
@@ -115,7 +116,8 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                 WebSiteUrl = speaker.WebSiteUrl,
                 PhotoId = speaker.Photo != null ? speaker.Photo.Id : 0,
                 PhotoUrl = speaker.Photo?.ImageUrl,
-                Bio = speaker.Bio
+                Bio = speaker.Bio, 
+                ImageSize = speaker.Photo.ScaleImage(150, 150)
             };
             return View(viewModel);
         }
@@ -160,7 +162,11 @@ namespace Hdnug.Web.Areas.Admin.Controllers
             if(speakerViewModel.Photo != null)
             {
                 var url = speakerViewModel.Photo.SaveImageUpload(_serverMapPathProvider, Constants.SpeakerUploadDir, "speaker." + id.ToString());
-                var newImage = new Image { Title = imageInfo, AltText = imageInfo, ImageType = ImageType.Profile, ImageUrl = url }; 
+                //load the image. 
+
+                var img = System.Drawing.Image.FromStream(speakerViewModel.Photo.InputStream);
+                var newImage = new Image { Title = imageInfo, AltText = imageInfo, ImageType = ImageType.Profile, ImageUrl = url,
+                    Height = img.Height, Width = img.Width, Caption = speaker.Name}; 
                 image = newImage;
             }
                 
