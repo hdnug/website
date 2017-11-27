@@ -316,6 +316,15 @@
     <Content Include="Content\Images\Site\twitter_circle_gray.png" />
     <Content Include="Content\Images\Site\facebook_circle_gray.png" />
     <Content Include="Content\Images\Site\instagram_circle_gray.png" />
+    <Content Include="Content\Images\Speakers\bloodrayne.jpg" />
+    <Content Include="Content\Images\Speakers\Draco-Malfoy.jpg" />
+    <Content Include="Content\Images\Speakers\fantasy_0063.jpg" />
+    <Content Include="Content\Images\Speakers\fantasy_0570.jpg" />
+    <Content Include="Content\Images\Speakers\Mad-Eye-Moody.gif" />
+    <Content Include="Content\Images\Speakers\Simpsons_Barney.gif" />
+    <Content Include="Content\Images\Speakers\spongebob.gif" />
+    <Content Include="Content\Images\Speakers\vader.jpg" />
+    <Content Include="Content\Images\Speakers\Zangief.gif" />
     <Content Include="Content\kendo\Black\editor.png" />
     <Content Include="Content\kendo\Black\imagebrowser.png" />
     <Content Include="Content\kendo\Black\indeterminate.gif" />
@@ -3714,7 +3723,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\AdminAreaBase\" />
-    <Folder Include="Content\Images\Speakers\" />
     <Folder Include="Content\Images\Sponsors\" />
     <Folder Include="Views\UpcomingMeetings\" />
   </ItemGroup>

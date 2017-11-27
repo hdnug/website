@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using Hdnug.Domain.Data.Models;
 using Hdnug.Domain.Data.Models.Queries;
@@ -15,6 +16,20 @@ namespace Hdnug.Web.Areas.Admin.Controllers
     {
         private readonly IRepository _repository;
         private readonly IProvideServerMapPath _serverMapPathProvider;
+
+        private string[] NoPhotoAvatars = new[]
+        {
+            "~/content/images/speakers/zangief.gif",
+            "~/content/images/speakers/bloodrayne.jpg",
+            "~/content/images/speakers/fantasy_0063.jpg",
+            "~/content/images/speakers/fantasy_0570.jpg",
+            "~/content/images/speakers/vader.jpg",
+            "~/content/images/speakers/spongebob.gif",
+            "~/content/images/speakers/simpsons_barney.gif",
+            "~/content/images/speakers/Draco-Malfoy.jpg",
+            "~/content/images/speakers/Mad-Eye-Moody.gif",
+
+        };
         public SpeakersController(IRepository repository, IProvideServerMapPath serverMapPathProvider)
         {
             _repository = repository;
@@ -26,7 +41,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
         {
             var speakers = _repository.Find(new AllSpeakers());
             var viewModel = new List<SpeakerViewModel>();
-
+            var rnd = new Random();
             speakers.ForEach(x =>
             {
                 var speaker = new SpeakerViewModel
@@ -37,7 +52,7 @@ namespace Hdnug.Web.Areas.Admin.Controllers
                     LastName = x.LastName, 
                     Phone = x.Phone,
                     WebSiteUrl = x.WebSiteUrl,
-                    PhotoUrl = x.Photo != null ? x.Photo.ImageUrl : string.Empty,
+                    PhotoUrl = x.Photo != null ? x.Photo.ImageUrl : NoPhotoAvatars[rnd.Next(0, NoPhotoAvatars.Length -1)],
                     Bio = x.Bio
                 };
                 viewModel.Add(speaker);

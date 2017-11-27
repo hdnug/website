@@ -55,8 +55,8 @@ namespace Hdnug.Web.Inrastructure
 
         public static void DeleteImage(this Image imageFile, IProvideServerMapPath serverMapPathProvider, string uploadDir)
         {
-            var fileName = imageFile.ImageUrl.Substring(imageFile.ImageUrl.LastIndexOf("/", System.StringComparison.Ordinal));
-            var imagePath = Path.Combine(serverMapPathProvider.MapPath(uploadDir), Path.GetFileName(fileName.Replace("/", "\\")));
+            
+            var imagePath = Path.Combine(serverMapPathProvider.MapPath(imageFile.ImageUrl));
 
             if (File.Exists(imagePath))
             {
